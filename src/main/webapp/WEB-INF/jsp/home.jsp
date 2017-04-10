@@ -10,5 +10,9 @@
 	</div>
 	</div>
 	
+	<c:forEach var="office" items = "${officeList}">
+		<c:out value="${office.name}"/>
+	</c:forEach>
+	
 
 <c:import url="/WEB-INF/jsp/footer.jsp" />

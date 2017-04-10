@@ -8,6 +8,7 @@ public class Doctor {
 	private String hours;
 	private boolean admin;
 	
+	
 	public int getId() {
 		return id;
 	}
