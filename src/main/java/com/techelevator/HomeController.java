@@ -21,8 +21,18 @@ public class HomeController {
 	@RequestMapping(path="/offices", method=RequestMethod.GET)
 	public String showOffice(@RequestParam String officeId, HttpServletRequest request) {
 		List<Doctor> doctorList = doctorDAO.getAllDoctorsByOfficeId(officeId);
+		request.setAttribute("doctorList", doctorList);
 		return "offices";
 	}
+	
+	@RequestMapping(path="/readReviews", method=RequestMethod.GET)
+	public String showReviews(HttpServletRequest request) {
+		Review review = reviewDAO.getAllSurveysByDoctorId();
+		request.setAttribute("review", review);
+		return "readReviews";
+	}
+	
+	
 
 	
 }

@@ -13,7 +13,8 @@
 	<div class="doctors">
 	<c:forEach var="doctor" items = "${doctorList}">
 		<img src="img/doctors/${doctor.doctorName}" />
-		
+		<c:out value="${review.rating}"/>
+		<a href="WriteReview.jsp">Leave a Review</a>
 	</c:forEach>
 	
 	</div>
