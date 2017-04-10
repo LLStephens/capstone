@@ -2,13 +2,15 @@
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
 
-
 	<div class="container-fluid">
-	<div clas>
+		<div class = "pageTitle">	
+		<p> Neutralspace Personal Healthcare Network</p>
+		</div>
+	<c:url value="/offices" var="offices" />
+	<a href="${offices}" >click me</a>
+	</div>
 	
-	<h1> Neutralspace Personal Healthcare Network</h1>
-	</div>
-	</div>
+	
 	
 
 <c:import url="/WEB-INF/jsp/footer.jsp" />
