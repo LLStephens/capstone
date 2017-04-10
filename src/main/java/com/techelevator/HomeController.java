@@ -15,9 +15,6 @@ public class HomeController {
 		return "home";
 	}
 
-	@RequestMapping("/offices")
-	public String showOffices() {
-		return "offices";
-	}
+
 	
 }
