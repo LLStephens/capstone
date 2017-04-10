@@ -1,9 +1,7 @@
 package com.techelevator;
 
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,9 +15,9 @@ public class HomeController {
 		return "home";
 	}
 
-	@RequestMapping(path="/officeDetail", method=RequestMethod.GET)
-	public String displayOfficeDetail(HttpServletRequest request) {
-
-		return "officeDetails";
+	@RequestMapping("/offices")
+	public String showOffices() {
+		return "offices";
 	}
+	
 }

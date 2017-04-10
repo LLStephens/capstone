@@ -45,16 +45,24 @@ CREATE TABLE patient(
 	CONSTRAINT pk_patient_id PRIMARY KEY (id)
 );
 
+<<<<<<< HEAD
 CREATE TABLE appointments (
+=======
+CREATE TABLE appointments(
+>>>>>>> fd50767faef91f75b61b09fe0d931f6d2ba2f2ca
 	id serial NOT NULL,
 	doctor_id integer NOT NULL,
 	patient_id integer NOT NULL,
-	start date NOT NULL,
-	end date NOT NULL,
+	start_date date NOT NULL,
+	end_date date NOT NULL,
 	CONSTRAINT pk_appointment_id PRIMARY KEY (id),
 	CONSTRAINT fk_doctor_id FOREIGN KEY (doctor_id) REFERENCES doctor(id),
 	CONSTRAINT fk_patient_id FOREIGN KEY (patient_id) REFERENCES patient(id)
+<<<<<<< HEAD
 )
+=======
+);
+>>>>>>> fd50767faef91f75b61b09fe0d931f6d2ba2f2ca
 
 
 COMMIT;

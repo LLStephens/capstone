@@ -35,18 +35,18 @@ INSERT INTO patient (name, date_of_birth, address, phone_number, email) VALUES (
 INSERT INTO patient (name, date_of_birth, address, phone_number, email) VALUES ('Sue Moose', '05/04/1990', '600 Foreign Drive', '614-555-5533', 'sue@gmail.com');
 INSERT INTO patient (name, date_of_birth, address, phone_number, email) VALUES ('Martha Stewart', '03/02/1970', '520 Prison Road', '614-555-6765', 'martha@yahoo.com');
 
-INSERT INTO review (rating, doctor_id, message) VALUES (5, 1, "BEST DOCTOR EVAAAA!!!");
-INSERT INTO review (rating, doctor_id, message) VALUES (1, 2, "Terribly Unprofessional");
-INSERT INTO review (rating, doctor_id, message) VALUES (4, 3, "Helped me a bunch");
-INSERT INTO review (rating, doctor_id, message) VALUES (3, 4, "very average");
-INSERT INTO review (rating, doctor_id, message) VALUES (5, 5, "So Awesome");
-INSERT INTO review (rating, doctor_id, message) VALUES (5, 6, "Helped me the most in my time of need");
-INSERT INTO review (rating, doctor_id, message) VALUES (2, 7, "Lame");
-INSERT INTO review (rating, doctor_id, message) VALUES (4, 8, "Cool, not the best of the best though");
-INSERT INTO review (rating, doctor_id, message) VALUES (5, 9, "Loved every minute of my appointment");
-INSERT INTO review (rating, doctor_id, message) VALUES (2, 10, "Not awesome");
-INSERT INTO review (rating, doctor_id, message) VALUES (5, 11, "Very professional");
-INSERT INTO review (rating, doctor_id, message) VALUES (1, 12, "Didn't even show up");
+INSERT INTO review (rating, doctor_id, message) VALUES (5, 1, 'BEST DOCTOR EVAAAA!!!');
+INSERT INTO review (rating, doctor_id, message) VALUES (1, 2, 'Terribly Unprofessional');
+INSERT INTO review (rating, doctor_id, message) VALUES (4, 3, 'Helped me a bunch');
+INSERT INTO review (rating, doctor_id, message) VALUES (3, 4, 'very average');
+INSERT INTO review (rating, doctor_id, message) VALUES (5, 5, 'So Awesome');
+INSERT INTO review (rating, doctor_id, message) VALUES (5, 6, 'Helped me the most in my time of need');
+INSERT INTO review (rating, doctor_id, message) VALUES (2, 7, 'Lame');
+INSERT INTO review (rating, doctor_id, message) VALUES (4, 8, 'Cool, not the best of the best though');
+INSERT INTO review (rating, doctor_id, message) VALUES (5, 9, 'Loved every minute of my appointment');
+INSERT INTO review (rating, doctor_id, message) VALUES (2, 10, 'Not awesome');
+INSERT INTO review (rating, doctor_id, message) VALUES (5, 11, 'Very professional');
+INSERT INTO review (rating, doctor_id, message) VALUES (1, 12, 'Did not even show up');
 
 
 

@@ -4,7 +4,7 @@
 
 
 	<div class="container-fluid">
-	<div clas>
+	<div>
 	
 	<h1> Neutralspace Personal Healthcare Network</h1>
 	</div>

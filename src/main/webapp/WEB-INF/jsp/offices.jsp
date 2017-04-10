@@ -5,12 +5,13 @@
 	<h2></h2>
 </div>
 <div class = "doctors">
-	<div>
+<p>drs<p>
+	<%-- <div>
 		<c:url var="doctorPicture" value="img/doctors/${doctor.doctorName}.jpg"/>
 		<img src = "${doctorPicture}" />
 	</div>
 	<p><strong><span id="name"><c:out value="${doctor.doctorName} - " /></span>
-	<p id="doctorBio"><span id="bio" ><c:out value="${doctor.doctorBio}" /></span></p>
+	<p id="doctorBio"><span id="bio" ><c:out value="${doctor.doctorBio}" /></span></p> --%>
 </div>
 
 <c:import url="/WEB-INF/jsp/footer.jsp" />
