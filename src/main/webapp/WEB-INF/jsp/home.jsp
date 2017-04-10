@@ -12,7 +12,7 @@
 
 	</div>
 	
-	<div class="container-fluid">
+	 <div class="container-fluid">
 		<c:forEach var="office" items="${officeList}">
 	
 			<c:url var="detail" value="/offices">
@@ -34,7 +34,7 @@
 			</div>
 	
 		</c:forEach>
-	</div>
+	</div> 
 	
 	
 	
