@@ -1,19 +1,30 @@
 package com.techelevator;
 
-public class Office {
+public class Patient {
 
 	private int id;
+	private String name;
+	private String dateOfBirth;
 	private String address;
 	private String phoneNumber;
-	private String imageName;
-	private String hours;
-	private String name;
-	
+	private String email;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 	public String getAddress() {
 		return address;
@@ -27,23 +38,12 @@ public class Office {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public String getImageName() {
-		return imageName;
+	public String getEmail() {
+		return email;
 	}
-	public void setImageName(String imageName) {
-		this.imageName = imageName;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public String getHours() {
-		return hours;
-	}
-	public void setHours(String hours) {
-		this.hours = hours;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 	
 }
