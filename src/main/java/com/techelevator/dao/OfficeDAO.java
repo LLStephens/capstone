@@ -8,7 +8,7 @@ public interface OfficeDAO {
 	
 	public List<Office> getAllOffices();
 	public Office getOfficeById(int officeId);
-	public Office addOffice();
-	public Office updateOffice(int officeId);
+	public void addOffice(Office office);
+	public void updateOffice(int officeId, String address, String phoneNumber, String imageName, String hours, String name);
 	public void deleteOffice(int officeId);
 }
