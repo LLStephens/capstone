@@ -38,6 +38,4 @@ public class Appointment {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	
-	
 }
