@@ -19,8 +19,7 @@ public class HomeController {
 
 	@RequestMapping(path="/officeDetail", method=RequestMethod.GET)
 	public String displayOfficeDetail(HttpServletRequest request) {
-//		List<Doctor> doctorList = docotorDao.getAllDoctors();
-//		request.setAttribute("doctorList", doctorList);
+
 		return "officeDetails";
 	}
 }
