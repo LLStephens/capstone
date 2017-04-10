@@ -10,7 +10,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 @Component
-public class ExampleSteps {
+public class ExampleSteps<HomePage> {
 
 	private WebDriver webDriver;
 
