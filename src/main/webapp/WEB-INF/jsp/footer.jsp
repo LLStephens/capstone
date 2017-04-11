@@ -4,4 +4,3 @@
 <footer style = "text-align: center""> Dayman - 2017  </footer>
 </body>
 </html>
-
