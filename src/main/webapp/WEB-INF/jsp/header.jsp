@@ -49,14 +49,10 @@
 </nav>
 
 <div class="container-fluid alignmid">
-		<div class= "jumbotron" id="jumbo" style = "background-image: url('img/abstract.jpg'); width:100%; margin:-20px 0px 0px 0px;border-radius:0px;">
+		<div class= "jumbotron" id="jumbo" style = "background-image: url('img/abstract.jpg'); width:100%; height:150px; margin:-20px 0px 0px 0px;border-radius:0px;">
     	  <h1  id = "whiteTxt">Neutralspace Personal Healthcare</h1>
-    	  <p id = "whiteTxt" style = "font-family: cursive" >Healthcare in Harmony</p>
+    <!-- 	  <p id = "whiteTxt" style = "font-family: cursive" >Healthcare in Harmony</p> -->
 		  
 		</div>
 </div>
 <div class = "lrPadding" style = "background-image: url('img/whitey.jpg');background-attachment: fixed">
-<div class = "col-sm-0 col-md-12" >
-<hr class = "hrs" ></hr>
-<hr class = "hrs" ></hr>
-</div>

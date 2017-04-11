@@ -10,6 +10,8 @@
 	width: 100%;
 	margin-top:-30px;
 	margin-bot:0px;
+	background-image: url('img/abstract.jpg')
+
 }
 
 .pageTitle{
@@ -42,6 +44,11 @@
 	border:1px solid #222;
 	border-bottom: 4px solid #222;	
 }
+
+.doctorImg{
+	max-width:100%;
+	max-height:100%;
+}
 .officePic{
 	width:100%;
 	padding:5% 5% 5% 5%;
@@ -61,8 +68,10 @@
 
 #whiteTxt{
 	color: #FFFFFF;
-	font-size:45px;
+	font-size:40px;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	position:relative;
+	top:-40px;
 	
 }
 .container-fluid{
@@ -82,7 +91,7 @@
 .feature{
 	text-align:center;
 }
-ont-size: 50px;
+
 }
 h1{
 	font-size:25px;
@@ -141,10 +150,10 @@ h4{
 }
 
 @media (max-width: 450px) {
-	#TEBackground{
-		background:black;
+	#jumbo{
+		background:white;
 		width: 100%;
-		margin-top:-40px;
+		margin-top:-30px;
 	}
 }
 
