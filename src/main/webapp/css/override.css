@@ -25,7 +25,7 @@
 
 .offices{
 	text-align:center;
-	background:#f4e9e8;
+	background:#b5adad;
 	padding:-10%;
 	border-radius:10px;
 	margin: 10% 10% 10% 10%;
@@ -41,6 +41,11 @@
 	margin: 10% 10% 10% 10%;
 	border:1px solid #222;
 	border-bottom: 4px solid #222;	
+}
+
+.doctorImg{
+	max-width:100%;
+	max-height:100%;
 }
 .officePic{
 	width:100%;
@@ -60,9 +65,11 @@
 }
 
 #whiteTxt{
-	color: #FFFFFF;
-	font-size:45px;
+	color: white;
+	font-size:40px;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	position:relative;
+	top:-30px;
 	
 }
 .container-fluid{
@@ -82,7 +89,7 @@
 .feature{
 	text-align:center;
 }
-ont-size: 50px;
+
 }
 h1{
 	font-size:25px;
@@ -141,10 +148,10 @@ h4{
 }
 
 @media (max-width: 450px) {
-	#TEBackground{
-		background:black;
+	#jumbo{
+		background:white;
 		width: 100%;
-		margin-top:-40px;
+		margin-top:-30px;
 	}
 }
 

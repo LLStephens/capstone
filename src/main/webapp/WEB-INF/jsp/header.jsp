@@ -25,7 +25,7 @@
 </head>
 <body >
 
-<nav class="navbar navbar-inverse container-fluid ">
+<nav class="navbar container-fluid ">
 	<div class="container col-sm-3 zeros">	
 		<div class="navbar-header" >		
 		<img id="logo" style = "height:60px; width:100px" src="img/ns2.png">		
@@ -49,14 +49,6 @@
 </nav>
 
 <div class="container-fluid alignmid">
-		<div class= "jumbotron" id="jumbo" style = "background-image: url('img/abstract.jpg'); width:100%; margin:-20px 0px 0px 0px;border-radius:0px;">
-    	  <h1  id = "whiteTxt">Neutralspace Personal Healthcare</h1>
-    	  <p id = "whiteTxt" style = "font-family: cursive" >Healthcare in Harmony</p>
-		  
-		</div>
+		<img  id = "jumbo" src="img/abstract.jpg">	
 </div>
 <div class = "lrPadding" style = "background-image: url('img/whitey.jpg');background-attachment: fixed">
-<div class = "col-sm-0 col-md-12" >
-<hr class = "hrs" ></hr>
-<hr class = "hrs" ></hr>
-</div>

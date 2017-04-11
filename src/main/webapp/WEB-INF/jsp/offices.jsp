@@ -11,7 +11,7 @@
 	</div>
 
 
-<div class="container-fluid">
+<div class="container-fluid alignmid">
 <h1>
 	<c:out value="${officeName}" />
 </h1>
@@ -52,15 +52,15 @@ function reviewForDoctor(id) {
 		</c:url>
 
 		<div class="col-sm-12 col-md-4 zeros">
-			<div class="doctors">
+			<div class="cotainer-fluid doctors">
 				<div>
 					<h4>
 						<a href="${detail}"><c:out value="${doctor.name}" /></a>
 					</h4>
 				</div>
 
-				<div>
-					<img src="img/doctors/5.jpg" />
+				<div >
+					<img class = "container-fluid doctorImg" src="img/doctors/5.jpg" />
 				</div>
 
 				<div data-role="main" class="ui-content">
