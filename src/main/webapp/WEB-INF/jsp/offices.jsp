@@ -70,12 +70,12 @@ function reviewForDoctor(id) {
 
 					<div data-role="popup" id="myPopup" class="ui-content"
 						style="min-width: 250px;">
+						<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
 						<div>
 							<h3>Write a review</h3>
 							<label for="comment" class="ui-hidden-accessible">Comment:</label>
 							<input id="review-${doctor.id}" type="text" name="message" id="comment" placeholder="Comment">
-							<button id="submit" data-inline="true" onclick="reviewForDoctor(${doctor.id})">Submit</button> 
-							<input type="button" value="Close this window" onclick="self.close()">
+							<a href="#" data-rel="back" id="submit" data-inline="true" onclick="reviewForDoctor(${doctor.id})">Submit</a>
 							
 						</div>
 					</div>
