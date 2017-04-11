@@ -75,7 +75,7 @@ public class JDBCReviewDAO implements ReviewDAO {
 		Review review = new Review();
 		review.setId(row.getInt("id"));
 		review.setRating(row.getInt("rating"));
-		review.setDoctorId(row.getInt("doctorId"));
+		review.setDoctorId(row.getInt("doctor_id"));
 		review.setMessage(row.getString("message"));
 		return review;
 	}
