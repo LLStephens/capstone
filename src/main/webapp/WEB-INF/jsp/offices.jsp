@@ -28,7 +28,7 @@
 
 			<div data-role="popup" id="myPopup" class="ui-content"
 				style="min-width: 250px;">
-				<form method="post" action="/action_page_post.php">
+				<form method="post" action="/offices.jsp">
 					<div>
 						<h3>Write a review</h3>
 						<label for="comment" class="ui-hidden-accessible">Comment:</label>

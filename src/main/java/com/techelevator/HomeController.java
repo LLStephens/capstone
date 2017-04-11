@@ -16,6 +16,7 @@ import com.techelevator.dao.OfficeDAO;
 import com.techelevator.dao.ReviewDAO;
 
 
+
 @Controller
 public class HomeController {
 	@Autowired
@@ -53,5 +54,10 @@ public class HomeController {
 		return "writeReview";
 	}
 	
+	@RequestMapping(path="/offices", method=RequestMethod.POST)
+	public String processReview(Review review){
+		reviewDAO.addReview(review);
+		return "redirect:/offices";
+	}
 	
 }
