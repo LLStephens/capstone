@@ -1,12 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:import url="/WEB-INF/jsp/header.jsp" />
-
+ <c:import url="/WEB-INF/jsp/header.jsp" />
+ 
 	<div class="container-fluid">
-
-		<div class = "pageTitle">	
-		<p> Neutralspace Personal Healthcare Network</p>
-		</div>
 
 	</div>
 	
