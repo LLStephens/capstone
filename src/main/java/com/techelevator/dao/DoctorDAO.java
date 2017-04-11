@@ -8,7 +8,7 @@ public interface DoctorDAO {
 	public List<Doctor> getAllDoctorsByOfficeId(int officeId);
 	public List<Doctor> getAllDoctors();
 	public Doctor getDoctorById(int doctorId);
-	public Doctor addDoctor(int officeId);
-	public Doctor updateDoctor(int doctorId);
+	public void addDoctor(Doctor doctor);
 	public void deleteDoctor(int doctorId);
+	void updateDoctor(String name, String officeId, String fee, String hours, boolean admin);
 }

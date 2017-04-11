@@ -28,7 +28,7 @@
 <nav class="navbar navbar-inverse container-fluid">
 	<div class="container col-sm-3 zeros">	
 		<div class="navbar-header" >		
-		<img id="logo" style = "height:45px; width:45px" src="img/heart.png">		
+		<img id="logo" style = "height:75px; width:100px" src="img/ns2.png">		
 	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"> <span class="sr-only">Toggle navigation</span>
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
@@ -49,5 +49,5 @@
 </nav>
 
 <div class="container-fluid">
-		<img  src="img/">
+		<!-- <img class = "headerPic" src="img/background.png"> -->
 </div>

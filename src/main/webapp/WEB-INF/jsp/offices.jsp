@@ -3,22 +3,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Office</title>
-</head>
-<body>
-	<strong><span id="name"><c:out value="${office.officeName}" /></span></strong>
+<c:import url="/WEB-INF/jsp/header.jsp" />
+
+	<strong><span id="name"><c:out value="${office.name}" /></span></strong>
 	<div class="doctors">
-	<c:forEach var="doctor" items = "${doctorList}">
-		<img src="img/doctors/${doctor.doctorName}" />
-		<c:out value="${review.rating}"/>
-		<a href="WriteReview.jsp">Leave a Review</a>
-	</c:forEach>
-	
-	</div>
-</body>
-</html>
+	<c:forEach var="doctor" items = "${doctorList}"><br>
+		<c:out value="${doctor.name}"/><br>
+		<img src="img/doctors/${doctor.name}" /><br>
+		<c:out value="${review.rating}"/><br>
+		<a href="WriteReview.jsp">Leave a Review</a><br>
+	</c:forEach> 
+	</div> 
+<c:import url="/WEB-INF/jsp/footer.jsp" />
 

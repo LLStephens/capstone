@@ -1,12 +1,31 @@
 .pageTitle{
 	text-align:center;
-	font-size: 50px;
+	font-size: 35px;
+	color:#222;
 }
 
 #yard{
 	width: 100%;
 	margin-top:-40px;
 }
+
+.offices{
+	text-align:center;
+	background: #a0a3aa;
+	padding:-10%;
+	border-radius:10px;
+	margin: 10% 10% 10% 10%;
+	border-bottom: 4px solid #222;
+	
+	
+}
+.officePic{
+	width:100%;
+	padding:5% 5% 5% 5%;
+	border-radius:40px;
+}
+
+
 
 #logo{
 	height: 25px;
@@ -34,29 +53,14 @@
 .feature{
 	text-align:center;
 }
-.featureText{
-	font-size:16px;
-}
-
-.glyphicon {
-    font-size: 50px;
+ont-size: 50px;
 }
 h1{
 	font-size:25px;
 	margin-left:10px;
 }
-h2{
-	font-size:20px;
-}
-
-.blue{
-	background:blue;
-}
-.red{
-	background:red;
-}
-.green{
-	background:green;
+h4{
+	color: #0f0f6d;
 }
 
 .large{
@@ -121,4 +125,8 @@ h2{
 
 .table-striped{
 	background:#dbe9ff;
+}
+
+body{
+	background:#68686d;
 }
