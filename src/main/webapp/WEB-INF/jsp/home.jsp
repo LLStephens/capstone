@@ -4,10 +4,6 @@
 
 	<div class="container-fluid">
 
-		<div class = "pageTitle">	
-		<p> Neutralspace Personal Healthcare Network</p>
-		</div>
-
 	</div>
 	
 	 <div class="container-fluid">

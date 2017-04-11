@@ -26,12 +26,12 @@
 <title>NPH</title>
 
 </head>
-<body>
+<body >
 
-<nav class="navbar navbar-inverse container-fluid">
+<nav class="navbar navbar-inverse container-fluid ">
 	<div class="container col-sm-3 zeros">	
 		<div class="navbar-header" >		
-		<img id="logo" style = "height:75px; width:100px" src="img/ns2.png">		
+		<img id="logo" style = "height:60px; width:100px" src="img/ns2.png">		
 	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"> <span class="sr-only">Toggle navigation</span>
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
@@ -42,15 +42,24 @@
   <div class="container col-sm-9 zeros">
 	<div id="navbar" class="navbar-collapse collapse">
      		 <ul class="nav navbar-nav navbar-right">
-      		 <li ><a id="zeros" href="#welcome">Register</a></li>
-      		 <li ><a id="zeros" href="#features">Patient Login</a></li>
-      		 <li ><a id="zeros" href="#impact">Provider Portal</a></li>
+      		 <li ><a id="zeros" href="">Register</a></li>
+      		 <li ><a id="zeros" href="">Patient Login</a></li>
+      		 <li ><a id="zeros" href="">Provider Portal</a></li>
     	 	 </ul>
    	 	
 		</div>
   </div>
 </nav>
 
-<div class="container-fluid">
-		<!-- <img class = "headerPic" src="img/background.png"> -->
+<div class="container-fluid alignmid">
+		<div class= "jumbotron" id="jumbo" style = "background-image: url('img/abstract.jpg'); width:100%; margin:-20px 0px 0px 0px;border-radius:0px;">
+    	  <h1  id = "whiteTxt">Neutralspace Personal Healthcare</h1>
+    	  <p id = "whiteTxt" style = "font-family: cursive" >Healthcare in Harmony</p>
+		  
+		</div>
+</div>
+<div class = "lrPadding" style = "background-image: url('img/whitey.jpg');background-attachment: fixed">
+<div class = "col-sm-0 col-md-12" >
+<hr class = "hrs" ></hr>
+<hr class = "hrs" ></hr>
 </div>

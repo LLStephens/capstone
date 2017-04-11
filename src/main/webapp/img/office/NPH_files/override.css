@@ -1,20 +1,6 @@
-.hrs{
-	
-	height:1px;
-	border:none;
-	background-color:#222;
-	
-}
-
-#jumbo{
-	width: 100%;
-	margin-top:-30px;
-	margin-bot:0px;
-}
-
 .pageTitle{
 	text-align:center;
-	font-size: 30px;
+	font-size: 35px;
 	color:#222;
 }
 
@@ -25,22 +11,13 @@
 
 .offices{
 	text-align:center;
-	background:#f4e9e8;
+	background: #a0a3aa;
 	padding:-10%;
 	border-radius:10px;
 	margin: 10% 10% 10% 10%;
-	border:1px solid #222;
-	border-bottom: 4px solid #222;	
-}
-
-.doctors{
-	text-align:center;
-	background:#f4e9e8;
-	padding:-10%;
-	border-radius:10px;
-	margin: 10% 10% 10% 10%;
-	border:1px solid #222;
-	border-bottom: 4px solid #222;	
+	border-bottom: 4px solid #222;
+	
+	
 }
 .officePic{
 	width:100%;
@@ -55,15 +32,9 @@
     width: 25px;
     
 }
-.alignmid{
-	text-align:center;
-}
 
 #whiteTxt{
 	color: #FFFFFF;
-	font-size:45px;
-	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-	
 }
 .container-fluid{
 	padding-right:0;
@@ -133,7 +104,7 @@ h4{
 
 @media (min-width: 451px) {
 	#TEBackground{
-		background-image: url("img/abstract.jpg");
+		background-image: url("img/te_present_1600x1060.jpg");
 		width: 100%;
 		margin-top:-40px;
 	}
@@ -157,5 +128,5 @@ h4{
 }
 
 body{
-	background:white;
+	background:#68686d;
 }
