@@ -36,6 +36,7 @@ INSERT INTO patient (name, date_of_birth, address, phone_number, email) VALUES (
 INSERT INTO patient (name, date_of_birth, address, phone_number, email) VALUES ('Martha Stewart', '03/02/1970', '520 Prison Road', '614-555-6765', 'martha@yahoo.com');
 
 INSERT INTO review (rating, doctor_id, message) VALUES (5, 1, 'BEST DOCTOR EVAAAA!!!');
+INSERT INTO review (rating, doctor_id, message) VALUES (4, 1, 'Stellar');
 INSERT INTO review (rating, doctor_id, message) VALUES (1, 2, 'Terribly Unprofessional');
 INSERT INTO review (rating, doctor_id, message) VALUES (4, 3, 'Helped me a bunch');
 INSERT INTO review (rating, doctor_id, message) VALUES (3, 4, 'very average');
