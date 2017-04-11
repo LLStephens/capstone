@@ -52,7 +52,6 @@ public class JDBCOfficeDAO implements OfficeDAO {
 	@Override
 	public void updateOffice(int officeId, String address, String phoneNumber, String imageName, String hours, String name) {
 		jdbcTemplate.update("UPDATE office SET address = '"+address+"' phone_number = '"+phoneNumber+"' image_name = '"+imageName+"' hours = '"+hours+"' name = '"+name+"' WHERE id = '"+officeId+"'");
-	
 	}
 
 	@Override

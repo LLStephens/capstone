@@ -7,7 +7,7 @@ import com.techelevator.Patient;
 public interface PatientDAO {
 	public Patient getPatientById(int patientId);
 	public List<Patient> getAllPatients();
-	public Patient addPatient();
-	public Patient updatePatient(int patientId);
+	public void addPatient(Patient patient);
+	public void updatePatient(int patientId, String name, String dateOfBirth, String address, String phoneNumber, String email);
 	public void deletePatient(int patientId);
 }
