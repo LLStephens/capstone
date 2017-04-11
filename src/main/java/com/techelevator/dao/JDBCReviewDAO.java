@@ -56,9 +56,18 @@ public class JDBCReviewDAO implements ReviewDAO {
 	}
 
 	@Override
-	public void addReview(Review review) {
-		String sqlInsertReview = "INSERT INTO review(rating, doctor_id, message) VALUES (?,?,?)";
-		jdbcTemplate.update(sqlInsertReview, review.getRating(), review.getDoctorId(), review.getMessage());
+	public Review addReview(Review review) {
+		Long id = getNextId();
+		
+		String sqlInsertReview = "INSERT INTO review(id, rating, doctor_id, message) VALUES (?,?,?,?)";
+		int rowsAffected = jdbcTemplate.update(sqlInsertReview, id, review.getRating(), review.getDoctorId(), review.getMessage());
+		
+		if(rowsAffected == 1) {
+			review.setId(id.intValue());
+			return review;
+		} else {
+			return null;
+		}
 	}
 	
 	@Override
@@ -78,6 +87,15 @@ public class JDBCReviewDAO implements ReviewDAO {
 		review.setDoctorId(row.getInt("doctor_id"));
 		review.setMessage(row.getString("message"));
 		return review;
+	}
+	private Long getNextId() {
+		String sqlSelectNextId = "SELECT NEXTVAL('review_id_seq')";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(sqlSelectNextId);
+		if(result.next()) {
+			return result.getLong(1);
+		} else {
+			throw new RuntimeException("Something went wrong while getting the next order id");
+		}
 	}
 	
 }
