@@ -11,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import com.techelevator.dao.DoctorDAO;
 import com.techelevator.dao.OfficeDAO;
 import com.techelevator.dao.ReviewDAO;
@@ -26,6 +27,7 @@ public class HomeController {
 	@Autowired
 	private ReviewDAO reviewDAO;
 	
+
 	@RequestMapping("/")
 	public String showHome(HttpServletRequest request) {
 		List<Office> officeList =officeDAO.getAllOffices();
@@ -53,6 +55,7 @@ public class HomeController {
 	public String inputReview() {
 		return "writeReview";
 	}
+
 	
 	@RequestMapping(path="/offices", method=RequestMethod.POST)
 	public String processReview(Review review){
