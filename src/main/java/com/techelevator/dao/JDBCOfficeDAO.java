@@ -44,9 +44,18 @@ public class JDBCOfficeDAO implements OfficeDAO {
 	}
 
 	@Override
-	public void addOffice(Office office) {
-		String sqlInsertOffice = "INSERT INTO office(address, phone_number, image_name, hours, name) VALUES (?,?,?,?,?)";
-		jdbcTemplate.update(sqlInsertOffice, office.getAddress(), office.getPhoneNumber(), office.getImageName(), office.getHours(), office.getName());
+	public Office addOffice(Office office) {
+		Long id = getNextId();
+
+		String sqlInsertOffice = "INSERT INTO office(id, address, phone_number, image_name, hours, name) VALUES (?,?,?,?,?,?)";
+		int rowsAffected = jdbcTemplate.update(sqlInsertOffice, id, office.getAddress(), office.getPhoneNumber(), office.getImageName(), office.getHours(), office.getName());
+		
+		if(rowsAffected == 1) {
+			office.setId(id.intValue());
+			return office;
+		} else {
+			return null;
+		}
 	}
 	
 	@Override
@@ -59,6 +68,7 @@ public class JDBCOfficeDAO implements OfficeDAO {
 		String sqlDeleteOffice = "DELETE * FROM office WHERE id = ?";
 		jdbcTemplate.update(sqlDeleteOffice, officeId);
 	}
+	
 	private Office mapToRowToOffice (SqlRowSet row) {
 		Office office = new Office();
 		office.setId(row.getInt("id"));
@@ -70,4 +80,13 @@ public class JDBCOfficeDAO implements OfficeDAO {
 		return office;
 	}
 	
+	private Long getNextId() {
+		String sqlSelectNextId = "SELECT NEXTVAL('office_id_seq')";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(sqlSelectNextId);
+		if(result.next()) {
+			return result.getLong(1);
+		} else {
+			throw new RuntimeException("Something went wrong while getting the next order id");
+		}
+	}
 }

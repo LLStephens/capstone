@@ -56,9 +56,18 @@ public class JDBCDoctorDAO implements DoctorDAO {
 	}
 
 	@Override
-	public void addDoctor(Doctor doctor) {
-		String sqlInsertDoctor = "INSERT INTO doctor(name, office_id, fee, hours, admin) VALUES (?,?,?,?,?)";
-		jdbcTemplate.update(sqlInsertDoctor, doctor.getName(), doctor.getOfficeId(), doctor.getFee(), doctor.getHours(), doctor.isAdmin());
+	public Doctor addDoctor(Doctor doctor) {
+		Long id = getNextId();
+		
+		String sqlInsertDoctor = "INSERT INTO doctor(id, name, office_id, fee, hours, admin) VALUES (?,?,?,?,?,?)";
+		int rowsAffected = jdbcTemplate.update(sqlInsertDoctor, id, doctor.getName(), doctor.getOfficeId(), doctor.getFee(), doctor.getHours(), doctor.isAdmin());
+		
+		if(rowsAffected == 1) {
+			doctor.setId(id.intValue());
+			return doctor;
+		} else {
+			return null;
+		}
 	}
 	
 	@Override
@@ -80,7 +89,18 @@ public class JDBCDoctorDAO implements DoctorDAO {
 		doctor.setFee(row.getString("fee"));
 		doctor.setHours(row.getString("hours"));
 		doctor.setName(row.getString("name"));
+		doctor.setOfficeId(row.getInt("office_id"));
 		return doctor;
+	}
+	
+	private Long getNextId() {
+		String sqlSelectNextId = "SELECT NEXTVAL('doctor_id_seq')";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(sqlSelectNextId);
+		if(result.next()) {
+			return result.getLong(1);
+		} else {
+			throw new RuntimeException("Something went wrong while getting the next order id");
+		}
 	}
 
 

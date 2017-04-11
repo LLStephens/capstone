@@ -42,11 +42,30 @@ public class JDBCAppointmentDAO implements AppointmentDAO {
 		}
 		return allAppointmentsByPatientId;
 	}
+	
+	@Override
+	public Appointment getAppointmentById(int appointmentId) {
+		String sqlSelectReviewById = "SELECT * FROM appointment WHERE id = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectReviewById, appointmentId);
+		while(results.next()) {
+			 return mapToRowToAppointment(results);
+		}
+		return null;
+	}
 
 	@Override
-	public void createAppointment(Appointment appointment) {
-		String sqlCreateAppointment = "INSERT INTO appointment(doctor_id, patient_id, start_date, end_date) VALUES (?,?,?,?)";
-		jdbcTemplate.update(sqlCreateAppointment, appointment.getDoctorId(), appointment.getPatientId(), appointment.getStartDate(), appointment.getEndDate());
+	public Appointment createAppointment(Appointment appointment) {
+		Long id = getNextId();
+		
+		String sqlCreateAppointment = "INSERT INTO appointment(id, doctor_id, patient_id, start_date, end_date) VALUES (?,?,?,?,?)";
+		int rowsAffected = jdbcTemplate.update(sqlCreateAppointment, id, appointment.getDoctorId(), appointment.getPatientId(), appointment.getStartDate(), appointment.getEndDate());
+		
+		if(rowsAffected == 1) {
+			appointment.setId(id.intValue());
+			return appointment;
+		} else {
+			return null;
+		}
 	}
 
 	@Override
@@ -65,9 +84,19 @@ public class JDBCAppointmentDAO implements AppointmentDAO {
 		appointment.setId(row.getInt("id"));
 		appointment.setDoctorId(row.getInt("doctor_id"));
 		appointment.setPatientId(row.getInt("patient_id"));
-		appointment.setStartDate(row.getDate("start_date"));
-		appointment.setEndDate(row.getDate("end_date"));
+		appointment.setStartDate(row.getTimestamp("start_date").toLocalDateTime());
+		appointment.setEndDate(row.getTimestamp("end_date").toLocalDateTime());
 		return appointment;
+	}
+	
+	private Long getNextId() {
+		String sqlSelectNextId = "SELECT NEXTVAL('appointment_id_seq')";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(sqlSelectNextId);
+		if(result.next()) {
+			return result.getLong(1);
+		} else {
+			throw new RuntimeException("Something went wrong while getting the next order id");
+		}
 	}
 	
 }

@@ -49,8 +49,8 @@ CREATE TABLE appointment(
 	id serial NOT NULL,
 	doctor_id int NOT NULL,
 	patient_id int NOT NULL,
-	start_date date NOT NULL,
-	end_date date NOT NULL,
+	start_date timestamp NOT NULL,
+	end_date timestamp NOT NULL,
 	CONSTRAINT pk_appointment_id PRIMARY KEY (id),
 	CONSTRAINT fk_doctor_id FOREIGN KEY (doctor_id) REFERENCES doctor(id),
 	CONSTRAINT fk_patient_id FOREIGN KEY (patient_id) REFERENCES patient(id)	

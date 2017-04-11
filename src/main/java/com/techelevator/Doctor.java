@@ -3,7 +3,7 @@ package com.techelevator;
 public class Doctor {
 	private int id;
 	private String name;
-	private String officeId;
+	private int officeId;
 	private String fee;
 	private String hours;
 	private boolean admin;
@@ -21,10 +21,10 @@ public class Doctor {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getOfficeId() {
+	public int getOfficeId() {
 		return officeId;
 	}
-	public void setOfficeId(String officeId) {
+	public void setOfficeId(int officeId) {
 		this.officeId = officeId;
 	}
 	public String getFee() {
