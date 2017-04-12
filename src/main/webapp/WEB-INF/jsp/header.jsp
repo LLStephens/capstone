@@ -1,58 +1,56 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width" />
-<c:url value="/css/style.css" var="cssHref" />
-<link rel="stylesheet" href="${cssHref}">
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-<c:url var="cssHref2" value="/css/override.css" />
-<link rel="stylesheet" type="text/css" href="${cssHref2}">
-    
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>NPH</title>
-
+	<meta name="viewport" content="width=device-width" />
+	<c:url value="/css/style.css" var="cssHref" />
+	<link rel="stylesheet" href="${cssHref}">
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	
+	<c:url var="cssHref2" value="/css/override.css" />
+	<link rel="stylesheet" type="text/css" href="${cssHref2}">
+	    
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>NPH</title>
 </head>
 <body >
-
-<nav class="navbar container-fluid ">
-	<div class="container col-sm-3 zeros">	
-		<div class="navbar-header" >		
-		<img id="logo" style = "height:40px; width:150px" src="img/ns3.png">		
-	      <button type="button" class="navbar-inverse navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"> <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar whiteText"></span>
-	        <span class="icon-bar whiteText"></span>
-	        <span class="icon-bar whiteText"></span>	
-		</div>		
-  </div> 
-  
-  <div class="container col-sm-9 zeros">
-	<div id="navbar" class="navbar-collapse collapse">
-     		 <ul class="nav navbar-nav navbar-right">
-     		 
-     		 <c:url var="login" value="/login"/> 
-			
-			<c:url var="register" value="/register"/>
-			
-			<c:url var="provider" value="/providerLogin"/>
-			
-      		 <li ><a id="zeros" class = "blackText" href="${register}">Register</a></li>
-      		 <li ><a id="zeros" class = "blackText" href="${login}">Patient Login</a></li>
-      		 <li ><a id="zeros" class = "blackText" href="">Provider Portal</a></li>
-    	 	 </ul>
-   	 	
+	<nav class="navbar container-fluid ">
+		<div class="container col-sm-3 zeros">	
+			<div class="navbar-header">		
+				<img id="logo" style = "height:40px; width:150px" src="img/ns3.png">		
+				<button type="button" class="navbar-inverse navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"></button>
+		      	<span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar whiteText"></span>
+		        <span class="icon-bar whiteText"></span>
+		        <span class="icon-bar whiteText"></span>	
+			</div>		
 		</div>
-  </div>
-</nav>
+		<div class="container col-sm-9 zeros">
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<c:url var="login" value="/login"/> 
+					<c:url var="register" value="/register"/>
+					<c:url var="provider" value="/providerLogin"/>
+					<c:url var="home" value="/"/>
+				
+					<li><a id="zeros" class = "blackText" href="${home}">Go Home</a></li>
+					<li><a id="zeros" class = "blackText" href="${register}">Register</a></li>
+					<li><a id="zeros" class = "blackText" href="${login}">Patient Login</a></li>
+					<li><a id="zeros" class = "blackText" href="">Provider Portal</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
 

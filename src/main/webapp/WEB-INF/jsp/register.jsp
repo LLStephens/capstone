@@ -2,14 +2,34 @@
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
 
-<%-- <script type="text/javascript">
+<!-- <script type="text/javascript">
 	$(document).ready(function () {
 	
 		$("form").validate({
 			
 			rules : {
+				name : {
+					required: true,
+					minlength:1,
+				},
 				userName : {
-					required : true,
+					required: true,
+					minlength:1,
+				},
+				userName : {
+					required: true,
+					minlength:1,
+				},
+				userName : {
+					required: true,
+					minlength:1,
+				},
+				userName : {
+					required: true,
+					minlength:1,
+				},
+				userName : {
+					required: true,
 					minlength:1,
 				},
 				password : {
@@ -73,9 +93,9 @@
 	    return value.match(/(.)\1{2}/);  
 	}, "you cannot repet the same letter number or symbol 3 times");
 	
-</script>
+</script> -->
 
---%>
+
 <div class="loginBox"
 	style="background-image: url('img/whitey.jpg'); background-attachment: fixed">
 	<div class="innerBox">
@@ -86,42 +106,42 @@
 				<div class="col-sm-2"></div>
 				<div class="col-sm-8">
 					<div class="form-group">
-						<label for="userName">Name: </label> <input type="text"
+						<label for="name">Name: </label> <input type="text"
 							id="name" name="name" placeHolder="Name"
 							class="form-control" />
 					</div>
 					<div class="form-group">
-						<label for="password">Date of Birth: </label> <input type="text"
+						<label for="date_of_birth">Date of Birth: </label> <input type="text"
 							id="date_of_birth" name="date_of_birth" placeHolder="Date of Birth"
 							class="form-control" />
 					</div>
 					<div class="form-group">
-						<label for="confirmPassword">Address: </label> <input
+						<label for="address">Address: </label> <input
 							type="address" id="address" name="address"
 							placeHolder="Re-Type Password" class="form-control" />
 					</div>
 					<div class="form-group">
-						<label for="userName">Phone Number: </label> <input type="text"
+						<label for="phone_number">Phone Number: </label> <input type="text"
 							id="phone_number" name="phone_number" placeHolder="Phone Number"
 							class="form-control" />
 					</div>
 					<div class="form-group">
-						<label for="userName">Email: </label> <input type="text"
+						<label for="email">Email: </label> <input type="text"
 							id="email" name="email" placeHolder="Email"
 							class="form-control" />
 					</div>
 					<div class="form-group">
-						<label for="userName">User Name: </label> <input type="text"
+						<label for="user_name">User Name: </label> <input type="text"
 							id="user_name" name="user_name" placeHolder="User Name"
 							class="form-control" />
 					</div>
 					<div class="form-group">
-						<label for="userName">Password: </label> <input type="password"
+						<label for="password">Password: </label> <input type="password"
 							id="password" name="password" placeHolder="Password"
 							class="form-control" />
 					</div>
 					<div class="form-group">
-						<label for="userName">Confirm Password: </label> <input type="password"
+						<label for="corfirm_password">Confirm Password: </label> <input type="password"
 							id="confirm_password" name="confirm_password" placeHolder="Please retype your password"
 							class="form-control" />
 					</div>
