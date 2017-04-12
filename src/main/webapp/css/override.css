@@ -24,12 +24,12 @@
 
 .offices{
 	text-align:center;
-	background:#b5adad;
+	background:#e0ebeb;
 	padding:-10%;
 	border-radius:10px;
 	margin: 10% 10% 10% 10%;
 	border:1px solid #222;
-	border-bottom: 4px solid #222;	
+	border-bottom: 4px solid #1765ab;	
 }
 
 .doctors{
@@ -40,6 +40,7 @@
 	margin: 10% 10% 10% 10%;
 	border:1px solid #222;
 	border-bottom: 4px solid #222;	
+	}
 }
 
 .doctorImg{
