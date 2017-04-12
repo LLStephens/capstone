@@ -2,33 +2,35 @@
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
 
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 	$(document).ready(function () {
+		
+
 	
-		$("form").validate({
+	 	$("form").validate({
 			
 			rules : {
 				name : {
 					required: true,
 					minlength:1,
 				},
-				userName : {
+				date_of_birth : {
 					required: true,
 					minlength:1,
 				},
-				userName : {
+				address : {
 					required: true,
 					minlength:1,
 				},
-				userName : {
+				phone_number : {
 					required: true,
 					minlength:1,
 				},
-				userName : {
+				email : {
 					required: true,
 					minlength:1,
 				},
-				userName : {
+				user_name : {
 					required: true,
 					minlength:1,
 				},
@@ -43,7 +45,7 @@
 					triples: true,
 					
 				},
-				confirmPassword : {
+				confirm_password : {
 					required : true,
 					maxlength:128,
 					minlength:10,
@@ -72,7 +74,7 @@
 			
 		});
 	});
-	
+	/*
 	$.validator.addMethod("uppercase", function (value, index) {
 	    return value.match(/[A-Z]/);  
 	}, "Please ensure your password contains one uppercase letter");
@@ -92,12 +94,11 @@
 	$.validator.addMethod("triples", function (value, index) {
 	    return value.match(/(.)\1{2}/);  
 	}, "you cannot repet the same letter number or symbol 3 times");
-	
-</script> -->
+	 */
+</script>
 
 
-<div class="loginBox"
-	style="background-image: url('img/whitey.jpg'); background-attachment: fixed">
+<div class="loginBox">
 	<div class="innerBox">
 		<c:url var="formAction" value="/register" />
 		<form method="POST" action="${formAction}">
@@ -118,7 +119,7 @@
 					<div class="form-group">
 						<label for="address">Address: </label> <input
 							type="address" id="address" name="address"
-							placeHolder="Re-Type Password" class="form-control" />
+							placeHolder="address" class="form-control" />
 					</div>
 					<div class="form-group">
 						<label for="phone_number">Phone Number: </label> <input type="text"

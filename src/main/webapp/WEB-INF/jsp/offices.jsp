@@ -1,20 +1,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
 <c:import url="/WEB-INF/jsp/header.jsp" />
-
-
-
-
 
 <div class="container-fluid alignmid">
 	<img id="jumbo" src="img/abstract.jpg">
 </div>
-<div class="lrPadding" style="background-attachment: fixed">
+<div class="lrPadding">
 	<div class="container-fluid alignmid">
 		<h1>
 			<c:out value="${officeName}" />
@@ -97,11 +89,11 @@
 					<div class="cotainer-fluid doctors">
 						<div>
 							<h4>
-								<a href="${detail}"><c:out value="${doctor.name}" /></a>
+								<c:out value="${doctor.name}" />
 							</h4>
 						</div>
 						<div>
-							<img class="container-fluid doctorImg" src="img/doctors/5.jpg" />
+							<img class="container-fluid doctorImg" src="img/doctors/${doctor.id}.jpg" />
 						</div>
 						<c:set var="reviewCount" value="0" />
 						<c:set var="reviewTotal" value="0" />

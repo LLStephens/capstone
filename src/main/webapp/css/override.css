@@ -2,8 +2,7 @@
 	
 	height:1px;
 	border:none;
-	background-color:#222;
-	
+	background-color:#222;	
 }
 
 #jumbo{
@@ -25,7 +24,7 @@
 
 .offices{
 	text-align:center;
-	background:#b5adad;
+	background:#e0ebeb;
 	padding:-10%;
 	border-radius:10px;
 	margin: 10% 10% 10% 10%;
@@ -35,12 +34,13 @@
 
 .doctors{
 	text-align:center;
-	background:#7aadff;
+	background:#e0ebeb;
 	padding:-10%;
 	border-radius:10px;
 	margin: 10% 10% 10% 10%;
 	border:1px solid #222;
 	border-bottom: 4px solid #222;	
+	}
 }
 
 .doctorImg{
@@ -68,7 +68,19 @@
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 	position:relative;
 	top:-30px;
+}
+
+.dashes{
+	color:black;
+}
+
+.hamburger{
 	
+	height: 44px;
+    width: 44px;
+    background: transparent;
+    border: solid black 1px;
+    margin-bottom:15px;
 }
 
 .blackText{
@@ -87,12 +99,12 @@
 }
 
 .loginBox{
-	padding:15%;
+	padding:5% 15% 5% 15%;
 	
 }
 
 .innerBox{
-	padding:10%;
+	padding:5%;
 	border-radius:10px;
 	background:black;
 	opacity: 0.8;
