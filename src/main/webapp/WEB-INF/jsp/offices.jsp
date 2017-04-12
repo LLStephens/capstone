@@ -1,10 +1,5 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
-			rel="stylesheet"> 
-<!-- 	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
 
@@ -27,7 +22,11 @@
 							</h4>
 						</div>
 						<div>
+<<<<<<< HEAD
 							<img class="container-fluid doctorImg" id = "doctorImg" src="img/doctors/${doctor.id}.jpg" />
+=======
+							<img id="doctorImg" class="container-fluid doctorImg" src="img/doctors/${doctor.id}.jpg" />
+>>>>>>> d054200714010e85c8980a931ef65b13a95c65de
 						</div>
 						<c:set var="reviewCount" value="0" />
 						<c:set var="reviewTotal" value="0" />
