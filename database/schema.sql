@@ -42,6 +42,8 @@ CREATE TABLE patient(
 	address varchar(200) NOT NULL,
 	phone_number varchar(20) NOT NULL,
 	email varchar(50) NOT NULL,
+	user_name varchar(30) NOT NULL,
+	password varchar(30) NOT NULL,
 	CONSTRAINT pk_patient_id PRIMARY KEY (id)
 );
 

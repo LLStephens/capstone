@@ -71,4 +71,19 @@ public class JDBCPatientDAO implements PatientDAO {
 		return patient;
 	}
 
+	@Override
+	public boolean searchForUsernameAndPassword(String userName, String password) {
+		String sqlSearchForUser = "SELECT * "+
+							      "FROM patient "+
+							      "WHERE UPPER(user_name) = '"+userName.toUpperCase()+"' "+
+							      "AND password = '"+password+"'";
+		
+		return jdbcTemplate.queryForRowSet(sqlSearchForUser).next();
+	}
+
+	@Override
+	public void savePatient(String name, String date_of_birth, String address, String phone_number, String email, String user_name, String password) {
+		jdbcTemplate.update("INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password) VALUES ('"+name+"', '"+date_of_birth+"', '"+address+"', '"+phone_number+"', '"+email+"', '"+user_name+"', '"+password+"')");
+	}
+
 }

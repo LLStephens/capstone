@@ -50,6 +50,9 @@ public class HomeController {
 		return "readReviews";
 	}
 	
+	
+	
+	
 	@RequestMapping(path="/writeReview", method=RequestMethod.GET)
 	public String inputReview() {
 		return "writeReview";

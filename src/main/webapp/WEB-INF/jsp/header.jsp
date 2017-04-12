@@ -28,27 +28,31 @@
 <nav class="navbar container-fluid ">
 	<div class="container col-sm-3 zeros">	
 		<div class="navbar-header" >		
-		<img id="logo" style = "height:60px; width:100px" src="img/ns2.png">		
-	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"> <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>	
+		<img id="logo" style = "height:40px; width:150px" src="img/ns3.png">		
+	      <button type="button" class="navbar-inverse navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"> <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar whiteText"></span>
+	        <span class="icon-bar whiteText"></span>
+	        <span class="icon-bar whiteText"></span>	
 		</div>		
   </div> 
   
   <div class="container col-sm-9 zeros">
 	<div id="navbar" class="navbar-collapse collapse">
      		 <ul class="nav navbar-nav navbar-right">
-      		 <li ><a id="zeros" href="">Register</a></li>
-      		 <li ><a id="zeros" href="">Patient Login</a></li>
-      		 <li ><a id="zeros" href="">Provider Portal</a></li>
+     		 
+     		 <c:url var="login" value="/login"/> 
+			
+			<c:url var="register" value="/register"/>
+			
+			<c:url var="provider" value="/providerLogin"/>
+			
+      		 <li ><a id="zeros" class = "blackText" href="${register}">Register</a></li>
+      		 <li ><a id="zeros" class = "blackText" href="${login}">Patient Login</a></li>
+      		 <li ><a id="zeros" class = "blackText" href="">Provider Portal</a></li>
     	 	 </ul>
    	 	
 		</div>
   </div>
 </nav>
 
-<div class="container-fluid alignmid">
-		<img  id = "jumbo" src="img/abstract.jpg">	
-</div>
-<div class = "lrPadding" style = "background-image: url('img/whitey.jpg');background-attachment: fixed">
+

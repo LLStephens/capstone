@@ -24,16 +24,16 @@ INSERT INTO doctor (name, office_id, fee, hours, admin) VALUES ('Dr. Chen', 4, '
 INSERT INTO doctor (name, office_id, fee, hours, admin) VALUES ('Dr. Lu', 4, '$75', '7:00AM -3:00 PM', true);
 INSERT INTO doctor (name, office_id, fee, hours, admin) VALUES ('Dr. Pent', 4, '$80', '9:00AM -6:00 PM', false);
 
-INSERT INTO patient (name, date_of_birth, address, phone_number, email) VALUES ('Matt Kress', '04/04/1994', '585 Nowhere Dr.', '614-555-4567', 'matt@gmail.com');
-INSERT INTO patient (name, date_of_birth, address, phone_number, email) VALUES ('Josh Hanf', '05/23/1986', '678 Cool Road', '614-555-4555', 'josh@gmail.com');
-INSERT INTO patient (name, date_of_birth, address, phone_number, email) VALUES ('Laura Stephens', '04/20/1982', '633 Number Road', '614-555-5643', 'laura@gmail.com');
-INSERT INTO patient (name, date_of_birth, address, phone_number, email) VALUES ('John Smith', '04/05/1992', '600 Hidden Valley', '614-555-9999', 'john@gmail.com');
-INSERT INTO patient (name, date_of_birth, address, phone_number, email) VALUES ('Joe Schmoe', '12/25/2000', '500 Nightmare Lane', '614-555-9898', 'joe@aol.com');
-INSERT INTO patient (name, date_of_birth, address, phone_number, email) VALUES ('Matt Chen', '11/22/1956', '585 New Drive', '614-555-5757', 'matt@hotmail.com');
-INSERT INTO patient (name, date_of_birth, address, phone_number, email) VALUES ('Jackie Chan', '02/22/1980', '56432 Remember Road', '614-555-9444', 'jackiechan@gmail.com');
-INSERT INTO patient (name, date_of_birth, address, phone_number, email) VALUES ('Michael Jordan', '08/05/1970', '58999 Basketball Road', '614-555-6868', 'mj@aol.com');
-INSERT INTO patient (name, date_of_birth, address, phone_number, email) VALUES ('Sue Moose', '05/04/1990', '600 Foreign Drive', '614-555-5533', 'sue@gmail.com');
-INSERT INTO patient (name, date_of_birth, address, phone_number, email) VALUES ('Martha Stewart', '03/02/1970', '520 Prison Road', '614-555-6765', 'martha@yahoo.com');
+INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password) VALUES ('Matt Kress', '04/04/1994', '585 Nowhere Dr.', '614-555-4567', 'matt@gmail.com', 'Mkress','12345ABCDe');
+INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password) VALUES ('Josh Hanf', '05/23/1986', '678 Cool Road', '614-555-4555', 'josh@gmail.com', 'Jhanf','12345ABCDe');
+INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password) VALUES ('Laura Stephens', '04/20/1982', '633 Number Road', '614-555-5643', 'laura@gmail.com', 'Lstephens','12345ABCDe');
+INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password) VALUES ('John Smith', '04/05/1992', '600 Hidden Valley', '614-555-9999', 'john@gmail.com', 'Jsmith','12345ABCDE');
+INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password) VALUES ('Joe Schmoe', '12/25/2000', '500 Nightmare Lane', '614-555-9898', 'joe@aol.com', 'Jschmoe','12345ABCDE');
+INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password) VALUES ('Matt Chen', '11/22/1956', '585 New Drive', '614-555-5757', 'matt@hotmail.com', 'Mchen','12345ABCDE');
+INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password) VALUES ('Jackie Chan', '02/22/1980', '56432 Remember Road', '614-555-9444', 'jackiechan@gmail.com', 'Jchan','12345ABCDE');
+INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password) VALUES ('Michael Jordan', '08/05/1970', '58999 Basketball Road', '614-555-6868', 'mj@aol.com', 'Mjordan','12345ABCDE');
+INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password) VALUES ('Sue Moose', '05/04/1990', '600 Foreign Drive', '614-555-5533', 'sue@gmail.com', 'Smoose','12345ABCDE');
+INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password) VALUES ('Martha Stewart', '03/02/1970', '520 Prison Road', '614-555-6765', 'martha@yahoo.com', 'Mstewart','12345ABCDE');
 
 INSERT INTO review (rating, doctor_id, message) VALUES (5, 1, 'BEST DOCTOR EVAAAA!!!');
 INSERT INTO review (rating, doctor_id, message) VALUES (1, 2, 'Terribly Unprofessional');

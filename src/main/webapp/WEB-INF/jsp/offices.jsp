@@ -6,6 +6,11 @@
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
 
+<div class="container-fluid alignmid">
+		<img  id = "jumbo" src="img/abstract.jpg">	
+</div>
+<div class = "lrPadding" style = "background-image: url('img/whitey.jpg');background-attachment: fixed">
+
 <div class="container-fluid">
 
 	</div>
