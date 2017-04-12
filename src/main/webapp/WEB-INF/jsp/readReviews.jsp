@@ -8,12 +8,56 @@
 			<div class="col-sm-2"></div>
 			<div class="col-sm-8">
 				<div class="reviewBox">
-					<fieldset  >
+					<fieldset>
 						<legend id="legend">Reviews</legend>
 						<c:url var="readReview" value="/readReviews" />
 						<form class="forms" method="GET" action="${readReview}">
 							<c:forEach var="review" items="${reviewList}">
-								<c:out value="${review.rating}" /> - 
+							<c:set var="reviewRating" value="${review.rating+((review.rating%1>0.5)?(1-(review.rating%1))%1:-(review.rating%1))}"/>
+								<c:choose>
+								<c:when test="${reviewRating == 0}">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+								</c:when>
+								<c:when test="${reviewRating == 1}">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+								</c:when>
+								<c:when test="${reviewRating == 2}">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+								</c:when>
+								<c:when test="${reviewRating == 3}">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+								</c:when>
+								<c:when test="${reviewRating == 4}">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/empty_star.png">
+								</c:when>
+								<c:when test="${reviewRating == 5}">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+								</c:when>
+								</c:choose>
 						<c:out value="${review.message}" /><br>
 							</c:forEach>
 						</form>
