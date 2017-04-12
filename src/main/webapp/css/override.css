@@ -2,8 +2,7 @@
 	
 	height:1px;
 	border:none;
-	background-color:#222;
-	
+	background-color:#222;	
 }
 
 #jumbo{
@@ -35,7 +34,7 @@
 
 .doctors{
 	text-align:center;
-	background:#7aadff;
+	background:#e0ebeb;
 	padding:-10%;
 	border-radius:10px;
 	margin: 10% 10% 10% 10%;
