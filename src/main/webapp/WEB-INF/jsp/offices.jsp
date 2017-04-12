@@ -25,8 +25,7 @@
 		<c:out value="${officeName}" />
 	</h1>
 	<div>
-		<link
-			href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
 			rel="stylesheet">
 
 		<span class="stars" data-rating="4" data-num-stars="5"></span>
@@ -153,11 +152,11 @@ function readReviewForDoctor(id) {
 						</div>
 					</div>
 					<div data-role="main" class="ui-content">
-						<a href="#myPopup" data-rel="popup"
+						<a href="#myPopup${doctor.id}" data-rel="popup"
 							class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Submit
 							a review</a>
 
-						<div data-role="popup" id="myPopup" class="ui-content"
+						<div data-role="popup" id="myPopup${doctor.id}" class="ui-content"
 							style="min-width: 250px;">
 							<a href="#" data-rel="back"
 								class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
