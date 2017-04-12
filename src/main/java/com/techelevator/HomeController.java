@@ -51,7 +51,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(path="/writeReview", method=RequestMethod.GET)
-	public String inputReview() {
+	public String inputReview(@RequestParam int doctorId, HttpServletRequest request) {
 		return "writeReview";
 	}
 

@@ -42,10 +42,14 @@
 							<fmt:formatNumber type="number" maxFractionDigits="2"
 								value="${reviewAvg}" var="formatReviewAvg" />
 							<p>Review avg is: <c:out value="${formatReviewAvg}" /><p>
-							<c:url var ="reviewUrl" value="readReviews">
+							<c:url var ="readReviewUrl" value="readReviews">
 							<c:param name="doctorId" value="${doctor.id}"></c:param>
 							</c:url>
-							<a href="${reviewUrl}">Read Reviews</a>
+							<a href="${readReviewUrl}">Read Reviews</a><br>
+							<c:url var ="leaveReviewUrl" value="writeReview">
+							<c:param name="doctorId" value="${doctor.id}"></c:param>
+							</c:url>
+							<a href="${leaveReviewUrl}">Write a Review</a>
 					</div>
 				</div>
 			</c:forEach>

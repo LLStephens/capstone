@@ -2,32 +2,6 @@
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
 
-
-
-<%-- <script type="text/javascript">
-	$(document).ready(function () {
-	
-		$("form").validate({
-			
-			rules : {
-				userName : {
-					required : true
-				},
-				password : {
-					required : true
-				}
-			},
-			messages : {			
-				confirmPassword : {
-					equalTo : "Passwords do not match"
-				}
-			},
-			errorClass : "error"
-		});
-	});
-</script>
-
---%>
 <div class="loginBox">
 	<div class="innerBox">
 		<div class="row">
