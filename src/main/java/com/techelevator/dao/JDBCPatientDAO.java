@@ -44,9 +44,19 @@ public class JDBCPatientDAO implements PatientDAO {
 	}
 
 	@Override
-	public void addPatient(Patient patient) {
-		String sqlAddPatient = "INSERT INTO patient(name, date_of_birth, address, phone_number, email) VALUES (?,?,?,?,?)";
-		jdbcTemplate.update(sqlAddPatient, patient.getName(), patient.getDateOfBirth(), patient.getAddress(), patient.getPhoneNumber(), patient.getEmail());
+	public Patient addPatient(Patient patient) {
+		Long id = getNextId();
+		
+		String sqlAddPatient = "INSERT INTO patient(id, name, date_of_birth, address, phone_number, email) VALUES (?,?,?,?,?,?)";
+		int rowsAffected = jdbcTemplate.update(sqlAddPatient, id, patient.getName(), patient.getDateOfBirth(), patient.getAddress(), patient.getPhoneNumber(), patient.getEmail());
+		
+		if(rowsAffected == 1) {
+			patient.setId(id.intValue());
+			return patient;
+		} else {
+			return null;
+		}
+
 	}
 
 	@Override
@@ -69,6 +79,16 @@ public class JDBCPatientDAO implements PatientDAO {
 		patient.setPhoneNumber(row.getString("phone_number"));
 		patient.setEmail(row.getString("email"));
 		return patient;
+	}
+	
+	private Long getNextId() {
+		String sqlSelectNextId = "SELECT NEXTVAL('patient_id_seq')";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(sqlSelectNextId);
+		if(result.next()) {
+			return result.getLong(1);
+		} else {
+			throw new RuntimeException("Something went wrong while getting the next order id");
+		}
 	}
 
 	@Override

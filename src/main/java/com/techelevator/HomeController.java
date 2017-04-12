@@ -40,9 +40,12 @@ public class HomeController {
 		request.setAttribute("doctorList", doctorList);
 		String officeName = officeDAO.getOfficeById(officeId).getName();
 	    request.setAttribute("officeName", officeName);
+	    List<Review> reviewList = reviewDAO.getAllReviews();
+		request.setAttribute("reviewList", reviewList);
 		return "offices";
 	}
 	
+
 	@RequestMapping(path="/readReviews", method=RequestMethod.GET)
 	public String showReviews(@RequestParam int doctorId, HttpServletRequest request) {
 		List<Review> review = reviewDAO.getAllReviewsByDoctorId(doctorId);
@@ -64,5 +67,5 @@ public class HomeController {
 		reviewDAO.addReview(review);
 		return "redirect:/offices";
 	}
-	
+
 }
