@@ -51,10 +51,15 @@ public class HomeController {
 	}
 	
 	@RequestMapping(path="/writeReview", method=RequestMethod.GET)
-	public String inputReview(@RequestParam int doctorId, HttpServletRequest request) {
+	public String inputReview(HttpServletRequest request) {
 		return "writeReview";
 	}
-
+	
+	@RequestMapping(path="/writeReview", method=RequestMethod.POST)
+	public String sendReview(Review review) {
+		reviewDAO.addReview(review);
+		return "redirect:/readReviews";
+	}
 	
 	@RequestMapping(path="/offices", method=RequestMethod.POST)
 	public String processReview(Review review){

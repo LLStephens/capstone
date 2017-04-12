@@ -12,7 +12,11 @@
 						<fieldset>
 							<legend>Review</legend>
 							Comments:<br>
-							<div class="container-fluid"><input type="text" class="textBox"><br> </div>
+							<c:url var="writeReview" value="/" />
+							<form method="POST" action="${writeReview}">
+								<div class="container-fluid"><input type="text" class="textBox"><br> </div>
+        						<button>Send</button>
+        					</form>
 							Star ratings visualized here
 						</fieldset>
 					</form>
