@@ -204,7 +204,7 @@ body{
 	color: black;
 }
 
-<<<<<<< HEAD
+
 /* div{
    width: 200px;
    height:200px;
@@ -214,10 +214,6 @@ body{
 #doctorImg{
     width: 80%;
     height: 80%;
-=======
-#doctorImg{
-    width: 100%;
->>>>>>> d054200714010e85c8980a931ef65b13a95c65de
     object-fit: contain;
     }
     

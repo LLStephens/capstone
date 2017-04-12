@@ -22,11 +22,7 @@
 							</h4>
 						</div>
 						<div>
-<<<<<<< HEAD
 							<img class="container-fluid doctorImg" id = "doctorImg" src="img/doctors/${doctor.id}.jpg" />
-=======
-							<img id="doctorImg" class="container-fluid doctorImg" src="img/doctors/${doctor.id}.jpg" />
->>>>>>> d054200714010e85c8980a931ef65b13a95c65de
 						</div>
 						<c:set var="reviewCount" value="0" />
 						<c:set var="reviewTotal" value="0" />
