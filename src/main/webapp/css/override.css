@@ -196,6 +196,14 @@ body{
     width: 100%;
     object-fit: contain;
     }
+    
+.reviewForms{
+	color: white;
+}
+
+#legend{
+	color: white;
+}
 
 /* --------
  */
