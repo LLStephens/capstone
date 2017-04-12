@@ -11,7 +11,7 @@
 					<fieldset  >
 						<legend id="legend">Reviews</legend>
 						<c:url var="readReview" value="/readReviews" />
-						<form class="form-group"method="GET" action="${readReview}">
+						<form class="forms" method="GET" action="${readReview}">
 							<c:forEach var="review" items="${reviewList}">
 								<c:out value="${review.rating}" /> - 
 						<c:out value="${review.message}" /><br>
