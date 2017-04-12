@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
 <title>Reviews</title>
@@ -7,17 +7,61 @@
 		<div class="row">
 			<div class="col-sm-2"></div>
 			<div class="col-sm-8">
-				<div class = "reviewBox">
-				<fieldset>
-							<legend>Reviews</legend>
-							<c:url var="readReview" value="/readReviews" />
-							<form method="GET" action="${readReview}">
+				<div class="reviewBox">
+					<fieldset>
+						<legend id="legend">Reviews</legend>
+						<c:url var="readReview" value="/readReviews" />
+						<form class="forms" method="GET" action="${readReview}">
 							<c:forEach var="review" items="${reviewList}">
-						<c:out value="${review.rating}" /> - 
-						<c:out value="${review.message}" />
-					</c:forEach>
-        					</form>
-						</fieldset>
+							<c:set var="reviewRating" value="${review.rating+((review.rating%1>0.5)?(1-(review.rating%1))%1:-(review.rating%1))}"/>
+								<c:choose>
+								<c:when test="${reviewRating == 0}">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+								</c:when>
+								<c:when test="${reviewRating == 1}">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+								</c:when>
+								<c:when test="${reviewRating == 2}">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+								</c:when>
+								<c:when test="${reviewRating == 3}">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/empty_star.png">
+									<img src="img/stars/empty_star.png">
+								</c:when>
+								<c:when test="${reviewRating == 4}">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/empty_star.png">
+								</c:when>
+								<c:when test="${reviewRating == 5}">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+									<img src="img/stars/full_star.png">
+								</c:when>
+								</c:choose>
+						<c:out value="${review.message}" /><br>
+							</c:forEach>
+						</form>
+					</fieldset>
 				</div>
 			</div>
 			<div class="col-sm-4"></div>
