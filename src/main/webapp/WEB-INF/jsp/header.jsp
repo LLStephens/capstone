@@ -11,10 +11,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	
-	<!-- validation -->
-	<script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
-	<script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.js "></script>
 	    
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -31,15 +27,11 @@
 		<div class="container col-sm-3 zeros">	
 			<div class="navbar-header">		
 				<img id="logo" style = "height:40px; width:150px" src="img/ns3.png">		
-				<button type="button" class=" navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" style ="height: 44px;
-				    width: 44px;
-				    background: transparent;
-				    border: solid black 1px;
-				    margin-bottom:15px;">
+				<button type="button" class="navbar navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" >
 		      	<span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar dashes"></span>
-		        <span class="icon-bar dashes"></span>
-		        <span class="icon-bar dashes"></span>	
+		        <span class="icon-bar bars"></span>
+		        <span class="icon-bar bars"></span>
+		        <span class="icon-bar bars"></span>	
 		    	</button>
 			</div>		
 		</div>

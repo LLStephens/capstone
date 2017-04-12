@@ -74,13 +74,8 @@
 	color:black;
 }
 
-.hamburger{
-	
-	height: 44px;
-    width: 44px;
-    background: transparent;
-    border: solid black 1px;
-    margin-bottom:15px;
+.bars{
+	background:black;
 }
 
 .blackText{
