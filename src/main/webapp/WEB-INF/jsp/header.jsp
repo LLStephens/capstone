@@ -12,9 +12,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	
+	<!-- verification -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+	<script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.js "></script>
+	<script src="https://cdn.jsdelivr.net/jquery.timeago/1.4.1/jquery.timeago.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	
+
 	<c:url var="cssHref2" value="/css/override.css" />
 	<link rel="stylesheet" type="text/css" href="${cssHref2}">
 	    
@@ -26,13 +30,15 @@
 		<div class="container col-sm-3 zeros">	
 			<div class="navbar-header">		
 				<img id="logo" style = "height:40px; width:150px" src="img/ns3.png">		
-				<button type="button" class="navbar-inverse navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"></button>
+				<button type="button" class="navbar navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" >
 		      	<span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar whiteText"></span>
-		        <span class="icon-bar whiteText"></span>
-		        <span class="icon-bar whiteText"></span>	
+		        <span class="icon-bar bars"></span>
+		        <span class="icon-bar bars"></span>
+		        <span class="icon-bar bars"></span>	
+		    	</button>
 			</div>		
 		</div>
+		
 		<div class="container col-sm-9 zeros">
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
