@@ -2,19 +2,48 @@
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
 
+<!-- <script type="text/javascript">
+
+$(document).ready(function () {
+	 	$("form").validate({		
+			 rules : {
+				user_name : {
+					required: true,
+					minlength:1,
+				},
+				password : {
+					required : true,
+					maxlength:128,
+					minlength:10,
+					uppercase : true,
+					lowercase : true,
+					number : true,					
+				}
+			}
+			errorClass: "error",
+		});
+	});
+	
+	
+	
+	
+	 
+</script> -->
+
 <div class="loginBox">
 	<div class="innerBox">
 		<div class="row">
 			<div class="col-sm-2"></div>
 			<div class="col-sm-8">
+				<legend class = "white" id="legend">Patient Login</legend>
 				<c:url var="formAction" value="/login" />
 				<form method="POST" action="${formAction}">
-					<div class="form-group">
-						<label for="userName">User Name: </label> <input type="text"
+					<div class="form-group white">
+						<label for="user_name">User Name: </label> <input type="text"
 							id="user_name" name="user_name" placeHolder="User Name"
 							class="form-control" />
 					</div>
-					<div class="form-group">
+					<div class="form-group white">
 						<label for="password">Password: </label> <input type="password"
 							id="password" name="password" placeHolder="Password"
 							class="form-control" />

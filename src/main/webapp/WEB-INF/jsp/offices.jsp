@@ -12,7 +12,6 @@
 			<c:out value="${officeName}" />
 		</h1>
 		<div>	
-			
 			<c:forEach var="doctor" items="${doctorList}">
 				<div class="col-sm-12 col-md-4 zeros">
 					<div class="cotainer-fluid doctors">
