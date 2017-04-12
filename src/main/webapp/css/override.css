@@ -87,12 +87,12 @@
 }
 
 .loginBox{
-	padding:15%;
+	padding:5% 15% 5% 15%;
 	
 }
 
 .innerBox{
-	padding:10%;
+	padding:5%;
 	border-radius:10px;
 	background:black;
 	opacity: 0.8;
