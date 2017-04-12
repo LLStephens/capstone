@@ -28,8 +28,7 @@
 </script>
 
 --%>
-<div class="loginBox"
-	style="background-image: url('img/whitey.jpg'); background-attachment: fixed">
+<div class="loginBox">
 	<div class="innerBox">
 		<div class="row">
 			<div class="col-sm-2"></div>

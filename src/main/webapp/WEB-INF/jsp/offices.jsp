@@ -10,7 +10,7 @@
 <div class="container-fluid alignmid">
 	<img id="jumbo" src="img/abstract.jpg">
 </div>
-<div class="lrPadding" style="background-attachment: fixed">
+<div class="lrPadding">
 	<div class="container-fluid alignmid">
 		<h1>
 			<c:out value="${officeName}" />
@@ -97,7 +97,7 @@
 							</h4>
 						</div>
 						<div>
-							<img class="container-fluid doctorImg" src="img/doctors/" + ${doctor.id} + ".jpg" />
+							<img class="container-fluid doctorImg" src="img/doctors/${doctor.id}.jpg" />
 						</div>
 						<c:set var="reviewCount" value="0" />
 						<c:set var="reviewTotal" value="0" />
