@@ -12,11 +12,11 @@
 <div class="container-fluid alignmid">
 		<img  id = "jumbo" src="img/abstract.jpg">	
 </div>
-<div class = "lrPadding" style = "background-image: url('img/whitey.jpg');background-attachment: fixed">
+<div class = "lrPadding" style = "background-attachment: fixed">
 
 <div class="container-fluid">
 
-	</div>
+</div>
 
 
 
@@ -28,7 +28,7 @@
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
 			rel="stylesheet">
 
-		<span class="stars" data-rating="4" data-num-stars="5"></span>
+		<span class="stars" data-rating="2" data-num-stars="5"></span>
 		<script>
 $.fn.stars = function() {
     return $(this).each(function() {
