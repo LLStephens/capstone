@@ -15,8 +15,6 @@ import com.techelevator.dao.DoctorDAO;
 import com.techelevator.dao.OfficeDAO;
 import com.techelevator.dao.ReviewDAO;
 
-
-
 @Controller
 public class HomeController {
 	@Autowired
@@ -44,20 +42,16 @@ public class HomeController {
 		request.setAttribute("reviewList", reviewList);
 		return "offices";
 	}
-	
 
 	@RequestMapping(path="/readReviews", method=RequestMethod.GET)
 	public String showReviews(@RequestParam int doctorId, HttpServletRequest request) {
-		List<Review> review = reviewDAO.getAllReviewsByDoctorId(doctorId);
-		request.setAttribute("review", review);
+		List<Review> reviewList = reviewDAO.getAllReviewsByDoctorId(doctorId);
+		request.setAttribute("reviewList", reviewList);
 		return "readReviews";
 	}
 	
-	
-	
-	
 	@RequestMapping(path="/writeReview", method=RequestMethod.GET)
-	public String inputReview() {
+	public String inputReview(@RequestParam int doctorId, HttpServletRequest request) {
 		return "writeReview";
 	}
 

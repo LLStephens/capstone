@@ -3,13 +3,14 @@
 <c:import url="/WEB-INF/jsp/header.jsp" />
 
 <script type="text/javascript">
-	$(document).ready(function () {
+
+/*$(document).ready(function () {
 		
 
 	
 	 	$("form").validate({
 			
-			rules : {
+			 rules : {
 				name : {
 					required: true,
 					minlength:1,
@@ -69,12 +70,12 @@
 	        validClass: "valid", 
 	        submitHandler: function(form) {
 	            form.submit();
-	        }
+	        } 
 			
 			
 		});
 	});
-	/*
+	
 	$.validator.addMethod("uppercase", function (value, index) {
 	    return value.match(/[A-Z]/);  
 	}, "Please ensure your password contains one uppercase letter");

@@ -1,13 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-</head>
-<body>
- <h1>This will be a javascript popup</h1>
-</body>
-</html>
+<c:import url="/WEB-INF/jsp/header.jsp" />
+<title>Reviews</title>
+<div class="loginBox">
+	<div class="innerBox">
+		<div class="row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8">
+				<div class = "reviewBox">
+					<p> reviews go here!!!!!!</p>
+					
+				</div>
+			</div>
+			<div class="col-sm-4"></div>
+		</div>
+	</div>
+</div>
+<c:import url="/WEB-INF/jsp/footer.jsp" />
