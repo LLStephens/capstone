@@ -62,9 +62,12 @@ INSERT INTO review (rating, doctor_id, message) VALUES (2, 10, 'Very poor bedsid
 INSERT INTO review (rating, doctor_id, message) VALUES (5, 11, 'Does not get any better than this!');
 INSERT INTO review (rating, doctor_id, message) VALUES (1, 12, 'After being late for the 3rd time, I think I will just go elsewhere');
 
-INSERT INTO appointment (doctor_id, patient_id, message) VALUES (1, 1, 'My finger hurts');
-INSERT INTO appointment (doctor_id, patient_id, message) VALUES (2, 2, 'i needed a second opinion');
-INSERT INTO appointment (doctor_id, patient_id, message) VALUES (2, 2, 'when i woke up today, my knees were missing');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 1, '2017-04-13T12:43:01.556715', '2017-04-13T12:43:01.556715', 'My finger hurts');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 2, '2017-04-13T01:43:01.556715', '2017-04-13T01:43:01.556715', 'My finger hurts2');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 3, '2017-04-13T02:43:01.556715', '2017-04-13T02:43:01.556715', 'My finger hurts3');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 4, '2017-04-13T03:43:01.556715', '2017-04-13T03:43:01.556715', 'My finger hurts4');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 5, '2017-04-13T04:43:01.556715', '2017-04-13T04:43:01.556715', 'My finger hurts5');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 6, '2017-04-13T05:43:01.556715', '2017-04-13T05:43:01.556715', 'My finger hurts6');
 
 
 
