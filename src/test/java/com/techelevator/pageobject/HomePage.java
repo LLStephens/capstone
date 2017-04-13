@@ -14,7 +14,7 @@ public class HomePage {
 	}
 	
 	public OfficePage clickOfficeLink() {
-		WebElement officeLink = webDriver.findElement(By.linkText("North Office"));
+		WebElement officeLink = webDriver.findElement(By.partialLinkText("Office"));
 		officeLink.click();
 		return new OfficePage(webDriver);
 	}
