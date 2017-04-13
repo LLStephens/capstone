@@ -17,6 +17,9 @@ public class OfficePage {
 	}
 	
 	public boolean verifyDoctorName(String doctorName) {
-		WebElement outputDoctorName = webDriver.findElement(arg0)
+		WebElement outputDoctorName = webDriver.findElement(By.id("doctorName"));
+		return outputDoctorName.getText().equals(doctorName);
 	}
+	
+	
 }

@@ -19,7 +19,9 @@
 					<div class="cotainer-fluid doctors">
 						<div>
 							<h4>
-								<c:out class=" value="${doctor.name}" />
+								<div id = "doctorName">
+								<c:out value="${doctor.name}" />
+								</div>
 							</h4>
 						</div>
 						<div>
