@@ -1,8 +1,8 @@
-package com.techelevator.dao;
+package com.techelevator.capstone.dao;
 
 import java.util.List;
 
-import com.techelevator.Office;
+import com.techelevator.capstone.model.Office;
 
 public interface OfficeDAO {
 	

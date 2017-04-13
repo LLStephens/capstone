@@ -1,8 +1,8 @@
-package com.techelevator.dao;
+package com.techelevator.capstone.dao;
 
 import java.util.List;
 
-import com.techelevator.Doctor;
+import com.techelevator.capstone.model.Doctor;
 
 public interface DoctorDAO {
 	public List<Doctor> getAllDoctorsByOfficeId(int officeId);

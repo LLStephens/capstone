@@ -12,10 +12,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 
-import com.techelevator.dao.DoctorDAO;
-import com.techelevator.dao.JDBCDoctorDAO;
-import com.techelevator.dao.JDBCReviewDAO;
-import com.techelevator.dao.ReviewDAO;
+import com.techelevator.capstone.dao.DoctorDAO;
+import com.techelevator.capstone.dao.JDBCDoctorDAO;
+import com.techelevator.capstone.dao.JDBCReviewDAO;
+import com.techelevator.capstone.dao.ReviewDAO;
+import com.techelevator.capstone.model.Review;
 
 public class JDBCReviewIntegrationTest extends DAOIntegrationTest {
 	/* Using this particular implementation of DataSource so that
