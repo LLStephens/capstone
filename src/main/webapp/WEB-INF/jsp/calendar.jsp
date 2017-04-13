@@ -13,7 +13,7 @@
 <input class="form-control" id="date" type="text" placeholder="M/d/y" title="format : M/d/y"/>
 							
   <script>
-  $( function() {
+/*   $( function() {
     $( "#datepicker" ).datepicker();
   } );
  
@@ -21,7 +21,7 @@
       document.getElementById("myDate").value = "2014-02-09";
   }
   var x = document.getElementById("myDate").value;
-  <input type="hidden" name="something" value="thevalue" />
+  <input type="hidden" name="something" value="thevalue" /> */
   
   $(document).ready(function() {
 	$('#date').datepicker({
