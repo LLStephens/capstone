@@ -1,6 +1,7 @@
 package com.techelevator.capstone.controller;
 
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -78,5 +79,9 @@ public class HomeController {
 		return "/doctorsAppointment";
 	}
 
+	@RequestMapping("/calendar")
+	public String showCalendar(HttpServletRequest request) {
+		return "calendar";
+	}
 
 }

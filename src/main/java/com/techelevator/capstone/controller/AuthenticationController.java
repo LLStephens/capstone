@@ -2,6 +2,7 @@ package com.techelevator.capstone.controller;
 
 
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,10 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-
+import com.techelevator.capstone.dao.AppointmentDAO;
 import com.techelevator.capstone.dao.DoctorDAO;
 import com.techelevator.capstone.dao.OfficeDAO;
 import com.techelevator.capstone.dao.ReviewDAO;
+import com.techelevator.capstone.model.Appointment;
 import com.techelevator.capstone.model.Doctor;
 import com.techelevator.capstone.model.Review;
 import com.techelevator.capstone.dao.PatientDAO;
@@ -37,6 +39,8 @@ public class AuthenticationController {
 	private	DoctorDAO doctorDao;
 	@Autowired
 	private	ReviewDAO reviewDao;
+	@Autowired
+	private	AppointmentDAO appointmentDao;
 	
 	
 	@RequestMapping(path="/login", method=RequestMethod.GET)
@@ -96,15 +100,16 @@ public class AuthenticationController {
 			//	return "redirect:/" + destination;
 			//} else {
 			return "redirect:/providerView";
-			//}
+			//}s
 			} else {
 			return "redirect:/providerLogin";
 			}
 	}
 	@RequestMapping(path="/providerView", method=RequestMethod.GET)
-	public String displyProviderView(ModelMap model, HttpServletRequest request) {
+	public String displyProviderView(ModelMap model, @RequestParam LocalDateTime date, HttpServletRequest request) {
 		Doctor doc = (Doctor) model.get("currentDoctorId");
 		List<Review> drReviewList  = reviewDao.getAllReviewsByDoctorId(doc.getId());
+		List<Appointment> apptList = appointmentDao.getAllAppointmentsByDoctorId(doc.getId());
 		request.setAttribute("doctor", doc);
 		request.setAttribute("review", drReviewList);
 		return "providerView";

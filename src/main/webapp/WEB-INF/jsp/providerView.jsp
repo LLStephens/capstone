@@ -2,6 +2,35 @@
 
  <c:import url="/WEB-INF/jsp/header.jsp" />
  
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ 
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+
+  function getDate() {
+      document.getElementById("datepicker").val();
+  }
+  </script>
+
+  
+<p>Date: <input type="text" id="datepicker"></p>
+<label id="hoursLabel">Hourly Rate</label> <input id="hourstTxt" type="text"><br>
+<label id="hoursLabel">placeholder</label> <input id="hourstTxt" type="text">
+
+<c:url var ="providerViewrUrl" value="calendar">
+	<c:param name="date" value="${getDate()}"></c:param>
+</c:url>
+
+<c:forEach var="appt" items="${apptList}">
+	<c:out value="${appt.id}" />
+</c:forEach>
+
+
 
 <div >
 
@@ -12,31 +41,6 @@
 	<div class = "container col-xs-12 col-sm-3 zeros alignmid" >
 		<div class = "col-xs-12 " id ="doctorSideBar">
 			<img style = "width:150px"class="doctorImg" src="img/doctors/${doctor.id}.jpg" />
-		</div>
-		<div class="col-xs-12 zeros " id="doctorSideBar">
-			<div>
-				<label id="hoursLabel">Starting hours</label> <input id="hourstTxt"
-					type="text">
-			</div>
-			<div>
-				<label id="hoursLabel">Ending hours</label> <input id="hourstTxt"
-					type="text">
-			</div>
-			<div>
-				<label id="hoursLabel">fee</label> <input id="hourstTxt" type="text">
-			</div>
-			<div>
-				<label id="hoursLabel">blahhh</label> <input id="hourstTxt"
-					type="text">
-			</div>
-			<div>
-				<label id="hoursLabel">sdafasdfa sdfad sfasfas dfdas
-					asdfasdfd safasdfa sdfadsfasdfasdfa sdfasdf asdfsadgdfsg asdg sgas
-					ga gfdga fgdfs sh fghdfghadfh dfsg s fdsfhsdf hdfsh fsdh s </label>
-			</div>
-			<div>
-				<button>doctor update button</button>
-			</div>
 		</div>
 
 	</div>
@@ -52,28 +56,28 @@
 			<a href = "${appointment}">Clickable divs here </a>
 			
 			<div class = "col-xs-12 scheduled" id = "doctorViewReview">
-				<p>8:00 - 8:30    Jane doe    blah blah blah </p>
+				<p>8:00 - 8:30 Name - message</p>
 			</div>
 			<div class = "col-xs-12 scheduled" id = "doctorViewReview">
-				<p>8:30 - 9:00    Jane doe    blah blah blah </p>
+				<p>8:30 - 9:00 Name - message</p>
 			</div>
 			<div class = "col-xs-12 open" id = "doctorViewReview">
 				<p>9:00 - 9:30 - OPEN</p>
 			</div>
 			<div class = "col-xs-12 scheduled" id = "doctorViewReview">
-				<p>9:30 - 10:00    Jane doe    blah blah blah </p>
+				<p>9:30 - 10:00  Name - message</p>
 			</div>
 			<div class = "col-xs-12 scheduled" id = "doctorViewReview">
-				<p>10:00 - 10:30    Jane doe    blah blah blah </p>
+				<p>10:00 - 10:30 Name - message </p>
 			</div>
 			<div class = "col-xs-12 scheduled" id = "doctorViewReview">
-				<p>10-:30 - 11:00    Jane doe    blah blah blah </p>
+				<p>10-:30 - 11:00 Name - message </p>
 			</div>
 			<div class = "col-xs-12 open" id = "doctorViewReview">
 				<p>11:00 - 11:30 - OPEN </p>
 			</div>
 			<div class = "col-xs-12 scheduled" id = "doctorViewReview">
-				<p>11:30 - 12:00    Jane doe    blah blah blah </p>
+				<p>11:30 - 12:00  Name - message </p>
 			</div>
 			<div class = "col-xs-12 unavailable" id = "doctorViewReview">
 				<p>LUNCH</p>
@@ -82,19 +86,19 @@
 				<p>LUNCH</p>
 			</div>
 			<div class = "col-xs-12 scheduled" id = "doctorViewReview">
-				<p>1:00 - 1:30    Jane doe    blah blah blah </p>
+				<p>1:00 - 1:30 Name - message </p>
 			</div>
 			<div class = "col-xs-12 scheduled" id = "doctorViewReview">
-				<p>1:30 - 2:00    Jane doe    blah blah blah </p>
+				<p>1:30 - 2:00  Name - message</p>
 			</div>
 			<div class = "col-xs-12 open" id = "doctorViewReview">
 				<p>2:00 - 2:30 - OPEN  </p>
 			</div>
 			<div class = "col-xs-12 scheduled" id = "doctorViewReview">
-				<p>2:30 - 3:00    Jane doe    blah blah blah </p>
+				<p>2:30 - 3:00 Name - message </p>
 			</div>
 			<div class = "col-xs-12 scheduled" id = "doctorViewReview">
-				<p>3:00 - 3:30    Jane doe    blah blah blah </p>
+				<p>3:00 - 3:30 Name - message </p>
 			</div>
 		</div>
 	</div>
@@ -106,11 +110,11 @@
 		
 		<div>
 		 	<c:forEach var="review" items="${review}">
-		 		<div class = "col-xs-12 col-sm-4 reviewColor" id = "doctorViewReview">
+<!-- 		 		<div class = "col-xs-12 col-sm-4 reviewColor" id = "doctorViewReview"> -->
 					<c:out value="${review.message}"/><br>
-					<c:out value="${review.rating}"/>			
-				</div>			
-			</c:forEach>
+					<c:out value="${review.rating}"/><br>			
+<!-- 				</div>			
+ -->			</c:forEach>
 		</div>
 		
 	</div>
