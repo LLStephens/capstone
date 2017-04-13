@@ -3,6 +3,7 @@
 <c:import url="/WEB-INF/jsp/header.jsp" />
 
 <script type="text/javascript">
+
 $(document).ready(function () {
 	 	$("form").validate({		
 			 rules : {
@@ -23,6 +24,7 @@ $(document).ready(function () {
 	        } 
 		});
 }); 
+
 </script> 
 
 <div class="loginBox">
@@ -30,8 +32,8 @@ $(document).ready(function () {
 		<div class="row">
 			<div class="col-sm-2"></div>
 			<div class="col-sm-8">
-				<legend class = "white" id="legend">Patient Login</legend>
-				<c:url var="formAction" value="/login" />
+				<legend class = "white" id="legend">Healthcare Provider Login</legend>
+				<c:url var="formAction" value="/providerLogin" />
 				<form method="POST" action="${formAction}">
 					<div class="form-group white">
 						<label for="user_name">User Name: </label> <input type="text"

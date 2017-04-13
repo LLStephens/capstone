@@ -1,9 +1,10 @@
-package com.techelevator.dao;
+package com.techelevator.capstone.dao;
+
 
 import java.util.Date;
 import java.util.List;
 
-import com.techelevator.Appointment;
+import com.techelevator.capstone.model.Appointment;
 
 public interface AppointmentDAO {
 	public List<Appointment> getAllAppointmentsByDoctorId(int doctorId);

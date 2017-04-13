@@ -22,6 +22,8 @@ CREATE TABLE doctor (
 	fee varchar(16) NOT NULL,
 	hours varchar(30) NOT NULL,
 	admin boolean NOT NULL,
+	user_name varchar(30) NOT NULL,
+	password varchar (30) NOT NULL,
 	CONSTRAINT pk_doctor_id PRIMARY KEY (id),
 	CONSTRAINT fk_office_id FOREIGN KEY (office_id) REFERENCES office(id)
 );

@@ -1,8 +1,9 @@
-package com.techelevator.dao;
+package com.techelevator.capstone.dao;
+
 
 import java.util.List;
 
-import com.techelevator.Review;
+import com.techelevator.capstone.model.Review;
 
 public interface ReviewDAO {
 	public List<Review> getAllReviewsByDoctorId(int doctorId);

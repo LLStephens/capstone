@@ -1,8 +1,9 @@
-package com.techelevator.dao;
+package com.techelevator.capstone.dao;
+
 
 import java.util.List;
 
-import com.techelevator.Patient;
+import com.techelevator.capstone.model.Patient;
 
 public interface PatientDAO {
 	public Patient getPatientById(int patientId);

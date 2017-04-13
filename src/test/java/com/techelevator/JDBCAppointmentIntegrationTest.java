@@ -7,10 +7,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.techelevator.dao.AppointmentDAO;
-import com.techelevator.dao.JDBCAppointmentDAO;
-import com.techelevator.dao.JDBCOfficeDAO;
-import com.techelevator.dao.OfficeDAO;
+import com.techelevator.capstone.dao.AppointmentDAO;
+import com.techelevator.capstone.dao.JDBCAppointmentDAO;
+import com.techelevator.capstone.dao.JDBCOfficeDAO;
+import com.techelevator.capstone.dao.OfficeDAO;
+import com.techelevator.capstone.model.Appointment;
 
 public class JDBCAppointmentIntegrationTest extends DAOIntegrationTest {
 

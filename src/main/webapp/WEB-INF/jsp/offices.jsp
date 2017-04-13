@@ -14,7 +14,6 @@
 			</div>
 		</h1>
 		<div>	
-			
 			<c:forEach var="doctor" items="${doctorList}">
 				<div class="col-sm-12 col-md-4 zeros">
 					<div class="cotainer-fluid doctors">
@@ -38,7 +37,54 @@
 						</c:forEach>
 							<fmt:formatNumber type="number" maxFractionDigits="2"
 								value="${reviewAvg}" var="formatReviewAvg" />
-							<p>Review avg is: <c:out value="${formatReviewAvg}" /><p>
+							<c:set var="reviewRating" value="${reviewAvg+((reviewAvg%1>0.5)?(1-(reviewAvg%1))%1:-(reviewAvg%1))}"/> 
+							<div class="container-fluid">
+							<c:choose>
+								<c:when test="${reviewRating == 0}">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+								</c:when>
+								<c:when test="${reviewRating == 1}">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+								</c:when>
+								<c:when test="${reviewRating == 2}">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+								</c:when>
+								<c:when test="${reviewRating == 3}">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+								</c:when>
+								<c:when test="${reviewRating == 4}">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+								</c:when>
+								<c:when test="${reviewRating == 5}">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+								</c:when>
+								</c:choose>
+								<br>
+								</div>
 							<c:url var ="readReviewUrl" value="readReviews">
 							<c:param name="doctorId" value="${doctor.id}"></c:param>
 							</c:url>
@@ -47,6 +93,11 @@
 							<c:param name="doctorId" value="${doctor.id}"></c:param>
 							</c:url>
 							<a href="${leaveReviewUrl}">Write a Review</a>
+							
+							<br><c:url var ="calendarUrl" value="calendar">
+							<c:param name="doctorId" value="${doctor.id}"></c:param>
+							</c:url>
+							<a href="${calendarUrl}">View Calendar</a>
 					</div>
 				</div>
 			</c:forEach>

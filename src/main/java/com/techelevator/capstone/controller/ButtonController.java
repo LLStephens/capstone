@@ -1,4 +1,5 @@
-package com.techelevator;
+package com.techelevator.capstone.controller;
+
 
 import java.util.List;
 
@@ -9,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.techelevator.dao.ReviewDAO;
+import com.techelevator.capstone.dao.ReviewDAO;
+import com.techelevator.capstone.model.Review;
 
 @RestController
 public class ButtonController {

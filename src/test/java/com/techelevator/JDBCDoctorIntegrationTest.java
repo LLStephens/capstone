@@ -12,8 +12,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 
-import com.techelevator.dao.DoctorDAO;
-import com.techelevator.dao.JDBCDoctorDAO;
+import com.techelevator.capstone.dao.DoctorDAO;
+import com.techelevator.capstone.dao.JDBCDoctorDAO;
+import com.techelevator.capstone.model.Doctor;
 
 public class JDBCDoctorIntegrationTest extends DAOIntegrationTest {
 	/* Using this particular implementation of DataSource so that

@@ -45,12 +45,24 @@
 					<c:url var="login" value="/login"/> 
 					<c:url var="register" value="/register"/>
 					<c:url var="provider" value="/providerLogin"/>
+					<c:url var="logoutUrl" value="/logout"/>
 					<c:url var="home" value="/"/>
-				
-					<li><a id="zeros" class = "blackText" href="${home}">Go Home</a></li>
-					<li><a id="zeros" class = "blackText" href="${register}">Register</a></li>
-					<li><a id="zeros" class = "blackText" href="${login}">Patient Login</a></li>
-					<li><a id="zeros" class = "blackText" href="">Provider Portal</a></li>
+							
+					<c:choose>
+						<c:when test="${not empty currentPatientId}">
+							<li><form action="${logoutUrl}" method="POST"><input type="submit" value="Log Out"></form></li>
+							<li><a id="zeros" class = "blackText" href="${home}">Home</a></li>
+						</c:when>
+						<c:when test="${not empty currentDoctorId}">
+							<li><form action="${logoutUrl}" method="POST"><input type="submit" value="Log Out"></form></li>
+						</c:when>
+						<c:otherwise>
+							<li><a id="zeros" class = "blackText" href="${home}">Home</a></li>
+							<li><a id="zeros" class = "blackText" href="${register}">Register</a></li>
+							<li><a id="zeros" class = "blackText" href="${login}">Patient Login</a></li>
+							<li><a id="zeros" class = "blackText" href="${provider}">Provider Portal</a></li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 			</div>
 		</div>

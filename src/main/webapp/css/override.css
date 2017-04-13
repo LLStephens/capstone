@@ -1,3 +1,7 @@
+.border{
+	border:solid 1px black
+}
+
 .hrs{
 	
 	height:1px;
@@ -42,6 +46,8 @@
 	border-bottom: 4px solid #222;	
 	}
 }
+
+
 
 .doctorImg{
 	max-width:100%;
@@ -205,12 +211,6 @@ body{
 }
 
 
-/* div{
-   width: 200px;
-   height:200px;
-   border:solid
- } */
-
 #doctorImg{
     width: 80%;
     height: 80%;
@@ -234,4 +234,47 @@ body{
 
 #submit{
 	background: #696969;
+}
+
+
+#doctorViewReview{
+	padding:5%;
+	border:1px solid #222;
+	border-bottom: 4px solid #222;
+	border-radius:10px;	
+	padding:0;
+}
+
+#doctorSideBar{
+   	
+  	height: 100%;
+}
+
+.star{
+	padding: 5% 0% 5% 0%;
+}
+
+.reviewLines {
+	text-align:center;
+	background:dark grey;
+	padding:-10%;
+	border-radius:10px;
+	margin: 10% 10% 10% 10%;
+	border:1px solid #222;
+	border-bottom: 4px solid #222;	
+	color: white;
+}
+
+.unavailable{
+	background: #83d2f7;
+}
+.open{
+	background: #f78396;
+}
+.scheduled{
+	background: #b1f783;
+}
+
+.reviewColor{
+	background:#e0ebeb;
 }

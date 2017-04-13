@@ -12,8 +12,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 
-import com.techelevator.dao.JDBCOfficeDAO;
-import com.techelevator.dao.OfficeDAO;
+import com.techelevator.capstone.dao.JDBCOfficeDAO;
+import com.techelevator.capstone.dao.OfficeDAO;
+import com.techelevator.capstone.model.Office;
 
 
 
