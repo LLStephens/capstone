@@ -3,6 +3,7 @@ package com.techelevator.capstone.controller;
 
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 //import java.time.LocalDateTime;
@@ -33,6 +34,27 @@ import com.techelevator.capstone.dao.PatientDAO;
 @Scope("session")
 @SessionAttributes({"currentPatientId","currentDoctorId"})
 public class AuthenticationController {
+	
+	private static final LocalTime eight = LocalTime.of(8, 00);
+	private static final LocalTime eightThirty = LocalTime.of(8, 30);
+	private static final LocalTime nine = LocalTime.of(9, 00);
+	private static final LocalTime nineThirty = LocalTime.of(9, 30);
+	private static final LocalTime ten = LocalTime.of(10, 00);
+	private static final LocalTime tenThirty = LocalTime.of(10, 30);
+	private static final LocalTime eleven = LocalTime.of(11, 00);
+	private static final LocalTime elevenThirty = LocalTime.of(11, 30);
+	private static final LocalTime noon = LocalTime.of(12, 00);
+	private static final LocalTime noonThirty = LocalTime.of(12, 30);
+	private static final LocalTime one = LocalTime.of(13, 00);
+	private static final LocalTime oneThirty = LocalTime.of(13, 30);
+	private static final LocalTime two = LocalTime.of(14, 00);
+	private static final LocalTime twoThirty = LocalTime.of(14, 30);
+	private static final LocalTime three = LocalTime.of(15, 00);
+	private static final LocalTime threeThirty = LocalTime.of(15, 30);
+	private static final LocalTime four = LocalTime.of(16, 00);
+	private static final LocalTime fourThirty = LocalTime.of(16, 30);
+	private LocalTime[] agenda = {eight, eightThirty, nine, nineThirty, ten, tenThirty, eleven, elevenThirty, noon, noonThirty, one, oneThirty, two, twoThirty, three, threeThirty, four, fourThirty};
+
 
 	@Autowired
 	private PatientDAO patientDao;
@@ -112,12 +134,12 @@ public class AuthenticationController {
 		Doctor doc = (Doctor) model.get("currentDoctorId");
 		List<Review> drReviewList  = reviewDao.getAllReviewsByDoctorId(doc.getId());
 		List<Appointment> apptList = appointmentDao.getAllAppointmentsByDoctorId(doc.getId());
-		List<LocalDateTime> apptTimes = new ArrayList<>();
+		List<LocalTime> apptTimes = new ArrayList<>();
 		for(Appointment appt:apptList){
-			LocalDateTime start = appt.getStartDate();
+			LocalTime start = appt.getStartDate().toLocalTime();
 			apptTimes.add(start);
 		}
-
+		Collections.sort(apptTimes);
 		request.setAttribute("apptTimes", apptTimes);
 		request.setAttribute("doctor", doc);
 		request.setAttribute("review", drReviewList);

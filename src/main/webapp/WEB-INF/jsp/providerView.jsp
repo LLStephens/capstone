@@ -27,7 +27,7 @@
 </c:url> --%>
 
 <c:forEach var="appt" items="${apptTimes}">
-	<c:out value="${appt}" />
+	<c:out value="${appt}" /><br>
 </c:forEach> 
 
 
