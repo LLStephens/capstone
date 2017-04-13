@@ -135,11 +135,13 @@ public class AuthenticationController {
 		List<Review> drReviewList  = reviewDao.getAllReviewsByDoctorId(doc.getId());
 		List<Appointment> apptList = appointmentDao.getAllAppointmentsByDoctorId(doc.getId());
 		List<LocalTime> apptTimes = new ArrayList<>();
+		
 		for(Appointment appt:apptList){
 			LocalTime start = appt.getStartDate().toLocalTime();
 			apptTimes.add(start);
 		}
 		Collections.sort(apptTimes);
+		request.setAttribute("agenda", agenda);
 		request.setAttribute("apptTimes", apptTimes);
 		request.setAttribute("doctor", doc);
 		request.setAttribute("review", drReviewList);

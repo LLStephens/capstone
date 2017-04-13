@@ -68,7 +68,8 @@ INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) V
 INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 4, '2017-04-13T9:30', '2017-04-13T10:00', 'My finger hurts4');
 INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 5, '2017-04-13T10:00', '2017-04-13T10:30', 'My finger hurts5');
 INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 6, '2017-04-13T10:30', '2017-04-13T11:00', 'My finger hurts6');
-
-
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 7, '2017-04-13T14:30', '2017-04-13T15:00', 'My finger hurts6');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 7, '2017-04-13T15:30', '2017-04-13T16:00', 'My finger hurts6');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 7, '2017-04-13T11:30', '2017-04-13T12:00', 'My finger hurts6');
 
 COMMIT;
