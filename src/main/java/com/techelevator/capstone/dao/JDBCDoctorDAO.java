@@ -1,4 +1,4 @@
-package com.techelevator.dao;
+package com.techelevator.capstone.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
-import com.techelevator.Doctor;
+import com.techelevator.capstone.model.Doctor;
 
 
 @Component

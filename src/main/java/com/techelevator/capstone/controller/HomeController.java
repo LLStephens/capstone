@@ -1,4 +1,4 @@
-package com.techelevator;
+package com.techelevator.capstone.controller;
 
 
 import java.util.List;
@@ -13,11 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.techelevator.dao.DoctorDAO;
-import com.techelevator.dao.OfficeDAO;
-import com.techelevator.dao.ReviewDAO;
-@Scope("session")
+
+
+
+import com.techelevator.capstone.dao.DoctorDAO;
+import com.techelevator.capstone.dao.OfficeDAO;
+import com.techelevator.capstone.dao.ReviewDAO;
+import com.techelevator.capstone.model.Doctor;
+import com.techelevator.capstone.model.Office;
+import com.techelevator.capstone.model.Review;
+
+
 @Controller
+@Scope("session")
 public class HomeController {
 	@Autowired
 	private OfficeDAO officeDAO;
@@ -53,20 +61,15 @@ public class HomeController {
 	}
 	
 	@RequestMapping(path="/writeReview", method=RequestMethod.GET)
-	public String inputReview(HttpServletRequest request) {
+	public String inputReview(@RequestParam int doctorId, HttpServletRequest request) {
 		return "writeReview";
 	}
+
 	
 	@RequestMapping(path="/writeReview", method=RequestMethod.POST)
 	public String sendReview(Review review) {
 		reviewDAO.addReview(review);
-		return "redirect:/readReviews";
-	}
-	
-	@RequestMapping(path="/offices", method=RequestMethod.POST)
-	public String processReview(Review review){
-		reviewDAO.addReview(review);
-		return "redirect:/offices";
+		return "redirect:/";
 	}
 	
 	@RequestMapping(path="/doctorsAppointment", method=RequestMethod.GET)

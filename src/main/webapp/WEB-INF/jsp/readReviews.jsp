@@ -12,54 +12,64 @@
 						<legend id="legend">Reviews</legend>
 						<c:url var="readReview" value="/readReviews" />
 						<form class="forms" method="GET" action="${readReview}">
+						
 							<c:forEach var="review" items="${reviewList}">
+							<div class="col-sm-12 col-md-12 zeros">
+							<div class="countainer-fluid reviewLines">
 							<c:set var="reviewRating" value="${review.rating+((review.rating%1>0.5)?(1-(review.rating%1))%1:-(review.rating%1))}"/>
-								<c:choose>
+								<div class="container-fluid">
+								
+							<c:choose>
 								<c:when test="${reviewRating == 0}">
-									<img src="img/stars/empty_star.png">
-									<img src="img/stars/empty_star.png">
-									<img src="img/stars/empty_star.png">
-									<img src="img/stars/empty_star.png">
-									<img src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
 								</c:when>
 								<c:when test="${reviewRating == 1}">
-									<img src="img/stars/full_star.png">
-									<img src="img/stars/empty_star.png">
-									<img src="img/stars/empty_star.png">
-									<img src="img/stars/empty_star.png">
-									<img src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
 								</c:when>
 								<c:when test="${reviewRating == 2}">
-									<img src="img/stars/full_star.png">
-									<img src="img/stars/full_star.png">
-									<img src="img/stars/empty_star.png">
-									<img src="img/stars/empty_star.png">
-									<img src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
 								</c:when>
 								<c:when test="${reviewRating == 3}">
-									<img src="img/stars/full_star.png">
-									<img src="img/stars/full_star.png">
-									<img src="img/stars/full_star.png">
-									<img src="img/stars/empty_star.png">
-									<img src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
 								</c:when>
 								<c:when test="${reviewRating == 4}">
-									<img src="img/stars/full_star.png">
-									<img src="img/stars/full_star.png">
-									<img src="img/stars/full_star.png">
-									<img src="img/stars/full_star.png">
-									<img src="img/stars/empty_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/empty_star.png">
 								</c:when>
 								<c:when test="${reviewRating == 5}">
-									<img src="img/stars/full_star.png">
-									<img src="img/stars/full_star.png">
-									<img src="img/stars/full_star.png">
-									<img src="img/stars/full_star.png">
-									<img src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
+									<img class = "star" src="img/stars/full_star.png">
 								</c:when>
 								</c:choose>
+							
+								</div>
 						<c:out value="${review.message}" /><br>
+							</div>
+							</div>
 							</c:forEach>
+							
 						</form>
 					</fieldset>
 				</div>

@@ -1,4 +1,4 @@
-package com.techelevator.dao;
+package com.techelevator.capstone.dao;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
-import com.techelevator.Appointment;
+import com.techelevator.capstone.model.Appointment;
 
 public class JDBCAppointmentDAO implements AppointmentDAO {
 	

@@ -1,4 +1,4 @@
-package com.techelevator;
+package com.techelevator.capstone.model;
 
 import java.time.LocalDateTime;
 import java.util.Date;

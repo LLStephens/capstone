@@ -1,4 +1,6 @@
-package com.techelevator;
+package com.techelevator.capstone.controller;
+
+
 
 import java.util.List;
 
@@ -14,9 +16,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.techelevator.dao.DoctorDAO;
-import com.techelevator.dao.PatientDAO;
-import com.techelevator.dao.ReviewDAO;
+
+import com.techelevator.capstone.dao.DoctorDAO;
+import com.techelevator.capstone.dao.OfficeDAO;
+import com.techelevator.capstone.dao.ReviewDAO;
+import com.techelevator.capstone.model.Doctor;
+import com.techelevator.capstone.model.Review;
+import com.techelevator.capstone.dao.PatientDAO;
+
+
 
 @Controller
 @Scope("session")

@@ -12,8 +12,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 
-import com.techelevator.dao.JDBCPatientDAO;
-import com.techelevator.dao.PatientDAO;
+import com.techelevator.capstone.dao.JDBCPatientDAO;
+import com.techelevator.capstone.dao.PatientDAO;
+import com.techelevator.capstone.model.Patient;
 
 
 
