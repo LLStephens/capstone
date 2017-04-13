@@ -236,9 +236,14 @@ body{
 	background: #696969;
 }
 
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+>>>>>>> parent of d7d9433... up to date version, fixed mysterious controller disappearances
 #doctorViewReview{
 	padding:5%;
+	background:#e0ebeb;
 	border:1px solid #222;
 	border-bottom: 4px solid #222;
 	border-radius:10px;	
@@ -248,8 +253,7 @@ body{
 #doctorSideBar{
    	
   	height: 100%;
-}
-
+=======
 .star{
 	padding: 5% 0% 5% 0%;
 }
@@ -263,18 +267,5 @@ body{
 	border:1px solid #222;
 	border-bottom: 4px solid #222;	
 	color: white;
-}
-
-.unavailable{
-	background: #83d2f7;
-}
-.open{
-	background: #f78396;
-}
-.scheduled{
-	background: #b1f783;
-}
-
-.reviewColor{
-	background:#e0ebeb;
+>>>>>>> cf5cdb91fc046c82673beee53f521be0f7ebf173
 }
