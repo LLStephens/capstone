@@ -103,6 +103,31 @@ public class JDBCDoctorDAO implements DoctorDAO {
 		}
 	}
 
+	@Override
+	public int getDoctorIdByUsernameAndPassword(String userName, String password) {
+		int none = -1;
+		String sqlSearchForDoctor = "SELECT * "+
+								  "FROM doctor "+
+								  "WHERE UPPER(user_name) = '"+userName.toUpperCase()+"' "+
+								  "AND password = '"+password+"'";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchForDoctor);
+		if(results.next()) {
+			return mapToRowToDoctor(results).getId();
+		}else{
+		return none;
+		}
+	}
+
+	@Override
+	public boolean searchDoctorForUsernameAndPassword(String userName, String password) {
+		String sqlSearchForDoctor = "SELECT * "+
+			      					"FROM doctor "+
+			      					"WHERE UPPER(user_name) = '"+userName.toUpperCase()+"' "+
+			      					"AND password = '"+password+"'";
+
+		return jdbcTemplate.queryForRowSet(sqlSearchForDoctor).next();
+	}
+
 
 	
 }

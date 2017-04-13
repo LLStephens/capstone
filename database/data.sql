@@ -11,18 +11,18 @@ INSERT INTO office (address, phone_number, image_name, hours, name) VALUES ('124
 INSERT INTO office (address, phone_number, image_name, hours, name) VALUES ('1555 Awesome Drive Columbus, OH 43228', '614-555-1444', 'office3', '8:00AM - 9:00PM', 'West Office');
 INSERT INTO office (address, phone_number, image_name, hours, name) VALUES ('125 Epic Valley Columbus, OH 43228', '614-555-2444', 'office4', '7:00AM - 6:00PM', 'East Office');
 
-INSERT INTO doctor (name, office_id, fee, hours, admin) VALUES ('Dr. John', 1, '$50', '8:00AM -5:00 PM', false);
-INSERT INTO doctor (name, office_id, fee, hours, admin) VALUES ('Dr. Admin', 1, '$55', '8:00AM -5:30 PM', true);
-INSERT INTO doctor (name, office_id, fee, hours, admin) VALUES ('Dr. Cool', 1, '$65', '9:00AM -4:00 PM', false);
-INSERT INTO doctor (name, office_id, fee, hours, admin) VALUES ('Dr. Smith', 2, '$50', '9:00AM -5:00 PM', true);
-INSERT INTO doctor (name, office_id, fee, hours, admin) VALUES ('Dr. Low', 2, '$50', '7:00AM -3:00 PM', false);
-INSERT INTO doctor (name, office_id, fee, hours, admin) VALUES ('Dr. High', 2, '$60', '9:00AM -5:00 PM', false);
-INSERT INTO doctor (name, office_id, fee, hours, admin) VALUES ('Dr. Joe', 3, '$40', '11:00AM -9:00 PM', false);
-INSERT INTO doctor (name, office_id, fee, hours, admin) VALUES ('Dr. Ben', 3, '$50', '9:00AM -5:00 PM', true);
-INSERT INTO doctor (name, office_id, fee, hours, admin) VALUES ('Dr. Yu', 3, '$60', '8:00AM -4:00 PM', false);
-INSERT INTO doctor (name, office_id, fee, hours, admin) VALUES ('Dr. Chen', 4, '$50', '9:00AM -5:00 PM', false);
-INSERT INTO doctor (name, office_id, fee, hours, admin) VALUES ('Dr. Lu', 4, '$75', '7:00AM -3:00 PM', true);
-INSERT INTO doctor (name, office_id, fee, hours, admin) VALUES ('Dr. Pent', 4, '$80', '9:00AM -6:00 PM', false);
+INSERT INTO doctor (name, office_id, fee, hours, admin, user_name, password) VALUES ('Dr. John', 1, '$50', '8:00AM -5:00 PM', false, 'Drjohn','doctorNUmber1');
+INSERT INTO doctor (name, office_id, fee, hours, admin, user_name, password) VALUES ('Dr. Admin', 1, '$55', '8:00AM -5:30 PM', true, 'Dradmin','doctorNUmber2');
+INSERT INTO doctor (name, office_id, fee, hours, admin, user_name, password) VALUES ('Dr. Cool', 1, '$65', '9:00AM -4:00 PM', false, 'Drcool','doctorNUmber3');
+INSERT INTO doctor (name, office_id, fee, hours, admin, user_name, password) VALUES ('Dr. Smith', 2, '$50', '9:00AM -5:00 PM', true, 'Drsmith','doctorNUmber4');
+INSERT INTO doctor (name, office_id, fee, hours, admin, user_name, password) VALUES ('Dr. Low', 2, '$50', '7:00AM -3:00 PM', false, 'Drlow','doctorNUmber5');
+INSERT INTO doctor (name, office_id, fee, hours, admin, user_name, password) VALUES ('Dr. High', 2, '$60', '9:00AM -5:00 PM', false, 'Drhigh','doctorNUmber6');
+INSERT INTO doctor (name, office_id, fee, hours, admin, user_name, password) VALUES ('Dr. Joe', 3, '$40', '11:00AM -9:00 PM', false, 'Drjoe','doctorNUmber7');
+INSERT INTO doctor (name, office_id, fee, hours, admin, user_name, password) VALUES ('Dr. Ben', 3, '$50', '9:00AM -5:00 PM', true, 'Drben','doctorNUmber8');
+INSERT INTO doctor (name, office_id, fee, hours, admin, user_name, password) VALUES ('Dr. Yu', 3, '$60', '8:00AM -4:00 PM', false, 'Dryu','doctorNUmber9');
+INSERT INTO doctor (name, office_id, fee, hours, admin, user_name, password) VALUES ('Dr. Chen', 4, '$50', '9:00AM -5:00 PM', false, 'Drchen','doctorNUmber10');
+INSERT INTO doctor (name, office_id, fee, hours, admin, user_name, password) VALUES ('Dr. Lu', 4, '$75', '7:00AM -3:00 PM', true, 'Drlu','doctorNUmber11');
+INSERT INTO doctor (name, office_id, fee, hours, admin, user_name, password) VALUES ('Dr. Pent', 4, '$80', '9:00AM -6:00 PM', false, 'Drpent','doctorNUmber12');
 
 INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password) VALUES ('Matt Kress', '04/04/1994', '585 Nowhere Dr.', '614-555-4567', 'matt@gmail.com', 'Mkress','12345ABCDe');
 INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password) VALUES ('Josh Hanf', '05/23/1986', '678 Cool Road', '614-555-4555', 'josh@gmail.com', 'Jhanf','12345ABCDe');
