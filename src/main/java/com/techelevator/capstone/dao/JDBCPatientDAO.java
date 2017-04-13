@@ -1,6 +1,5 @@
 package com.techelevator.capstone.dao;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,6 +104,21 @@ public class JDBCPatientDAO implements PatientDAO {
 	@Override
 	public void savePatient(String name, String date_of_birth, String address, String phone_number, String email, String user_name, String password) {
 		jdbcTemplate.update("INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password) VALUES ('"+name+"', '"+date_of_birth+"', '"+address+"', '"+phone_number+"', '"+email+"', '"+user_name+"', '"+password+"')");
+	}
+
+	@Override
+	public int getIdByUsernameAndPassword(String userName, String password) {
+		int none = -1;
+		String sqlSearchForUser = "SELECT * "+
+								  "FROM patient "+
+								  "WHERE UPPER(user_name) = '"+userName.toUpperCase()+"' "+
+								  "AND password = '"+password+"'";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchForUser);
+		if(results.next()) {
+			return mapToRowToPatient(results).getId();
+		}else{
+		return none;
+		}
 	}
 
 }

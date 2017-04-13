@@ -211,6 +211,12 @@ body{
 }
 
 
+/* div{
+   width: 200px;
+   height:200px;
+   border:solid
+ } */
+
 #doctorImg{
     width: 80%;
     height: 80%;
@@ -235,7 +241,6 @@ body{
 #submit{
 	background: #696969;
 }
-
 
 #doctorViewReview{
 	padding:5%;
