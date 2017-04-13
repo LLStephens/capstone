@@ -9,7 +9,9 @@
 <div class="lrPadding">
 	<div class="container-fluid alignmid">
 		<h1>
+			<div id="officeName">
 			<c:out value="${officeName}" />
+			</div>
 		</h1>
 		<div>	
 			
@@ -18,7 +20,7 @@
 					<div class="cotainer-fluid doctors">
 						<div>
 							<h4>
-								<c:out value="${doctor.name}" />
+								<c:out class=" value="${doctor.name}" />
 							</h4>
 						</div>
 						<div>
