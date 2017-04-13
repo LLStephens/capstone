@@ -21,5 +21,13 @@ public class OfficePage {
 		return outputDoctorName.getText().equals(doctorName);
 	}
 	
+	public boolean verifyDoctorImage(String doctorImageName) {
+		WebElement outputDoctorImageName = webDriver.findElement(By.id("doctorImg"));
+		return outputDoctorImageName.getText().equals(doctorImageName);
+	}
 	
+	public boolean verifyDoctorRating(String doctorRating) {
+		WebElement outputDoctorRating = webDriver.findElement(By.id("doctorRating"));
+		return outputDoctorRating.toString().equals(doctorRating);
+	}
 }

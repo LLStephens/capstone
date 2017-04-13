@@ -50,11 +50,11 @@
 							
 					<c:choose>
 						<c:when test="${not empty currentPatientId}">
-							<li><form action="${logoutUrl}" method="POST"><input type="submit" value="Log Out"></form></li>
+							<li><form action="${logoutUrl}" method="POST"><input id ="logoutButton" type="submit" value="Log Out"></form></li>
 							<li><a id="zeros" class = "blackText" href="${home}">Home</a></li>
 						</c:when>
 						<c:when test="${not empty currentDoctorId}">
-							<li><form action="${logoutUrl}" method="POST"><input type="submit" value="Log Out"></form></li>
+							<li><form action="${logoutUrl}" method="POST"><input id ="logoutButton" type="submit" value="Log Out"></form></li>
 						</c:when>
 						<c:otherwise>
 							<li><a id="zeros" class = "blackText" href="${home}">Home</a></li>

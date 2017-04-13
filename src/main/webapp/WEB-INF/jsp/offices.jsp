@@ -7,21 +7,18 @@
 	<img id="jumbo" src="img/abstract.jpg">
 </div>
 <div class="lrPadding">
-	<div class="container-fluid alignmid">
+	<div class="container-fluid alignmid" id="officeName">
 		<h1>
-			<div id="officeName">
 			<c:out value="${officeName}" />
-			</div>
 		</h1>
 		<div>	
 			<c:forEach var="doctor" items="${doctorList}">
 				<div class="col-sm-12 col-md-4 zeros">
 					<div class="cotainer-fluid doctors">
-						<div>
+						<div id = "doctorName">
 							<h4>
-								<div id = "doctorName">
 								<c:out value="${doctor.name}" />
-								</div>
+								
 							</h4>
 						</div>
 						<div>
@@ -40,7 +37,7 @@
 							<fmt:formatNumber type="number" maxFractionDigits="2"
 								value="${reviewAvg}" var="formatReviewAvg" />
 							<c:set var="reviewRating" value="${reviewAvg+((reviewAvg%1>0.5)?(1-(reviewAvg%1))%1:-(reviewAvg%1))}"/> 
-							<div class="container-fluid">
+							<div class="container-fluid" id = "doctorRating">
 							<c:choose>
 								<c:when test="${reviewRating == 0}">
 									<img class = "star" src="img/stars/empty_star.png">

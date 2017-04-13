@@ -1,6 +1,7 @@
 package com.techelevator.pageobject;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -19,20 +20,31 @@ public class HomePage {
 	}
 	
 	public PatientRegistrationPage clickPatientRegistrationLink(){
+		logOut();
 		WebElement patientRegistrationLink = webDriver.findElement(By.linkText("Register"));
 		patientRegistrationLink.click();
 		return new PatientRegistrationPage(webDriver);
 	}
 	
 	public PatientLoginPage clickPatientLoginLink(){
+		logOut();
 		WebElement patientLoginLink = webDriver.findElement(By.linkText("Patient Login"));
 		patientLoginLink.click();
 		return new PatientLoginPage(webDriver);
 	}
 	
 	public DoctorLoginPage clickDoctorLoginLink(){
+		logOut();
 		WebElement doctorLoginLink = webDriver.findElement(By.linkText("Provider Portal"));
 		doctorLoginLink.click();
 		return new DoctorLoginPage(webDriver);
+	}
+	
+	private void logOut() {
+		try {
+			WebElement logoutLink = webDriver.findElement(By.id("logoutButton"));
+			logoutLink.submit();
+		} catch (NoSuchElementException e) {
+	    }
 	}
 }
