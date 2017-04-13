@@ -64,5 +64,11 @@ public class HomeController {
 		reviewDAO.addReview(review);
 		return "redirect:/";
 	}
+	
+	@RequestMapping("/calendar")
+	public String showCalendar(HttpServletRequest request) {
+
+		return "calendar";
+	}
 
 }
