@@ -87,11 +87,11 @@
 							<c:url var ="readReviewUrl" value="readReviews">
 							<c:param name="doctorId" value="${doctor.id}"></c:param>
 							</c:url>
-							<a href="${readReviewUrl}">Read Reviews</a><br>
+							<a id="readReviewButton" href="${readReviewUrl}">Read Reviews</a><br>
 							<c:url var ="leaveReviewUrl" value="writeReview">
 							<c:param name="doctorId" value="${doctor.id}"></c:param>
 							</c:url>
-							<a href="${leaveReviewUrl}">Write a Review</a>
+							<a id="writeReviewButton" href="${leaveReviewUrl}">Write a Review</a>
 					</div>
 				</div>
 			</c:forEach>
