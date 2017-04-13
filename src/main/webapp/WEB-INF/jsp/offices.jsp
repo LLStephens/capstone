@@ -91,6 +91,11 @@
 							<c:param name="doctorId" value="${doctor.id}"></c:param>
 							</c:url>
 							<a href="${leaveReviewUrl}">Write a Review</a>
+							
+							<br><c:url var ="calendarUrl" value="calendar">
+							<c:param name="doctorId" value="${doctor.id}"></c:param>
+							</c:url>
+							<a href="${calendarUrl}">View Calendar</a>
 					</div>
 				</div>
 			</c:forEach>

@@ -6,15 +6,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-
-
 
 import com.techelevator.capstone.dao.DoctorDAO;
 import com.techelevator.capstone.dao.OfficeDAO;
@@ -23,9 +18,7 @@ import com.techelevator.capstone.model.Doctor;
 import com.techelevator.capstone.model.Office;
 import com.techelevator.capstone.model.Review;
 
-
 @Controller
-@Scope("session")
 public class HomeController {
 	@Autowired
 	private OfficeDAO officeDAO;
@@ -72,11 +65,10 @@ public class HomeController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(path="/doctorsAppointment", method=RequestMethod.GET)
-	public String showDoctorsSelectedAppointment(){
-		
-		return "/doctorsAppointment";
-	}
+	@RequestMapping("/calendar")
+	public String showCalendar(HttpServletRequest request) {
 
+		return "calendar";
+	}
 
 }
