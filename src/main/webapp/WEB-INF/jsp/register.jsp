@@ -133,7 +133,7 @@ $(document).ready(function () {
 							class="form-control" />
 					</div>
 					<div class = "alignmid">
-						<button type="submit" class="btn btn-default">Create User</button>
+						<button id="patientRegisterButton" type="submit" class="btn btn-default">Create User</button>
 					</div>
 				</div>
 				<div class="col-sm-4"></div>

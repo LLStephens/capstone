@@ -12,9 +12,22 @@ private WebDriver webDriver;
 		this.webDriver = webDriver;
 	}
 	
-	public PatientLoginPage enterName(String name) {
-		WebElement nameField = webDriver.findElement(By.name("name"));
-		nameField.sendKeys(name);
+	public PatientLoginPage enterUserName(String userName) {
+		WebElement userNameField = webDriver.findElement(By.name("user_name"));
+		userNameField.sendKeys(userName);
 		return this;
 	}
+	
+	public PatientLoginPage enterPassword(String password) {
+		WebElement passwordField = webDriver.findElement(By.name("password"));
+		passwordField.sendKeys(password);
+		return this;
+	}
+	
+	public HomePage patientLogin() {
+		WebElement loginButton = webDriver.findElement(By.id("patient_login_button"));
+		loginButton.click();
+		return new HomePage(webDriver);
+	}
+	
 }
