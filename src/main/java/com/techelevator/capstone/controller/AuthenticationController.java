@@ -3,6 +3,9 @@ package com.techelevator.capstone.controller;
 
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
+//import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,8 +29,6 @@ import com.techelevator.capstone.model.Doctor;
 import com.techelevator.capstone.model.Review;
 import com.techelevator.capstone.dao.PatientDAO;
 
-
-
 @Controller
 @Scope("session")
 @SessionAttributes({"currentPatientId","currentDoctorId"})
@@ -41,6 +42,7 @@ public class AuthenticationController {
 	private	ReviewDAO reviewDao;
 	@Autowired
 	private	AppointmentDAO appointmentDao;
+
 	
 	
 	@RequestMapping(path="/login", method=RequestMethod.GET)
@@ -106,15 +108,27 @@ public class AuthenticationController {
 			}
 	}
 	@RequestMapping(path="/providerView", method=RequestMethod.GET)
-	public String displyProviderView(ModelMap model, @RequestParam LocalDateTime date, HttpServletRequest request) {
+	public String displayProviderView(ModelMap model, HttpServletRequest request) {
 		Doctor doc = (Doctor) model.get("currentDoctorId");
 		List<Review> drReviewList  = reviewDao.getAllReviewsByDoctorId(doc.getId());
 		List<Appointment> apptList = appointmentDao.getAllAppointmentsByDoctorId(doc.getId());
+		List<LocalDateTime> apptTimes = new ArrayList<>();
+		for(Appointment appt:apptList){
+			LocalDateTime start = appt.getStartDate();
+			apptTimes.add(start);
+		}
+
+		request.setAttribute("apptTimes", apptTimes);
 		request.setAttribute("doctor", doc);
 		request.setAttribute("review", drReviewList);
 		return "providerView";
 	}
 	
+	@RequestMapping(path="/providerView", method=RequestMethod.POST)
+	public String updateProviderView(ModelMap model, HttpServletRequest request) {
+		
+		return "providerView";
+	}
 	
 	
 	

@@ -7,7 +7,7 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
  
-  <script>
+ <script>
   $( function() {
     $( "#datepicker" ).datepicker();
   } );
@@ -22,13 +22,13 @@
 <label id="hoursLabel">Hourly Rate</label> <input id="hourstTxt" type="text"><br>
 <label id="hoursLabel">placeholder</label> <input id="hourstTxt" type="text">
 
-<c:url var ="providerViewrUrl" value="calendar">
-	<c:param name="date" value="${getDate()}"></c:param>
-</c:url>
+<%-- <c:url var ="providerViewrUrl" value="get()">
+	<c:param name="date" value="${providerViewUrl}"></c:param>
+</c:url> --%>
 
-<c:forEach var="appt" items="${apptList}">
-	<c:out value="${appt.id}" />
-</c:forEach>
+<c:forEach var="appt" items="${apptTimes}">
+	<c:out value="${appt}" />
+</c:forEach> 
 
 
 

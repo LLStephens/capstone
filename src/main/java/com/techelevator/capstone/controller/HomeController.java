@@ -1,7 +1,7 @@
 package com.techelevator.capstone.controller;
 
 
-import java.time.LocalDateTime;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,11 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-
-
 import com.techelevator.capstone.dao.DoctorDAO;
 import com.techelevator.capstone.dao.OfficeDAO;
 import com.techelevator.capstone.dao.ReviewDAO;
+
 import com.techelevator.capstone.model.Doctor;
 import com.techelevator.capstone.model.Office;
 import com.techelevator.capstone.model.Review;
@@ -83,5 +82,6 @@ public class HomeController {
 	public String showCalendar(HttpServletRequest request) {
 		return "calendar";
 	}
+	
 
 }

@@ -9,6 +9,7 @@
 			<div class="col-sm-8">
 				<div class="reviewBox">
 					<legend id="legend">Review</legend>
+					
 					<form class="forms" method="POST" action="${writeReview}">
 						Comment:<br>
 						<div class="container-fluid">
