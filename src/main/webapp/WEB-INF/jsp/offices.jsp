@@ -9,7 +9,9 @@
 <div class="lrPadding">
 	<div class="container-fluid alignmid">
 		<h1>
+			<div id="officeName">
 			<c:out value="${officeName}" />
+			</div>
 		</h1>
 		<div>	
 			<c:forEach var="doctor" items="${doctorList}">
@@ -17,7 +19,9 @@
 					<div class="cotainer-fluid doctors">
 						<div>
 							<h4>
+								<div id = "doctorName">
 								<c:out value="${doctor.name}" />
+								</div>
 							</h4>
 						</div>
 						<div>
