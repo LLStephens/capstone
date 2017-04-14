@@ -73,8 +73,8 @@ public class HomeController {
 	}
 	
 	@RequestMapping(path="/doctorsAppointment", method=RequestMethod.GET)
-	public String showDoctorsSelectedAppointment(@RequestParam Appointment appt, HttpServletRequest request){
-		request.setAttribute("appt", appt);
+	public String showDoctorsSelectedAppointment( HttpServletRequest request){
+		
 		return "/doctorsAppointment";
 	}
 

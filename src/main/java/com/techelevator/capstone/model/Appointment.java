@@ -13,6 +13,9 @@ public class Appointment {
 	private String message;
 	private LocalTime startTime;
 	
+	public void appointment(){
+		setStartTime(startDate);
+	}
 	
 	public String getMessage() {
 		return message;
@@ -54,8 +57,8 @@ public class Appointment {
 		
 		return this.startTime;
 	}
-	public void setStartTime(LocalTime startTime) {
-		LocalTime start = startDate.toLocalTime();
+	public void setStartTime(LocalDateTime startTime) {
+		LocalTime start = startTime.toLocalTime();
 		this.startTime = start;
 	}
 	
