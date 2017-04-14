@@ -18,11 +18,11 @@
       document.getElementById("datepicker").val();
   }
   </script>
-<c:url var="providerView" value="/providerView"/>
+<c:url var="providerView" value="/providerView" />
 <form method="GET" action="${providerView}">
-	Select Date: <input name="date" id="datepicker" /> <input type="hidden"
-		name="doctorId" value="${doctor.id}"> <input type="submit"
-		value="Submit">
+	Select Date: <input name="date" id="datepicker" /> <input
+		type="hidden" name="doctorId" value="${doctor.id}"> <input
+		type="submit" value="Submit">
 </form>
 
 <form id="feeForm" class="forms" method="POST" action="${providerView}">
@@ -36,6 +36,11 @@
 		<img style="width: 150px" class="doctorImg"
 			src="img/doctors/${doctor.id}.jpg" /><br>
 		<c:out value="Hello ${doctor.name}" />
+		<br>
+		<c:url var="changePasswordUrl" value="changePassword">
+			<c:param name="doctorId" value="${doctor.id}"></c:param>
+		</c:url>
+		<a id="changePassword" href="${changePasswordUrl}">Change Password</a>
 	</div>
 </div>
 

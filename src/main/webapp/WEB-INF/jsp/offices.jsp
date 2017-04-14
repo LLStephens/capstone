@@ -98,6 +98,7 @@
 							</c:url>
 							<a href="${calendarUrl}">View schedule</a>
 							<a id="writeReviewButton" href="${leaveReviewUrl}">Write a Review</a>
+							
 					</div>
 				</div>
 			</c:forEach>

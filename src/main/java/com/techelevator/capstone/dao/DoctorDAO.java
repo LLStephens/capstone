@@ -13,5 +13,6 @@ public interface DoctorDAO {
 	public void updateDoctor(String name, int officeId, String fee, String hours, boolean admin);
 	public int getDoctorIdByUsernameAndPassword(String user_name, String password);
 	public boolean searchDoctorForUsernameAndPassword(String user_name, String password);
-	void updateDoctorFee(String fee, int doctorId);
+	public void updateDoctorFee(String fee, int doctorId);
+	public void updateDoctorPassword(String password, int doctorId);
 }

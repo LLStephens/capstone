@@ -88,5 +88,15 @@ public class HomeController {
 		return "calendar";
 	}
 	
+	@RequestMapping(path="/changePassword", method=RequestMethod.GET)
+	public String changePassword(@RequestParam int doctorId, HttpServletRequest request) {
+		return "changePassword";
+	}
+	
+	@RequestMapping(path="/changePassword", method=RequestMethod.POST)
+	public String changePassword(@RequestParam String password, @RequestParam int doctorId) {
+		doctorDAO.updateDoctorPassword(password, doctorId);
+		return "redirect:/";
+	}
 
 }

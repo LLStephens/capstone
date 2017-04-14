@@ -82,6 +82,14 @@ public class JDBCDoctorDAO implements DoctorDAO {
 			"WHERE id = ?";
 	jdbcTemplate.update(sqlUpdateDoctorFee, fee, doctorId);
 	}
+	
+	@Override
+	public void updateDoctorPassword(String password, int doctorId) {
+		String sqlUpdateDoctorPassword = "UPDATE doctor " +
+			"SET password = ? " +
+			"WHERE id = ?";
+	jdbcTemplate.update(sqlUpdateDoctorPassword, password, doctorId);
+	}
 
 	@Override
 	public void deleteDoctor(int doctorId) {
