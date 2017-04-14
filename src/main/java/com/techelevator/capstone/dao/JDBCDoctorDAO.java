@@ -59,8 +59,8 @@ public class JDBCDoctorDAO implements DoctorDAO {
 	public Doctor addDoctor(Doctor doctor) {
 		Long id = getNextId();
 		
-		String sqlInsertDoctor = "INSERT INTO doctor(id, name, office_id, fee, hours, admin) VALUES (?,?,?,?,?,?)";
-		int rowsAffected = jdbcTemplate.update(sqlInsertDoctor, id, doctor.getName(), doctor.getOfficeId(), doctor.getFee(), doctor.getHours(), doctor.isAdmin());
+		String sqlInsertDoctor = "INSERT INTO doctor(id, name, office_id, fee, start_time, end_time, admin, user_name, password) VALUES (?,?,?,?,?,?,?,?,?)";
+		int rowsAffected = jdbcTemplate.update(sqlInsertDoctor, id, doctor.getName(), doctor.getOfficeId(), doctor.getFee(), doctor.getStartTime(), doctor.getEndTime(), doctor.isAdmin(), doctor.getUser_name(), doctor.getPassword());
 		
 		if(rowsAffected == 1) {
 			doctor.setId(id.intValue());
@@ -87,7 +87,8 @@ public class JDBCDoctorDAO implements DoctorDAO {
 		doctor.setId(row.getInt("id"));
 		doctor.setAdmin(row.getBoolean("admin"));
 		doctor.setFee(row.getString("fee"));
-		doctor.setHours(row.getString("hours"));
+		doctor.setStartTime(row.getTime("start_time").toLocalTime());
+		doctor.setEndTime(row.getTime("end_time").toLocalTime());
 		doctor.setName(row.getString("name"));
 		doctor.setOfficeId(row.getInt("office_id"));
 		return doctor;

@@ -37,6 +37,8 @@ public class JDBCPatientIntegrationTest extends DAOIntegrationTest {
 		patient.setAddress("1234 Address");
 		patient.setPhoneNumber("555-555-5555");
 		patient.setEmail("email@email.com");
+		patient.setUser_name("UserName");
+		patient.setPassword("12345ABCDe");
 		Patient newPatient = patientDAO.addPatient(patient);
 		assert_patients_are_equal(newPatient, patientDAO.getPatientById(newPatient.getId()));
 	}
@@ -48,6 +50,8 @@ public class JDBCPatientIntegrationTest extends DAOIntegrationTest {
 		Assert.assertEquals(expectedPatient.getAddress(), actualPatient.getAddress());
 		Assert.assertEquals(expectedPatient.getPhoneNumber(), actualPatient.getPhoneNumber());
 		Assert.assertEquals(expectedPatient.getEmail(), actualPatient.getEmail());
+		Assert.assertEquals(expectedPatient.getUser_name(), actualPatient.getUser_name());
+		Assert.assertEquals(expectedPatient.getPassword(), actualPatient.getPassword());
 	}
 	
 }

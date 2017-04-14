@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import java.sql.SQLException;
+import java.time.LocalTime;
 
 import javax.sql.DataSource;
 
@@ -31,11 +32,16 @@ public class JDBCDoctorIntegrationTest extends DAOIntegrationTest {
 	@Test
 	public void doctor_can_be_found_by_id_after_being_created(){
 		Doctor doctor = new Doctor();
+		LocalTime startTime = LocalTime.of(7, 00);
+		LocalTime endTime = LocalTime.of(15, 00);
 		doctor.setName("name");
 		doctor.setOfficeId(1);
 		doctor.setFee("$50");
-		doctor.setHours("9:00AM-5:00PM");
 		doctor.setAdmin(false);
+		doctor.setStartTime(startTime);
+		doctor.setEndTime(endTime);
+		doctor.setUser_name("drdoctor");
+		doctor.setPassword("12345ABCDe");
 		Doctor newDoctor = doctorDAO.addDoctor(doctor);
 		assert_doctors_are_equal(newDoctor, doctorDAO.getDoctorById(newDoctor.getId()));
 	}
@@ -45,7 +51,8 @@ public class JDBCDoctorIntegrationTest extends DAOIntegrationTest {
 		Assert.assertEquals("Doctor names should match", expectedDoctor.getName(), actualDoctor.getName());
 		Assert.assertEquals("Office ids should match", expectedDoctor.getOfficeId(), actualDoctor.getOfficeId());
 		Assert.assertEquals("Fees should match", expectedDoctor.getFee(), actualDoctor.getFee());
-		Assert.assertEquals("Hours should match", expectedDoctor.getHours(), actualDoctor.getHours());
+		Assert.assertEquals("Hours should match", expectedDoctor.getStartTime(), actualDoctor.getStartTime());
+		Assert.assertEquals("Hours should match", expectedDoctor.getEndTime(), actualDoctor.getEndTime());
 		Assert.assertEquals("isAdmin should match", expectedDoctor.isAdmin(), actualDoctor.isAdmin());
 	}
 	
