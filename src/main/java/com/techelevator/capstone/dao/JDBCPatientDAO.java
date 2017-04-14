@@ -47,8 +47,8 @@ public class JDBCPatientDAO implements PatientDAO {
 	public Patient addPatient(Patient patient) {
 		Long id = getNextId();
 		
-		String sqlAddPatient = "INSERT INTO patient(id, name, date_of_birth, address, phone_number, email) VALUES (?,?,?,?,?,?)";
-		int rowsAffected = jdbcTemplate.update(sqlAddPatient, id, patient.getName(), patient.getDateOfBirth(), patient.getAddress(), patient.getPhoneNumber(), patient.getEmail());
+		String sqlAddPatient = "INSERT INTO patient(id, name, date_of_birth, address, phone_number, email, user_name, password) VALUES (?,?,?,?,?,?,?,?)";
+		int rowsAffected = jdbcTemplate.update(sqlAddPatient, id, patient.getName(), patient.getDateOfBirth(), patient.getAddress(), patient.getPhoneNumber(), patient.getEmail(), patient.getUser_name(), patient.getPassword());
 		
 		if(rowsAffected == 1) {
 			patient.setId(id.intValue());
@@ -78,6 +78,8 @@ public class JDBCPatientDAO implements PatientDAO {
 		patient.setAddress(row.getString("address"));
 		patient.setPhoneNumber(row.getString("phone_number"));
 		patient.setEmail(row.getString("email"));
+		patient.setUser_name(row.getString("user_name"));
+		patient.setPassword(row.getString("password"));
 		return patient;
 	}
 	
