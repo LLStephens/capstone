@@ -1,27 +1,17 @@
 package com.techelevator.capstone.model;
 
+import java.time.LocalTime;
+
 public class Doctor {
 	private int id;
 	private String name;
 	private int officeId;
 	private String fee;
-	private String hours;
+	private LocalTime startTime;
+	private LocalTime endTime;
 	private boolean admin;
 	private String user_name;
 	private String password;
-	
-	public String getUser_name() {
-		return user_name;
-	}
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
 	
 	public int getId() {
 		return id;
@@ -47,16 +37,34 @@ public class Doctor {
 	public void setFee(String fee) {
 		this.fee = fee;
 	}
-	public String getHours() {
-		return hours;
+	public LocalTime getStartTime() {
+		return startTime;
 	}
-	public void setHours(String hours) {
-		this.hours = hours;
+	public void setStartTime(LocalTime startTime) {
+		this.startTime = startTime;
+	}
+	public LocalTime getEndTime() {
+		return endTime;
+	}
+	public void setEndTime(LocalTime endTime) {
+		this.endTime = endTime;
 	}
 	public boolean isAdmin() {
 		return admin;
 	}
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
+	}
+	public String getUser_name() {
+		return user_name;
+	}
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

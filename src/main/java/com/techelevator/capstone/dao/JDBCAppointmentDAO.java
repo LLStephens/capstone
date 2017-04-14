@@ -88,6 +88,7 @@ public class JDBCAppointmentDAO implements AppointmentDAO {
 		appointment.setPatientId(row.getInt("patient_id"));
 		appointment.setStartDate(row.getTimestamp("start_date").toLocalDateTime());
 		appointment.setEndDate(row.getTimestamp("end_date").toLocalDateTime());
+		appointment.setMessage(row.getString("message"));
 		return appointment;
 	}
 	

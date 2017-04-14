@@ -2,6 +2,7 @@ package com.techelevator.capstone.controller;
 
 
 
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gargoylesoftware.htmlunit.javascript.host.fetch.Request;
+import com.techelevator.capstone.dao.AppointmentDAO;
 import com.techelevator.capstone.dao.DoctorDAO;
 import com.techelevator.capstone.dao.OfficeDAO;
 import com.techelevator.capstone.dao.ReviewDAO;
@@ -33,7 +35,8 @@ public class HomeController {
 	private DoctorDAO doctorDAO;
 	@Autowired
 	private ReviewDAO reviewDAO;
-	
+	@Autowired
+	private AppointmentDAO appointmentDAO;
 
 	@RequestMapping("/")
 	public String showHome(HttpServletRequest request) {
@@ -73,7 +76,9 @@ public class HomeController {
 	}
 	
 	@RequestMapping(path="/doctorsAppointment", method=RequestMethod.GET)
-	public String showDoctorsSelectedAppointment( HttpServletRequest request){
+	public String showDoctorsSelectedAppointment(@RequestParam int id, HttpServletRequest request){
+		Appointment appointment  = appointmentDAO.getAppointmentById(id);
+		request.setAttribute("appointment", appointment);
 		
 		return "/doctorsAppointment";
 	}

@@ -8,9 +8,11 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 //import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -138,14 +140,17 @@ public class AuthenticationController {
 		List<Review> drReviewList  = reviewDao.getAllReviewsByDoctorId(doc.getId());
 		List<Appointment> apptList = appointmentDao.getAllAppointmentsByDoctorId(doc.getId());
 		List<LocalTime> apptTimes = new ArrayList<>();
+		Map<LocalTime,Appointment> appointmentMap = new HashMap<LocalTime,Appointment>();
 		
 		for(Appointment appt:apptList){
 			LocalTime start = appt.getStartDate().toLocalTime();
 			apptTimes.add(start);
+			appointmentMap.put(start, appt);
 		}
+		
 		Collections.sort(apptTimes);
 		
-		request.setAttribute("apptObj", apptList);
+		request.setAttribute("map", appointmentMap);
 		request.setAttribute("agenda", agenda);
 		request.setAttribute("apptTimes", apptTimes);
 		request.setAttribute("doctor", doc);
