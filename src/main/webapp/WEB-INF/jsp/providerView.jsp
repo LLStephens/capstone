@@ -29,15 +29,6 @@
 <label id="hoursLabel">placeholder</label>
 <input id="hourstTxt" type="text">
 
-<%-- <c:url var ="providerViewrUrl" value="get()">
-	<c:param name="date" value="${providerViewUrl}"></c:param>
-</c:url> --%>
-
-<c:forEach var="appt" items="${apptTimes}">
-	<c:out value="${appt}" />
-	<br>
-</c:forEach>
-
 
 
 <div>
@@ -64,45 +55,35 @@
 			<c:url var="appointment" value="/doctorsAppointment" />
 			<a href="${appointment}">Clickable divs here </a>
 			<c:set var="counter" value="0" />
-			
+
 			<c:forEach var="index" begin="0" end="${fn:length(agenda)-1}">
-			
 				<c:choose>
-				
 					<c:when test="${(!empty apptTimes[counter]) && agenda[index].equals(apptTimes[counter])}">
-					
+						<c:url var="formAction" value="/doctorsAppointment">
+							<c:param name="id" value="${map.get(apptTimes[counter]).id}"></c:param>
+						</c:url>				
 						<div class="col-xs-12 unavailable" id="doctorViewReview">
-								<%-- <c:forEach var = "appt" items = "${apptObj}">		
-									<c:if test = "${appt.startTime.equals(apptTimes[counter])}">
-										<c:url var = "doctorsAppointment" value = "/doctorsAppointment"> 
-											<c:param name = "appt"  value = "${appt}"/>
-										</c:url>
-										
-									</c:if>	
-								</c:forEach>  
-							<form action = "${ doctorsAppointment }" method = "GET">	
-								<button type = "submit" class  = "unavailable" style = "width:100%; height:100%"><c:out value = "${agenda[index]} unavailable"/> </button>
-							</form>	 --%>
-							<c:out value = "${agenda[index]} unavailable"/>	
+							<form method="GET" action="${formAction}">
+								<button type="submit" class="btn btn-default"><c:out value = "${apptTimes[counter]} - Scheduled"></c:out></button>
+								<input type = "hidden" name = "id" value = "${map.get(apptTimes[counter]).id}"/>
+							</form>
+							<a href = "${formAction}">???</a>
 						</div>
 						<c:set var="counter" value="${counter + 1}" />
 					</c:when>
-					
 					<c:otherwise>
 						<div class="col-xs-12 " id="doctorViewReview">
-							<button class = "open" style = "width:100%; height:100%"  >
-								<c:out value = "${agenda[index]} - open"/>
-							</button> 
+							<button class="open" style="width: 100%; height: 100%">
+								<c:out value="${agenda[index]} - open" />
+							</button>
 						</div>
-								
 					</c:otherwise>
-					
 				</c:choose>
-				
-			</c:forEach> 
+			</c:forEach>
+
+
 		</div>
 	</div>
-
 	<div class="col-xs-12 alignmid">
 		<div>
 			<c:out value="Your reviews:" />

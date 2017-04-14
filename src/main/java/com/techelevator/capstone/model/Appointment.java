@@ -11,12 +11,8 @@ public class Appointment {
 	private LocalDateTime startDate;
 	private LocalDateTime endDate;
 	private String message;
-	private LocalTime startTime;
-	
-	public void appointment(){
-		setStartTime(startDate);
-	}
-	
+
+
 	public String getMessage() {
 		return message;
 	}
@@ -53,14 +49,8 @@ public class Appointment {
 	public void setEndDate(LocalDateTime endDate) {
 		this.endDate = endDate;
 	}
-	public LocalTime getStartTime() {
-		
-		return this.startTime;
-	}
-	public void setStartTime(LocalDateTime startTime) {
-		LocalTime start = startTime.toLocalTime();
-		this.startTime = start;
-	}
+	
+	
 	
 	
 }
