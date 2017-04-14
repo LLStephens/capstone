@@ -1,5 +1,6 @@
 package com.techelevator.capstone.dao;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,6 +34,7 @@ public class JDBCAppointmentDAO implements AppointmentDAO {
 		}
 		return allAppointmentsByDoctorId;
 	}
+	
 
 	@Override
 	public List<Appointment> getAllAppointmentsByPatientId(int patientId) {

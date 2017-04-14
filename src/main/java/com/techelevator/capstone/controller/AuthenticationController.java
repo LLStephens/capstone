@@ -2,13 +2,16 @@ package com.techelevator.capstone.controller;
 
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 //import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +19,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -132,12 +136,29 @@ public class AuthenticationController {
 			}
 	}
 	@RequestMapping(path="/providerView", method=RequestMethod.GET)
-	public String displayProviderView(ModelMap model, HttpServletRequest request) {
+	public String displayProviderView(@DateTimeFormat(pattern="MM/dd/yyyy") @RequestParam(required=false) LocalDate date, ModelMap model, HttpServletRequest request) {
 		Doctor doc = (Doctor) model.get("currentDoctorId");
 		List<Review> drReviewList  = reviewDao.getAllReviewsByDoctorId(doc.getId());
-		List<Appointment> apptList = appointmentDao.getAllAppointmentsByDoctorId(doc.getId());
+		List<Appointment> allApptList = appointmentDao.getAllAppointmentsByDoctorId(doc.getId());
 		List<LocalTime> apptTimes = new ArrayList<>();
 		Map<LocalTime,Appointment> appointmentMap = new HashMap<LocalTime,Appointment>();
+		
+		List<Appointment> apptList = new ArrayList<>();
+		
+		if(date!=null){
+			for(Appointment appt:allApptList){
+				if(date.equals(appt.getStartDate().toLocalDate())){
+					apptList.add(appt);
+				}
+			}
+		} else{
+			date = LocalDate.now();
+			for(Appointment appt:allApptList){
+				if(date.equals(appt.getStartDate().toLocalDate())){
+					apptList.add(appt);
+				}
+			}
+		}
 		
 		for(Appointment appt:apptList){
 			LocalTime start = appt.getStartDate().toLocalTime();
@@ -145,8 +166,7 @@ public class AuthenticationController {
 			appointmentMap.put(start, appt);
 		}
 		
-		Collections.sort(apptTimes);
-		
+		Collections.sort(apptTimes);		
 		request.setAttribute("map", appointmentMap);
 		request.setAttribute("agenda", agenda);
 		request.setAttribute("apptTimes", apptTimes);
@@ -154,13 +174,14 @@ public class AuthenticationController {
 		request.setAttribute("review", drReviewList);
 		return "providerView";
 	}
-	
-	@RequestMapping(path="/providerView", method=RequestMethod.POST)
-	public String updateProviderView(ModelMap model, HttpServletRequest request) {
 		
-		return "providerView";
+	@RequestMapping(path="/providerView", method=RequestMethod.POST)
+	public String updateFee(@RequestParam(required=false) String fee, @RequestParam int doctorId, HttpServletRequest request) {
+		LocalDate newDate = null;
+		if(fee!=null){
+			doctorDao.updateDoctorFee(fee, doctorId);
+		}
+		return "redirect:/providerView";
 	}
-	
-	
 	
 }
