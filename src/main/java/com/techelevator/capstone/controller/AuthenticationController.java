@@ -2,12 +2,15 @@ package com.techelevator.capstone.controller;
 
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 //import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -149,13 +152,18 @@ public class AuthenticationController {
 		request.setAttribute("review", drReviewList);
 		return "providerView";
 	}
-	
-	@RequestMapping(path="/providerView", method=RequestMethod.POST)
-	public String updateProviderView(ModelMap model, HttpServletRequest request) {
 		
-		return "providerView";
+	@RequestMapping(path="/providerView", method=RequestMethod.POST)
+	public String updateFee(@RequestParam(required=false) String fee, @RequestParam(required=false) String date, @RequestParam int doctorId) {
+		if(fee!=null){
+			doctorDao.updateDoctorFee(fee, doctorId);
+		}
+		if(date!=null){
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+			formatter = formatter.withLocale( Locale.US );  
+			LocalDate newDate = LocalDate.parse(date, formatter);
+		}
+		return "redirect:/providerView";
 	}
-	
-	
 	
 }

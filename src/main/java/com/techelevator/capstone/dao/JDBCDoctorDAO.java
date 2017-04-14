@@ -71,9 +71,16 @@ public class JDBCDoctorDAO implements DoctorDAO {
 	}
 	
 	@Override
-	public void updateDoctor(String name, String officeId, String fee, String hours, boolean admin) {
+	public void updateDoctor(String name, int officeId, String fee, String hours, boolean admin) {
 		jdbcTemplate.update("UPDATE doctor SET name = '"+name+"' office_id = '"+officeId+"' fee = '"+fee+"' hours = '"+hours+"' admin = '"+admin+"'");
-	
+	}
+
+	@Override
+	public void updateDoctorFee(String fee, int doctorId) {
+		String sqlUpdateDoctorFee = "UPDATE doctor " +
+			"SET fee = ? " +
+			"WHERE id = ?";
+	jdbcTemplate.update(sqlUpdateDoctorFee, fee, doctorId);
 	}
 
 	@Override

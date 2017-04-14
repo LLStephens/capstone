@@ -19,19 +19,19 @@
   }
   </script>
 
+<form method="POST" action="${providerView}">Date:
+    <input name="date" id="datepicker" />
+    <input type="hidden" name="doctorId" value="${doctor.id}">
+	<input type="submit" value="Submit">
+</form>
 
-<p>
-	Date: <input type="text" id="datepicker">
-</p>
-<label id="hoursLabel">Hourly Rate</label>
-<input id="hourstTxt" type="text">
-<br>
-<label id="hoursLabel">placeholder</label>
-<input id="hourstTxt" type="text">
+<form id="feeForm" class="forms" method="POST" action="${providerView}">
+Hourly Rate: <input id="feeLabel" type="text" name="fee">
+<input type="hidden" name="doctorId" value="${doctor.id}">
+<input type="submit" value="Submit">
+</form> 
 
-<%-- <c:url var ="providerViewrUrl" value="get()">
-	<c:param name="date" value="${providerViewUrl}"></c:param>
-</c:url> --%>
+
 
 <c:forEach var="appt" items="${apptTimes}">
 	<c:out value="${appt}" />
