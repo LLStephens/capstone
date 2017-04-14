@@ -12,7 +12,7 @@
 					
 					<form class="forms" method="POST" action="${writeReview}">
 						Comment:<br>
-						<div class="container-fluid">
+						<div class="container-fluid stars">
  							<textarea class="textBox" rows="4" cols="50" name="message"></textarea>
 						</div>
 						<legend id="legend">Please rate:</legend>
