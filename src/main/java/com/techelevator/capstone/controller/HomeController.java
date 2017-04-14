@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import com.gargoylesoftware.htmlunit.javascript.host.fetch.Request;
 import com.techelevator.capstone.dao.DoctorDAO;
 import com.techelevator.capstone.dao.OfficeDAO;
 import com.techelevator.capstone.dao.ReviewDAO;
-
+import com.techelevator.capstone.model.Appointment;
 import com.techelevator.capstone.model.Doctor;
 import com.techelevator.capstone.model.Office;
 import com.techelevator.capstone.model.Review;
@@ -73,7 +73,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(path="/doctorsAppointment", method=RequestMethod.GET)
-	public String showDoctorsSelectedAppointment(){
+	public String showDoctorsSelectedAppointment( HttpServletRequest request){
 		
 		return "/doctorsAppointment";
 	}

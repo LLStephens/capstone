@@ -5,7 +5,7 @@
 
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
+
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -70,17 +70,31 @@
 				<c:choose>
 				
 					<c:when test="${(!empty apptTimes[counter]) && agenda[index].equals(apptTimes[counter])}">
+					
 						<div class="col-xs-12 unavailable" id="doctorViewReview">
-							<c:out value = "${agenda[index]} unavailable"/>
+								<%-- <c:forEach var = "appt" items = "${apptObj}">		
+									<c:if test = "${appt.startTime.equals(apptTimes[counter])}">
+										<c:url var = "doctorsAppointment" value = "/doctorsAppointment"> 
+											<c:param name = "appt"  value = "${appt}"/>
+										</c:url>
+										
+									</c:if>	
+								</c:forEach>  
+							<form action = "${ doctorsAppointment }" method = "GET">	
+								<button type = "submit" class  = "unavailable" style = "width:100%; height:100%"><c:out value = "${agenda[index]} unavailable"/> </button>
+							</form>	 --%>
+							<c:out value = "${agenda[index]} unavailable"/>	
 						</div>
 						<c:set var="counter" value="${counter + 1}" />
 					</c:when>
 					
 					<c:otherwise>
-						<div class="col-xs-12 open" id="doctorViewReview">
-						<c:out value = "${agenda[index]} - open"/>
+						<div class="col-xs-12 " id="doctorViewReview">
+							<button class = "open" style = "width:100%; height:100%"  >
+								<c:out value = "${agenda[index]} - open"/>
+							</button> 
 						</div>
-						<c:out value = "${agenda[index]}"/>			
+								
 					</c:otherwise>
 					
 				</c:choose>

@@ -5,13 +5,17 @@
 
 <div >
 	
-	<h4>insert informtion about a selected appointment from schedulelelelelelel</h4>
-	<h4>appointments for patient with whatever fuckin ID</h4>
 	<div class = "col-xs-12" id = "doctorViewReview">
-		<p>9:00 - 9:30    Jane doe    blah blah blah </p>
-		<p>stuf stuff stuff </p>
-		<p>stuff stuff more stuff </p>
-		<p> kittens!</p>
+		<c:out value = "${appt.message}"/>
+	</div>
+	<div class = "col-xs-12" id = "doctorViewReview">
+		
+	</div>
+	<div class = "col-xs-12" id = "doctorViewReview">
+		
+	</div>
+	<div class = "col-xs-12" id = "doctorViewReview">
+		
 	</div>
 	
 </div>

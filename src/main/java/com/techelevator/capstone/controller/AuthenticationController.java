@@ -141,6 +141,8 @@ public class AuthenticationController {
 			apptTimes.add(start);
 		}
 		Collections.sort(apptTimes);
+		
+		request.setAttribute("apptObj", apptList);
 		request.setAttribute("agenda", agenda);
 		request.setAttribute("apptTimes", apptTimes);
 		request.setAttribute("doctor", doc);
