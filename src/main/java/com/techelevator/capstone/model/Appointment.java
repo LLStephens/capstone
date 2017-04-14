@@ -1,6 +1,7 @@
 package com.techelevator.capstone.model;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 
 public class Appointment {
@@ -10,6 +11,7 @@ public class Appointment {
 	private LocalDateTime startDate;
 	private LocalDateTime endDate;
 	private String message;
+	private LocalTime startTime;
 	
 	
 	public String getMessage() {
@@ -48,4 +50,14 @@ public class Appointment {
 	public void setEndDate(LocalDateTime endDate) {
 		this.endDate = endDate;
 	}
+	public LocalTime getStartTime() {
+		
+		return this.startTime;
+	}
+	public void setStartTime(LocalTime startTime) {
+		LocalTime start = startDate.toLocalTime();
+		this.startTime = start;
+	}
+	
+	
 }
