@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
-<p> hi </p>
+
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
@@ -28,15 +28,13 @@
 		value="Submit">
 </form>
 
-<<<<<<< HEAD
 <form id="feeForm" class="forms" method="POST" action="${patientView}">
 <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 	Hourly Rate: <input id="feeLabel" type="text" name="fee"> <input
 		type="hidden" name="doctorId" value="${doctor.id}"> <input
 		type="submit" value="Submit">
 </form>
-=======
->>>>>>> 3140c6ced2335c7d9ff4cab65fb33d74c4066137
+
 <br>
 
 <div class="container col-xs-12 col-sm-3 zeros alignmid">
