@@ -94,12 +94,11 @@
 							</c:url>
 							<a href="${leaveReviewUrl}">Write a Review</a>
 							
-							<br><c:url var ="calendarUrl" value="/patientView">
+							<br>
+							<c:url var ="patientView" value="/patientView">
 							<c:param name="doctorId" value="${doctor.id}"></c:param>
 							</c:url>
-							<a href="${calendarUrl}">View schedule</a>
-							
-							
+							<a href="${patientView}">View schedule</a>
 							
 					</div>
 				</div>

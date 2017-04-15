@@ -17,7 +17,9 @@
   function getDate() {
       document.getElementById("datepicker").val();
   }
-  </script>
+</script>
+
+<!-- calandar picker -->
 <c:url var="patientView" value="/patientView"/>
 <form method="GET" action="${patientView}">
 <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
@@ -26,32 +28,37 @@
 		value="Submit">
 </form>
 
+<<<<<<< HEAD
 <form id="feeForm" class="forms" method="POST" action="${patientView}">
 <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 	Hourly Rate: <input id="feeLabel" type="text" name="fee"> <input
 		type="hidden" name="doctorId" value="${doctor.id}"> <input
 		type="submit" value="Submit">
 </form>
+=======
+>>>>>>> 3140c6ced2335c7d9ff4cab65fb33d74c4066137
 <br>
+
 <div class="container col-xs-12 col-sm-3 zeros alignmid">
 	<div class="col-xs-12 " id="doctorSideBar">
 		<img style="width: 150px" class="doctorImg"
 			src="img/doctors/${doctor.id}.jpg" /><br>
-		<c:out value="Hello ${doctor.name}" />
+		<c:out value="Hello, I'm ${doctor.name}," />
+		<c:out value="I'm looking forward to meeting you!" />
 	</div>
 </div>
 
+<!-- this is the production of all the clickable schedule blocks -->
 <div class="ol-xs-12 col-sm-9 alignmid ">
-
-
 	<div class="col-xs-12 ">
 		<c:url var="appointment" value="/doctorsAppointment" />
 		<c:set var="counter" value="0" />
-
+		
 		<c:forEach var="index" begin="0" end="${fn:length(agenda)-1}">
 			<c:choose>
 			
 				<c:when test="${(!empty apptTimes[counter]) && agenda[index].equals(apptTimes[counter])}">
+
 					<c:url var="formAction" value="/doctorsAppointment">
 						<c:param name="id" value="${map.get(apptTimes[counter]).id}"></c:param>
 					</c:url>
@@ -61,18 +68,19 @@
 						<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 							<button type="submit" class="btn btn-default">
 								<c:out value="${apptTimes[counter]} - Scheduled"></c:out>
-							</button>
-							<input type="hidden" name="id" value="${map.get(apptTimes[counter]).id}" />
-						</form>
 
+					<div class="col-xs-12 unavailable">						
+							<button >
+								<c:out value="Booked"></c:out>
+
+							</button>
 					</div>
 					<c:set var="counter" value="${counter + 1}" />
 				</c:when>
 				
 				<c:otherwise>
 				
-					<c:url var="formAction2" value="/doctorScheduling">
-						<c:param name="id" value="${map.get(apptTimes[counter]).id}"></c:param>
+					<c:url var="formAction2" value="/patientScheduling">
 					</c:url>
 					
 					<div class="col-xs-12 " >
@@ -84,6 +92,7 @@
 						<input type="hidden" name="time" value = "${agenda[index]}"/>
 						<input type="hidden" name="id" value="${index}" />
 						<input type="hidden" name="date" value="${date}" />
+						<input type="hidden" name="doctorId" value="${doctor.id}" />
 					</form>
 						
 					</div>
@@ -92,30 +101,12 @@
 				
 			</c:choose>
 		</c:forEach>
-
-
+		
 	</div>
-</div>
-<div class="col-xs-12 alignmid">
-	<div>
-		<c:out value="Your reviews:" />
-	</div>
-
-	<div>
-		<c:forEach var="review" items="${review}">
-			<!-- 		 		<div class = "col-xs-12 col-sm-4 reviewColor" id = "doctorViewReview"> -->
-			<c:out value="${review.message}" />
-			<br>
-			<c:out value="${review.rating}" />
-			<br>
-			<!-- 				</div>			
- -->
-		</c:forEach>
-	</div>
-
 </div>
 
 
 </div> 
 
 <c:import url="/WEB-INF/jsp/footer.jsp" /> 
+

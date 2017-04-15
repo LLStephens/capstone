@@ -4,6 +4,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -26,11 +31,12 @@ import com.techelevator.capstone.dao.ReviewDAO;
 import com.techelevator.capstone.model.Appointment;
 import com.techelevator.capstone.model.Doctor;
 import com.techelevator.capstone.model.Patient;
+import com.techelevator.capstone.model.Review;
 
 
 @Controller
 @Scope("session")
-@SessionAttributes({"currentPatientId","currentDoctorId","currentDoctorId2"})
+@SessionAttributes({"currentPatientId","currentPatientId2","currentDoctorId","currentDoctorId2"})
 public class AppointmentController {
 		
 		@Autowired
@@ -90,6 +96,28 @@ public class AppointmentController {
 		return "doctorScheduling"; 
 		}
 		
+		@RequestMapping(path="/patientScheduling", method=RequestMethod.GET)
+		public String goToPatientSchedulingPage(@RequestParam String time, @RequestParam String date,@RequestParam int doctorId, @RequestParam int id, HttpServletRequest request, ModelMap model) {
+			
+			if (model.get("currentPatientId") != null){
+				request.setAttribute("time", time);
+				request.setAttribute("date", date);
+				request.setAttribute("id", id);
+				request.setAttribute("appointment", agenda);
+				request.setAttribute("doctorId", doctorId);
+				
+				
+				
+				return "patientScheduling"; 
+				
+			}else{
+				
+				return"register";
+			}
+			
+		
+		}
+		
 		@RequestMapping(path="/submitAppointment", method=RequestMethod.POST)
 		public String doctorSubmitAnAppointment(@RequestParam String time, @RequestParam String date, @RequestParam String message, HttpServletRequest request, ModelMap model) {
 			
@@ -110,6 +138,31 @@ public class AppointmentController {
 			
 			return "redirect:/providerView";
 		}
+		
+		@RequestMapping(path="/submitPatientAppointment", method=RequestMethod.POST)
+		public String patientSubmitAnAppointment(@RequestParam int doctorId, @RequestParam String time, @RequestParam String date, @RequestParam String message, HttpServletRequest request, ModelMap model) {
+			
+			Appointment appt = new Appointment();
+			int patientId = (int) model.get("currentPatientId2");
+			
+			appt.setDoctorId(doctorId);
+			appt.setMessage(message);
+			appt.setPatientId(patientId);
+			
+			String str = date + " " + time;
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+			LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
+			
+			appt.setEndDate(dateTime);
+			appt.setStartDate(dateTime);
+			
+			
+			appointmentDAO.createAppointment(appt);
+			
+			return "redirect:/";
+		}
+		
+		
 		
 		
 }
