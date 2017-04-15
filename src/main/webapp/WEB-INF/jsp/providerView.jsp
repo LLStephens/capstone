@@ -63,6 +63,7 @@
 					
 					<div class="col-xs-12 unavailable">
 						<form method="GET" action="${formAction}">
+						
 						<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 							<button type="submit" class="btn btn-default">
 								<c:out value="${apptTimes[counter]} - Scheduled"></c:out>

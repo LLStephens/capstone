@@ -27,14 +27,6 @@
 		name="doctorId" value="${doctor.id}"> <input type="submit"
 		value="Submit">
 </form>
-
-<form id="feeForm" class="forms" method="POST" action="${patientView}">
-<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
-	Hourly Rate: <input id="feeLabel" type="text" name="fee"> <input
-		type="hidden" name="doctorId" value="${doctor.id}"> <input
-		type="submit" value="Submit">
-</form>
-
 <br>
 
 <div class="container col-xs-12 col-sm-3 zeros alignmid">
@@ -57,22 +49,13 @@
 			
 				<c:when test="${(!empty apptTimes[counter]) && agenda[index].equals(apptTimes[counter])}">
 
-					<c:url var="formAction" value="/doctorsAppointment">
-						<c:param name="id" value="${map.get(apptTimes[counter]).id}"></c:param>
-					</c:url>
-					
-					<div class="col-xs-12 unavailable">
-						<form method="GET" action="${formAction}">
-						<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
-							<button type="submit" class="btn btn-default">
-								<c:out value="${apptTimes[counter]} - Scheduled"></c:out>
-
 					<div class="col-xs-12 unavailable">						
 							<button >
 								<c:out value="Booked"></c:out>
 
 							</button>
 					</div>
+					
 					<c:set var="counter" value="${counter + 1}" />
 				</c:when>
 				
@@ -104,7 +87,7 @@
 </div>
 
 
-</div> 
+
 
 <c:import url="/WEB-INF/jsp/footer.jsp" /> 
 

@@ -16,6 +16,7 @@
 			<c:url var="submitAppointment" value="/submitPatientAppointment"/>
 
 			<form method="POST" action="${submitAppointment}">
+				<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 				<div class="container-fluid stars">
  				<textarea class="textBox" rows="4" cols="50" name="message" id= "message" placeholder = "Please explain your purpose for are seeing the doctor." ></textarea>
  				<!-- 	<input type="text" id="message" name="message" placeHolder="Reason:" class="form-control" /> -->
