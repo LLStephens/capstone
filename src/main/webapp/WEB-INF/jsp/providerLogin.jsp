@@ -35,6 +35,7 @@ $(document).ready(function () {
 				<legend class = "white" id="legend">Healthcare Provider Login</legend>
 				<c:url var="formAction" value="/providerLogin" />
 				<form method="POST" action="${formAction}">
+				<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 					<div class="form-group white">
 						<label for="user_name">User Name: </label> <input type="text"
 							id="user_name" name="user_name" placeHolder="User Name"

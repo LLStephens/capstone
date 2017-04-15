@@ -50,11 +50,16 @@
 							
 					<c:choose>
 						<c:when test="${not empty currentPatientId}">
-							<li><form action="${logoutUrl}" method="POST"><input id ="logoutButton" type="submit" value="Log Out"></form></li>
+							<li><form action="${logoutUrl}" method="POST"><input id ="logoutButton" type="submit" value="Log Out">
+							<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
+							</form></li>
+							
 							<li><a id="zeros" class = "blackText" href="${home}">Home</a></li>
 						</c:when>
 						<c:when test="${not empty currentDoctorId}">
-							<li><form action="${logoutUrl}" method="POST"><input id ="logoutButton" type="submit" value="Log Out"></form></li>
+							<li><form action="${logoutUrl}" method="POST"><input id ="logoutButton" type="submit" value="Log Out">
+							<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
+							</form></li>
 						</c:when>
 						<c:otherwise>
 							<li><a id="zeros" class = "blackText" href="${home}">Home</a></li>

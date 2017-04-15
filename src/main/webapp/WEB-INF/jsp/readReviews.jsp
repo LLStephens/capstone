@@ -12,7 +12,7 @@
 						<legend id="legend">Reviews</legend>
 						<c:url var="readReview" value="/readReviews" />
 						<form class="forms" method="GET" action="${readReview}">
-						
+						<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 							<c:forEach var="review" items="${reviewList}">
 							<div class="col-sm-12 col-md-12 zeros">
 							<div class="countainer-fluid reviewLines">

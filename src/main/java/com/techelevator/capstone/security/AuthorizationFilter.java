@@ -12,6 +12,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gargoylesoftware.htmlunit.javascript.host.Console;
+
 public class AuthorizationFilter implements Filter {
 
 	@Override
@@ -53,17 +55,18 @@ public class AuthorizationFilter implements Filter {
 	}
 
 	private String getUserFromSession(HttpServletRequest httpRequest) {
-		return (String)httpRequest.getSession().getAttribute("currentUser");
+		return (String)httpRequest.getSession().getAttribute("currentDoctorId");
 	}
 
 	private String getUserFromRequest(HttpServletRequest httpRequest) {
 		String requestUser = null;
 		String[] path = httpRequest.getServletPath().split("/");
-		if(path.length >= 3) {
-			if(path[2].equals("new") == false) {
-				requestUser = path[2];
-			}
+		if(path.length >= 2) {
+//			if(path[2].equals("new") == false) {
+				requestUser = path[0];
+//			}
 		}
+
 		return requestUser;
 	}
 
