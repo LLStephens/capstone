@@ -5,14 +5,13 @@
 
 <div >
 
-<div class = "container-fluid">
-	<div class="container" id="doctorViewReview">
-		<c:out value="${appointment.startDate} - " />
-		<c:out value="${appointment.endDate}" />
-		<div class="col-xs-6" >
-			<c:out value="${appointment.patientId}" />
-		</div>
-		<div class="col-xs-6" id=>
+<div class = "container-fluid alignmid">
+	<div class="container col-xs-12" id="doctorViewReview">
+		<c:out value="${time}" /><br>
+		<div class="col-xs-12 alignmid" >
+			<c:out value="${patient.name} - ${patient.dateOfBirth}" />
+		</div><br>
+		<div class="col-xs-12" id=>
 			<c:out value="${appointment.message}" />
 		</div>
 	</div>

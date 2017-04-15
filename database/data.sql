@@ -34,6 +34,7 @@ INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_nam
 INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password) VALUES ('Michael Jordan', '08/05/1970', '58999 Basketball Road', '614-555-6868', 'mj@aol.com', 'Mjordan','12345ABCDE');
 INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password) VALUES ('Sue Moose', '05/04/1990', '600 Foreign Drive', '614-555-5533', 'sue@gmail.com', 'Smoose','12345ABCDE');
 INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password) VALUES ('Martha Stewart', '03/02/1970', '520 Prison Road', '614-555-6765', 'martha@yahoo.com', 'Mstewart','12345ABCDE');
+INSERT INTO patient (id, name, date_of_birth, address, phone_number, email, user_name, password) VALUES ('-1','Doctor Note', '04/04/1994', 'test', '614-555-4567', 'test', 'tes','12345ABCDe');
 
 INSERT INTO review (rating, doctor_id, message) VALUES (5, 1, 'Outstanding bed-side presence. Could not recommend enough');
 INSERT INTO review (rating, doctor_id, message) VALUES (4, 1, 'Very busy, but worth the wait');
@@ -66,10 +67,12 @@ INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) V
 INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 2, '2017-04-13T8:30', '2017-04-13T9:00', 'My finger hurts2');
 INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 3, '2017-04-13T9:00', '2017-04-13T9:30', 'My finger hurts3');
 INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 4, '2017-04-13T9:30', '2017-04-13T10:00', 'My finger hurts4');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 1, '2017-04-20T8:00', '2017-04-20T8:30', 'HAPPY BIRTHDAY LAURA!!');
 INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 5, '2017-04-13T10:00', '2017-04-13T10:30', 'My finger hurts5');
 INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 6, '2017-04-13T10:30', '2017-04-13T11:00', 'My finger hurts6');
 INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 7, '2017-04-13T14:30', '2017-04-13T15:00', 'My finger hurts6');
 INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 7, '2017-04-13T15:30', '2017-04-13T16:00', 'My finger hurts6');
 INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 7, '2017-04-13T11:30', '2017-04-13T12:00', 'My finger hurts6');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (2, 1, '2017-04-13T8:00', '2017-04-13T8:30', 'My finger hurts');
 
 COMMIT;

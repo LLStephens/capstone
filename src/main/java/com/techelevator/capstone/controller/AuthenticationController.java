@@ -38,7 +38,7 @@ import com.techelevator.capstone.dao.PatientDAO;
 
 @Controller
 @Scope("session")
-@SessionAttributes({"currentPatientId","currentDoctorId"})
+@SessionAttributes({"currentPatientId","currentDoctorId","currentDoctorId2"})
 public class AuthenticationController {
 	
 	private static final LocalTime eight = LocalTime.of(8, 00);
@@ -111,6 +111,7 @@ public class AuthenticationController {
 		session.invalidate();
 		model.remove("currentPatientId");
 		model.remove("currentDoctorId");
+		model.remove("currentDoctorId2");
 		return "redirect:/";
 	}
 	
@@ -126,6 +127,7 @@ public class AuthenticationController {
 			ModelMap model) {
 			if(doctorDao.searchDoctorForUsernameAndPassword(user_name, password)) {
 			model.put("currentDoctorId", doctorDao.getDoctorById(doctorDao.getDoctorIdByUsernameAndPassword(user_name, password)));
+			model.put("currentDoctorId2",(doctorDao.getDoctorIdByUsernameAndPassword(user_name, password)));
 			//if(destination != null && destination != "login") {
 			//	return "redirect:/" + destination;
 			//} else {
@@ -149,6 +151,7 @@ public class AuthenticationController {
 			for(Appointment appt:allApptList){
 				if(date.equals(appt.getStartDate().toLocalDate())){
 					apptList.add(appt);
+					
 				}
 			}
 		} else{
@@ -156,6 +159,7 @@ public class AuthenticationController {
 			for(Appointment appt:allApptList){
 				if(date.equals(appt.getStartDate().toLocalDate())){
 					apptList.add(appt);
+					
 				}
 			}
 		}
@@ -166,7 +170,8 @@ public class AuthenticationController {
 			appointmentMap.put(start, appt);
 		}
 		
-		Collections.sort(apptTimes);		
+		Collections.sort(apptTimes);	
+		request.setAttribute("date", date);
 		request.setAttribute("map", appointmentMap);
 		request.setAttribute("agenda", agenda);
 		request.setAttribute("apptTimes", apptTimes);
@@ -183,5 +188,7 @@ public class AuthenticationController {
 		}
 		return "redirect:/providerView";
 	}
+	
+	
 	
 }

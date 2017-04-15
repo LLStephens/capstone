@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
@@ -18,14 +18,14 @@
       document.getElementById("datepicker").val();
   }
   </script>
-<c:url var="providerView" value="/providerView"/>
-<form method="GET" action="${providerView}">
+<c:url var="patientView" value="/patientView"/>
+<form method="GET" action="${patientView}">
 	Select Date: <input name="date" id="datepicker" /> <input type="hidden"
 		name="doctorId" value="${doctor.id}"> <input type="submit"
 		value="Submit">
 </form>
 
-<form id="feeForm" class="forms" method="POST" action="${providerView}">
+<form id="feeForm" class="forms" method="POST" action="${patientView}">
 	Hourly Rate: <input id="feeLabel" type="text" name="fee"> <input
 		type="hidden" name="doctorId" value="${doctor.id}"> <input
 		type="submit" value="Submit">
@@ -114,4 +114,4 @@
 
 </div>
 
-<c:import url="/WEB-INF/jsp/footer.jsp" />
+<c:import url="/WEB-INF/jsp/footer.jsp" /> --%>
