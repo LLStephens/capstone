@@ -38,7 +38,7 @@ import com.techelevator.capstone.dao.PatientDAO;
 
 @Controller
 @Scope("session")
-@SessionAttributes({"currentPatientId","currentDoctorId","currentDoctorId2"})
+@SessionAttributes({"currentPatientId","currentPatientId2","currentDoctorId","currentDoctorId2"})
 public class AuthenticationController {
 	
 	private static final LocalTime eight = LocalTime.of(8, 00);
@@ -85,7 +85,8 @@ public class AuthenticationController {
 						ModelMap model) {
 		if(patientDao.searchForUsernameAndPassword(user_name, password)) {
 			model.put("currentPatientId", patientDao.getPatientById(patientDao.getIdByUsernameAndPassword(user_name, password)));
-//			if(destination != null && destination != "login") {
+			model.put("currentPatientId2",(patientDao.getIdByUsernameAndPassword(user_name, password)));
+			//			if(destination != null && destination != "login") {
 //				return "redirect:/" + destination;
 //			} else {
 			return "redirect:/";
@@ -179,6 +180,51 @@ public class AuthenticationController {
 		request.setAttribute("review", drReviewList);
 		return "providerView";
 	}
+	
+	@RequestMapping(path="/patientView", method=RequestMethod.GET)
+	public String displayPatientView(@DateTimeFormat(pattern="MM/dd/yyyy") @RequestParam(required=false) LocalDate date,@RequestParam int doctorId, ModelMap model, HttpServletRequest request) {
+		Doctor doc = doctorDao.getDoctorById(doctorId);	
+		List<Review> drReviewList  = reviewDao.getAllReviewsByDoctorId(doctorId);
+		List<Appointment> allApptList = appointmentDao.getAllAppointmentsByDoctorId(doctorId);
+		List<LocalTime> apptTimes = new ArrayList<>();
+		Map<LocalTime,Appointment> appointmentMap = new HashMap<LocalTime,Appointment>();
+		
+		List<Appointment> apptList = new ArrayList<>();
+		
+		if(date!=null){
+			for(Appointment appt:allApptList){
+				if(date.equals(appt.getStartDate().toLocalDate())){
+					apptList.add(appt);
+					
+				}
+			}
+		} else{
+			date = LocalDate.now();
+			for(Appointment appt:allApptList){
+				if(date.equals(appt.getStartDate().toLocalDate())){
+					apptList.add(appt);
+					
+				}
+			}
+		}
+		
+		for(Appointment appt:apptList){
+			LocalTime start = appt.getStartDate().toLocalTime();
+			apptTimes.add(start);
+			appointmentMap.put(start, appt);
+		}
+		
+		Collections.sort(apptTimes);	
+		request.setAttribute("date", date);
+		request.setAttribute("map", appointmentMap);
+		request.setAttribute("agenda", agenda);
+		request.setAttribute("apptTimes", apptTimes);
+		request.setAttribute("doctor", doc);
+		request.setAttribute("review", drReviewList);
+		return "patientView";
+	}
+	
+	
 		
 	@RequestMapping(path="/providerView", method=RequestMethod.POST)
 	public String updateFee(@RequestParam(required=false) String fee, @RequestParam int doctorId, HttpServletRequest request) {
