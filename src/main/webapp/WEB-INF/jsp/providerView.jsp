@@ -21,9 +21,9 @@
 <c:url var="providerView" value="/providerView" />
 <form method="GET" action="${providerView}">
 <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
-	Select Date: <input name="date" id="datepicker" /> <input
-		type="hidden" name="doctorId" value="${doctor.id}"> <input
-		type="submit" value="Submit">
+	Select Date: <input name="date" id="datepicker" /> 
+	<input type="hidden" name="doctorId" value="${doctor.id}"> 
+	<input type="submit" value="Submit">
 </form>
 
 <form id="feeForm" class="forms" method="POST" action="${providerView}">

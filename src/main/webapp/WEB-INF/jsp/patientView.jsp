@@ -1,8 +1,8 @@
-<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
-
+<p> hi </p>
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
@@ -20,12 +20,14 @@
   </script>
 <c:url var="patientView" value="/patientView"/>
 <form method="GET" action="${patientView}">
+<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 	Select Date: <input name="date" id="datepicker" /> <input type="hidden"
 		name="doctorId" value="${doctor.id}"> <input type="submit"
 		value="Submit">
 </form>
 
 <form id="feeForm" class="forms" method="POST" action="${patientView}">
+<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 	Hourly Rate: <input id="feeLabel" type="text" name="fee"> <input
 		type="hidden" name="doctorId" value="${doctor.id}"> <input
 		type="submit" value="Submit">
@@ -56,6 +58,7 @@
 					
 					<div class="col-xs-12 unavailable">
 						<form method="GET" action="${formAction}">
+						<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 							<button type="submit" class="btn btn-default">
 								<c:out value="${apptTimes[counter]} - Scheduled"></c:out>
 							</button>
@@ -74,6 +77,7 @@
 					
 					<div class="col-xs-12 " >
 					<form method="GET" action="${formAction2}">
+					<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 						<button class="open" style="width: 100%; height: 100%">
 							<c:out value="${agenda[index]} - open" />
 						</button>
@@ -112,6 +116,6 @@
 </div>
 
 
-</div>
+</div> 
 
-<c:import url="/WEB-INF/jsp/footer.jsp" /> --%>
+<c:import url="/WEB-INF/jsp/footer.jsp" /> 

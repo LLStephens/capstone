@@ -88,16 +88,18 @@
 							<c:param name="doctorId" value="${doctor.id}"></c:param>
 							</c:url>
 							<a id="readReviewButton" href="${readReviewUrl}">Read Reviews</a><br>
+							
 							<c:url var ="leaveReviewUrl" value="writeReview">
 							<c:param name="doctorId" value="${doctor.id}"></c:param>
 							</c:url>
 							<a href="${leaveReviewUrl}">Write a Review</a>
 							
-							<br><c:url var ="calendarUrl" value="/patientSchedule">
+							<br><c:url var ="calendarUrl" value="/patientView">
 							<c:param name="doctorId" value="${doctor.id}"></c:param>
 							</c:url>
 							<a href="${calendarUrl}">View schedule</a>
-							<a id="writeReviewButton" href="${leaveReviewUrl}">Write a Review</a>
+							
+							
 							
 					</div>
 				</div>

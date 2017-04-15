@@ -88,8 +88,8 @@ $(document).ready(function () {
 		<legend class = "white" id="legend">New Patient Registration</legend>
 		<c:url var="formAction" value="/register" />
 		<form id = "theorm" method="POST" action="${formAction}">
-		<%-- 	<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> --%>
-			<div class="row">
+		<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />			
+		<div class="row">
 				<div class="col-sm-2"></div>
 				<div class="col-sm-12">
 					<div class="form-group white col-md-4 col-sm-12">

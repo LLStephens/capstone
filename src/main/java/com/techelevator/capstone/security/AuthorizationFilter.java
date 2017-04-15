@@ -31,13 +31,13 @@ public class AuthorizationFilter implements Filter {
 		String sessionUser = getUserFromSession(httpRequest);
 		String requestUser = getUserFromRequest(httpRequest);
 		
-		if(requestUser != null && requestUser.equals(sessionUser) == false) {
-			if(sessionUser == null) {
-				redirectToLoginPage(httpRequest, httpResponse);
-			} else {
-				httpResponse.sendError(403);
-			}
-		}
+//		if(requestUser != null && requestUser.equals(sessionUser) == false) {
+//			if(sessionUser == null) {
+//				redirectToLoginPage(httpRequest, httpResponse);
+//			} else {
+//				httpResponse.sendError(400);
+//			}
+//		}
 		chain.doFilter(request, response);
 	}
 
@@ -51,11 +51,15 @@ public class AuthorizationFilter implements Filter {
 		}
 		
 		String context = httpRequest.getServletContext().getContextPath();
-		httpResponse.sendRedirect(context+"/login?destination="+URLEncoder.encode(originalRequest, "UTF-8"));
+//		httpResponse.sendRedirect(context+"/login?destination="+URLEncoder.encode(originalRequest, "UTF-8"));
+		httpResponse.sendRedirect(context+"/");
+
+	
 	}
 
 	private String getUserFromSession(HttpServletRequest httpRequest) {
-		return (String)httpRequest.getSession().getAttribute("currentDoctorId");
+//		return (String)httpRequest.getSession().getAttribute("currentDoctorId");
+		return null;
 	}
 
 	private String getUserFromRequest(HttpServletRequest httpRequest) {
@@ -67,7 +71,7 @@ public class AuthorizationFilter implements Filter {
 //			}
 		}
 
-		return requestUser;
+		return null;
 	}
 
 	@Override

@@ -75,9 +75,9 @@ public class HomeController {
 		return "redirect:/";
 	}
 
-	@RequestMapping("/calendar")
+	@RequestMapping(path = "/patientView", method=RequestMethod.GET)
 	public String showCalendar(HttpServletRequest request) {
-		return "calendar";
+		return "patientView";
 	}
 	
 	@RequestMapping(path="/changePassword", method=RequestMethod.GET)

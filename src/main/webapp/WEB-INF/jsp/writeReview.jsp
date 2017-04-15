@@ -12,7 +12,7 @@
 					
 					<form class="forms" method="POST" action="${writeReview}">
 						Comment:<br>
-						
+						<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 						<div class="container-fluid stars">
  							<textarea class="textBox" rows="4" cols="50" name="message"></textarea>
 						</div>
