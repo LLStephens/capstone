@@ -28,7 +28,7 @@ import com.techelevator.capstone.model.Review;
 
 @Controller
 @Scope("session")
-public class HomeController {
+public class HomeController { 
 	@Autowired
 	private OfficeDAO officeDAO;
 	@Autowired
@@ -73,14 +73,6 @@ public class HomeController {
 	public String sendReview(Review review) {
 		reviewDAO.addReview(review);
 		return "redirect:/";
-	}
-	
-	@RequestMapping(path="/doctorsAppointment", method=RequestMethod.GET)
-	public String showDoctorsSelectedAppointment(@RequestParam int id, HttpServletRequest request){
-		Appointment appointment  = appointmentDAO.getAppointmentById(id);
-		request.setAttribute("appointment", appointment);
-		
-		return "/doctorsAppointment";
 	}
 
 	@RequestMapping("/calendar")

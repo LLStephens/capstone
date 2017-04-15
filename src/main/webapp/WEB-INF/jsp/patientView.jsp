@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
@@ -18,16 +18,14 @@
       document.getElementById("datepicker").val();
   }
   </script>
-<c:url var="providerView" value="/providerView" />
-<form method="GET" action="${providerView}">
-<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
-	Select Date: <input name="date" id="datepicker" /> <input
-		type="hidden" name="doctorId" value="${doctor.id}"> <input
-		type="submit" value="Submit">
+<c:url var="patientView" value="/patientView"/>
+<form method="GET" action="${patientView}">
+	Select Date: <input name="date" id="datepicker" /> <input type="hidden"
+		name="doctorId" value="${doctor.id}"> <input type="submit"
+		value="Submit">
 </form>
 
-<form id="feeForm" class="forms" method="POST" action="${providerView}">
-<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
+<form id="feeForm" class="forms" method="POST" action="${patientView}">
 	Hourly Rate: <input id="feeLabel" type="text" name="fee"> <input
 		type="hidden" name="doctorId" value="${doctor.id}"> <input
 		type="submit" value="Submit">
@@ -38,11 +36,6 @@
 		<img style="width: 150px" class="doctorImg"
 			src="img/doctors/${doctor.id}.jpg" /><br>
 		<c:out value="Hello ${doctor.name}" />
-		<br>
-		<c:url var="changePasswordUrl" value="changePassword">
-			<c:param name="doctorId" value="${doctor.id}"></c:param>
-		</c:url>
-		<a id="changePassword" href="${changePasswordUrl}">Change Password</a>
 	</div>
 </div>
 
@@ -63,7 +56,6 @@
 					
 					<div class="col-xs-12 unavailable">
 						<form method="GET" action="${formAction}">
-						<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 							<button type="submit" class="btn btn-default">
 								<c:out value="${apptTimes[counter]} - Scheduled"></c:out>
 							</button>
@@ -122,4 +114,4 @@
 
 </div>
 
-<c:import url="/WEB-INF/jsp/footer.jsp" />
+<c:import url="/WEB-INF/jsp/footer.jsp" /> --%>

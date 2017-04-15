@@ -59,10 +59,10 @@ public class JDBCAppointmentDAO implements AppointmentDAO {
 
 	@Override
 	public Appointment createAppointment(Appointment appointment) {
-		Long id = getNextId();
+		Long id = getNextId(); 
 		
-		String sqlCreateAppointment = "INSERT INTO appointment(id, doctor_id, patient_id, start_date, end_date) VALUES (?,?,?,?,?)";
-		int rowsAffected = jdbcTemplate.update(sqlCreateAppointment, id, appointment.getDoctorId(), appointment.getPatientId(), appointment.getStartDate(), appointment.getEndDate());
+		String sqlCreateAppointment = "INSERT INTO appointment(id, doctor_id, patient_id, start_date, end_date, message) VALUES (?,?,?,?,?,?)";
+		int rowsAffected = jdbcTemplate.update(sqlCreateAppointment, id, appointment.getDoctorId(), appointment.getPatientId(), appointment.getStartDate(), appointment.getEndDate(),  appointment.getMessage());
 		
 		if(rowsAffected == 1) {
 			appointment.setId(id.intValue());

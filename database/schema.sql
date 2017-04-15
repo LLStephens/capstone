@@ -53,7 +53,7 @@ CREATE TABLE patient(
 CREATE TABLE appointment(
 	id serial NOT NULL,
 	doctor_id int NOT NULL,
-	patient_id int NOT NULL,
+	patient_id int,
 	start_date timestamp,
 	end_date timestamp,
 	message varchar(200),
