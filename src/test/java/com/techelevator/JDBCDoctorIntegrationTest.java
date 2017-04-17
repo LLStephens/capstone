@@ -42,6 +42,7 @@ public class JDBCDoctorIntegrationTest extends DAOIntegrationTest {
 		doctor.setEndTime(endTime);
 		doctor.setUser_name("drdoctor");
 		doctor.setPassword("12345ABCDe");
+		doctor.setEmail("doctor@doctor.com");
 		Doctor newDoctor = doctorDAO.addDoctor(doctor);
 		assert_doctors_are_equal(newDoctor, doctorDAO.getDoctorById(newDoctor.getId()));
 	}
@@ -54,6 +55,9 @@ public class JDBCDoctorIntegrationTest extends DAOIntegrationTest {
 		Assert.assertEquals("Hours should match", expectedDoctor.getStartTime(), actualDoctor.getStartTime());
 		Assert.assertEquals("Hours should match", expectedDoctor.getEndTime(), actualDoctor.getEndTime());
 		Assert.assertEquals("isAdmin should match", expectedDoctor.isAdmin(), actualDoctor.isAdmin());
+		Assert.assertEquals(expectedDoctor.getUser_name(), actualDoctor.getUser_name());
+		Assert.assertEquals(expectedDoctor.getPassword(), actualDoctor.getPassword());
+		Assert.assertEquals(expectedDoctor.getEmail(), actualDoctor.getEmail());
 	}
 	
 }
