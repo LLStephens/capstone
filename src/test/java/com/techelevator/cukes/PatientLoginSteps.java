@@ -1,6 +1,7 @@
 package com.techelevator.cukes;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -48,6 +49,7 @@ public class PatientLoginSteps {
 	@Then("I am back on the home page logged in$")
 	public void i_am_back_on_the_home_page_logged_in() throws Throwable {
 		String url = webDriver.getCurrentUrl();
-		Assert.assertTrue(url.equals("http://localhost:8080/capstone/"));
+		Assert.assertTrue(url.contains("currentPatientId"));
+		Assert.assertNotNull(webDriver.findElement(By.className("offices")));
 	}
 }

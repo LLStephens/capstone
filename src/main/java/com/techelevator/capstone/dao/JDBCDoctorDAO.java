@@ -107,6 +107,8 @@ public class JDBCDoctorDAO implements DoctorDAO {
 		doctor.setName(row.getString("name"));
 		doctor.setOfficeId(row.getInt("office_id"));
 		doctor.setEmail(row.getString("email"));
+		doctor.setUser_name(row.getString("user_name"));
+		doctor.setPassword(row.getString("password"));
 		return doctor;
 	}
 	
