@@ -38,8 +38,7 @@ CREATE TABLE review (
 	response varchar(500),
 	patient_id integer,
 	CONSTRAINT pk_review_id PRIMARY KEY (id),
-	CONSTRAINT fk_doctor_id FOREIGN KEY (doctor_id) REFERENCES doctor(id),
-	CONSTRAINT fk_patient_id FOREIGN KEY (patient_id) REFERENCES patient(id)
+	CONSTRAINT fk_doctor_id FOREIGN KEY (doctor_id) REFERENCES doctor(id)
 );
 
 CREATE TABLE patient(

@@ -54,13 +54,24 @@ public class JDBCReviewDAO implements ReviewDAO {
 		}
 		return null;
 	}
+	
+	@Override
+	public List<Review> getReviewsByPatientId(int patientId) {
+		List<Review> reviewsByPatientId = new ArrayList<>();
+		String sqlSelectAllReviewsByPatientId = "SELECT * FROM review WHERE doctor_id = patientId";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAllReviewsByPatientId, patientId);
+		while(results.next()) {
+			reviewsByPatientId.add(mapToRowToReview(results));
+		}
+		return reviewsByPatientId;
+	}
 
 	@Override
 	public Review addReview(Review review) {
 		Long id = getNextId();
 		
-		String sqlInsertReview = "INSERT INTO review(id, rating, doctor_id, message) VALUES (?,?,?,?)";
-		int rowsAffected = jdbcTemplate.update(sqlInsertReview, id, review.getRating(), review.getDoctorId(), review.getMessage());
+		String sqlInsertReview = "INSERT INTO review(id, rating, doctor_id, message, patient_id) VALUES (?,?,?,?,?)";
+		int rowsAffected = jdbcTemplate.update(sqlInsertReview, id, review.getRating(), review.getDoctorId(), review.getMessage(), review.getPatientId());
 		
 		if(rowsAffected == 1) {
 			review.setId(id.intValue());
@@ -104,6 +115,7 @@ public class JDBCReviewDAO implements ReviewDAO {
 		review.setDoctorId(row.getInt("doctor_id"));
 		review.setMessage(row.getString("message"));
 		review.setResponse(row.getString("response"));
+		review.setPatientId(row.getInt("patient_id"));
 		return review;
 	}
 	private Long getNextId() {
@@ -114,8 +126,6 @@ public class JDBCReviewDAO implements ReviewDAO {
 		} else {
 			throw new RuntimeException("Something went wrong while getting the next order id");
 		}
-	}
-
-	
+	}	
 	
 }
