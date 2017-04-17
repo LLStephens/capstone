@@ -290,4 +290,8 @@ body {
 #feeForm {
 	color: black;
 }
+
+.inputFieldTopBotMargins{
+	margin:15px 0px 15px 0px;
+}
 }
