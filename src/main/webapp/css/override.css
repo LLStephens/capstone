@@ -269,13 +269,15 @@ body{
 	border-bottom: 4px solid #222;	
 	color: white;
 }
-
-.unavailable{
+/* line 51 on patient and line 72 on provider */
+/* .unavailable{
 	background: #83d2f7;
-}
+} */
+/* line 64 on patient and line 91 on provider*/
 .open{
-	background: #f78396;
+	background: #2ea0b2;
 }
+
 .scheduled{
 	background: #b1f783;
 }
@@ -290,4 +292,49 @@ body {
 #feeForm {
 	color: black;
 }
+
+.btn {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background: none;
+    cursor: pointer;
+    padding: 25px 40px;
+    display: inline-block;
+     margin: 1px 1px; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    border-radius: 0; 
+    width: 50%;
+    height: 100%;
+    
+}
+
+.btn-3e {
+    padding: 15px 100px 15px 100px;
+    overflow: hidden;
+    
+}
+
+.btn-3 {
+    background: #999999;
+    color: #fff;
+    
+}
+
+.table tr td{
+	vertical-align: middle; 
+}
+/* 
+.blue{
+	background-color: #c7f0f1;
+} */
+
 }

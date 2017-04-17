@@ -5,19 +5,24 @@ import javax.mail.internet.*;
 import java.util.*;
 
 
-public class MailSender {
+public class MailSender extends Thread {
 	private static final String SENDER_EMAIL_ID = "neutralspacehealthcare@gmail.com";
 	private static final String SENDER_PASSWORD = "doctorNUmber1";
 	private static final String EMAIL_SMTP_SERVER = "smtp.gmail.com";
 	private static final String EMAIL_SERVER_PORT = "465";
-	private static String receiverEmailID = null;
-	public static String emailSubject = "Appointment confirmation from Neutralspace Personal Healthcare";
-	protected static String emailBody = null;
+	
+	private String receiverEmailID = null;
+	private String emailSubject = "Appointment confirmation from Neutralspace Personal Healthcare";
+	private String emailBody = null;
 
 	public MailSender(String receiverEmailID, String emailSubject, String emailBody) {
 		this.receiverEmailID = receiverEmailID;
 		this.emailSubject = emailSubject;
 		this.emailBody = emailBody;
+	}
+	
+	@Override
+	public void run() {
 		Properties props = new Properties();
 		props.put("mail.smtp.user", SENDER_EMAIL_ID);
 		props.put("mail.smtp.host", EMAIL_SMTP_SERVER);
@@ -27,7 +32,7 @@ public class MailSender {
 		props.put("mail.smtp.socketFactory.port", EMAIL_SERVER_PORT);
 		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		props.put("mail.smtp.socketFactory.fallback", "false");
-		SecurityManager security = System.getSecurityManager();
+
 		try {
 			Authenticator auth = new SMTPAuthenticator();
 			Session session = Session.getInstance(props, auth);

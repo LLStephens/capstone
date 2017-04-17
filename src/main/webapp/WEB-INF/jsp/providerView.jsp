@@ -1,5 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%>
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
 
@@ -10,41 +13,36 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
+	$(function() {
+		$("#datepicker").datepicker();
+		/*  $("#datepicker").datepicker({minDate: 0, maxDate: "+6m", beforeShowDay: $.datepicker.noWeekends}); */
+	});
 
-  function getDate() {
-      document.getElementById("datepicker").val();
-  }
-  </script>
-<c:url var="providerView" value="/providerView" />
-<form method="GET" action="${providerView}">
-	<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> Select
-	Date: <input name="date" id="datepicker" /> <input type="hidden"
-		name="doctorId" value="${doctor.id}"> <input type="submit"
-		value="Submit">
-</form>
+	function getDate() {
+		document.getElementById("datepicker").val();
+	}
+</script>
 
-<form id="feeForm" class="forms" method="POST" action="${providerView}">
-	<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> Hourly
-	Rate: <input id="feeLabel" type="text" name="fee"> <input
-		type="hidden" name="doctorId" value="${doctor.id}"> <input
-		type="submit" value="Submit">
-</form>
-<br>
 <div class="container col-xs-12 col-sm-3 zeros ">
 	<div class="col-xs-12 " id="doctorSideBar">
 		<img style="width: 150px" class="doctorImg"
-			src="img/doctors/${doctor.id}.jpg" /><br>
-		<c:out value="Hello ${doctor.name}" />
-		<br>
+			src="img/doctors/${doctor.id}.jpg" />
+		<h4>
+			<c:out value="Hello ${doctor.name}" />
+		</h4>
 		<c:url var="changePasswordUrl" value="changePassword">
 			<c:param name="doctorId" value="${doctor.id}"></c:param>
 		</c:url>
 		<a id="changePassword" href="${changePasswordUrl}">Change Password</a>
-	</div>
-	<div align="left">
+		<br>
+		<form id="feeForm" class="forms" method="POST"
+			action="${providerView}">
+			<br> <input type="hidden" name="CSRF_TOKEN"
+				value="${CSRF_TOKEN}" /> Set hourly rate: <input id="feeLabel"
+				type="text" name="fee"> <input type="hidden" name="doctorId"
+				value="${doctor.id}"> <input type="submit" value="Submit">
+		</form>
+		<br>
 		<h4>Reviews</h4>
 		<c:forEach var="review" items="${review}">
 			<c:out value="${review.rating}" /> - <c:out
@@ -56,76 +54,69 @@
 			<a href="${updateReviewUrl}">Respond</a>
 			<br>
 		</c:forEach>
+		<br>
+
 	</div>
 </div>
-
 <div class="ol-xs-12 col-sm-9 alignmid ">
-
-
 	<div class="col-xs-12 ">
+		<c:url var="providerView" value="/providerView" />
+		<form method="GET" action="${providerView}">
+			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
+			Select Date: <input name="date" id="datepicker" /> <input
+				type="hidden" name="doctorId" value="${doctor.id}"> <input
+				type="submit" value="Submit">
+		</form>
+		<br>
+		<h4>
+			Your agenda for:
+			<tags:localDate date="${date}" pattern="MM/dd/yyyy" />
+		</h4>
 		<c:url var="appointment" value="/doctorsAppointment" />
 		<c:set var="counter" value="0" />
-
 		<c:forEach var="index" begin="0" end="${fn:length(agenda)-1}">
 			<c:choose>
-
 				<c:when
 					test="${(!empty apptTimes[counter]) && agenda[index].equals(apptTimes[counter])}">
 					<c:url var="formAction" value="/doctorsAppointment">
 						<c:param name="id" value="${map.get(apptTimes[counter]).id}"></c:param>
 					</c:url>
-
-					<div class="col-xs-12 unavailable">
-						<form method="GET" action="${formAction}">
-
-							<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
-							<button type="submit" class="btn btn-default">
-								<c:out value="${apptTimes[counter]} - Scheduled"></c:out>
-							</button>
-							<input type="hidden" name="id"
-								value="${map.get(apptTimes[counter]).id}" />
-						</form>
-
-					</div>
+					<!-- class unavailable is here -->
+					<form method="GET" action="${formAction}">
+						<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
+						<button class="scheduled" style="width: 100%; height: 100%">
+							<c:out value="${apptTimes[counter]} - Scheduled"></c:out>
+						</button>
+						<input type="hidden" name="id"
+							value="${map.get(apptTimes[counter]).id}" />
+					</form>
 					<c:set var="counter" value="${counter + 1}" />
 				</c:when>
-
 				<c:otherwise>
-
 					<c:url var="formAction2" value="/doctorScheduling">
 						<c:param name="id" value="${map.get(apptTimes[counter]).id}"></c:param>
 					</c:url>
-
-					<div class="col-xs-12 ">
-						<form method="GET" action="${formAction2}">
-							<button class="open" style="width: 100%; height: 100%">
-								<c:out value="${agenda[index]} - open" />
-							</button>
-							<input type="hidden" name="time" value="${agenda[index]}" /> <input
-								type="hidden" name="id" value="${index}" /> <input
-								type="hidden" name="date" value="${date}" />
-						</form>
-
-					</div>
-
+					<form method="GET" action="${formAction2}">
+						<!-- class open is here -->
+						<!-- <table class="table">
+							<tbody>
+								<tr> -->
+								<!-- 	<td> -->
+									<tags:localTime time="${agenda[index]}" pattern="hh:mm a" />
+										<button class="btn btn-3 btn-3e icon-arrow-right">open</button>
+										<!-- </td> -->
+							<!-- 	</tr>
+							</tbody>
+						</table> -->
+						<input type="hidden" name="time" value="${agenda[index]}" /> <input
+							type="hidden" name="id" value="${index}" /> <input type="hidden"
+							name="date" value="${date}" />
+					</form>
 				</c:otherwise>
-
 			</c:choose>
 		</c:forEach>
-
-
 	</div>
 </div>
-<div class="col-xs-12 alignmid">
-	<div>
-		<c:out value="Your reviews:" />
-	</div>
 
-
-
-</div>
-
-
-</div>
 
 <c:import url="/WEB-INF/jsp/footer.jsp" />
