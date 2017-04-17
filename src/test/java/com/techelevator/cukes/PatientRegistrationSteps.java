@@ -1,6 +1,7 @@
 package com.techelevator.cukes;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -79,7 +80,8 @@ public class PatientRegistrationSteps {
 	@Then("^I am directed to the login page$")
 	public void i_am_directed_to_the_login_page() throws Throwable {
 		String url = webDriver.getCurrentUrl();
-		Assert.assertTrue(url.equals("http://localhost:8080/capstone/login"));
+		Assert.assertTrue(url.contains("login"));
+		Assert.assertNotNull(webDriver.findElement(By.className("loginBox")));
 	}
 	
 	
