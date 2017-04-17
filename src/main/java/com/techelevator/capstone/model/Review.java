@@ -5,7 +5,22 @@ public class Review {
 	private int rating;
 	private int doctorId;
 	private String message;
+	private String response;
+	private int patientId;
 	
+	
+	public int getPatientId() {
+		return patientId;
+	}
+	public void setPatientId(int patientId) {
+		this.patientId = patientId;
+	}
+	public String getResponse() {
+		return response;
+	}
+	public void setResponse(String response) {
+		this.response = response;
+	}
 	public int getId() {
 		return id;
 	}

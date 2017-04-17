@@ -25,6 +25,7 @@ CREATE TABLE doctor (
 	admin boolean NOT NULL,
 	user_name varchar(30) NOT NULL,
 	password varchar (30) NOT NULL,
+	email varchar(30) NOT NULL,
 	CONSTRAINT pk_doctor_id PRIMARY KEY (id),
 	CONSTRAINT fk_office_id FOREIGN KEY (office_id) REFERENCES office(id)
 );
@@ -34,6 +35,8 @@ CREATE TABLE review (
 	rating integer NOT NULL,
 	doctor_id integer NOT NULL,
 	message varchar(500) NOT NULL,
+	response varchar(500),
+	patient_id integer,
 	CONSTRAINT pk_review_id PRIMARY KEY (id),
 	CONSTRAINT fk_doctor_id FOREIGN KEY (doctor_id) REFERENCES doctor(id)
 );

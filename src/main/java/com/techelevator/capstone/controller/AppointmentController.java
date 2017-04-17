@@ -1,28 +1,29 @@
 package com.techelevator.capstone.controller;
 
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.format.FormatStyle;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.format.datetime.joda.LocalDateTimeParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
-import com.gargoylesoftware.htmlunit.javascript.host.intl.DateTimeFormat;
+import com.techelevator.capstone.MailSender;
+import com.techelevator.capstone.Notification;
 import com.techelevator.capstone.dao.AppointmentDAO;
 import com.techelevator.capstone.dao.DoctorDAO;
 import com.techelevator.capstone.dao.OfficeDAO;
@@ -31,7 +32,7 @@ import com.techelevator.capstone.dao.ReviewDAO;
 import com.techelevator.capstone.model.Appointment;
 import com.techelevator.capstone.model.Doctor;
 import com.techelevator.capstone.model.Patient;
-import com.techelevator.capstone.model.Review;
+
 
 
 @Controller
@@ -106,8 +107,6 @@ public class AppointmentController {
 				request.setAttribute("appointment", agenda);
 				request.setAttribute("doctorId", doctorId);
 				
-				
-				
 				return "patientScheduling"; 
 				
 			}else{
@@ -120,21 +119,21 @@ public class AppointmentController {
 		
 		@RequestMapping(path="/submitAppointment", method=RequestMethod.POST)
 		public String doctorSubmitAnAppointment(@RequestParam String time, @RequestParam String date, @RequestParam String message, HttpServletRequest request, ModelMap model) {
-			
-			Appointment appt = new Appointment();
-			int doc = (int) model.get("currentDoctorId2");
-			System.out.println(doc);
-			appt.setDoctorId(doc);
-			appt.setMessage(message);
-			appt.setPatientId(-1);
 			String str = date + " " + time;
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 			LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
-			appt.setEndDate(dateTime);
-			appt.setStartDate(dateTime);
-			
-			
-			appointmentDAO.createAppointment(appt);
+			LocalDateTime now = LocalDateTime.now();
+
+				Appointment appt = new Appointment();
+				int doc = (int) model.get("currentDoctorId2");
+				appt.setDoctorId(doc);
+				appt.setMessage(message);
+				appt.setPatientId(-1);
+				
+				appt.setEndDate(dateTime);
+				appt.setStartDate(dateTime);
+							
+				appointmentDAO.createAppointment(appt);
 			
 			return "redirect:/providerView";
 		}
@@ -156,9 +155,15 @@ public class AppointmentController {
 			appt.setEndDate(dateTime);
 			appt.setStartDate(dateTime);
 			
+			Appointment newAppt = appointmentDAO.createAppointment(appt);
+			Patient patient = patientDAO.getPatientById(patientId);
+			Doctor doctor = doctorDAO.getDoctorById(doctorId);
+			String patientEmail = patient.getEmail();
+			String doctorEmail = doctor.getEmail();
 			
-			appointmentDAO.createAppointment(appt);
-			
+			Notification note = new Notification(newAppt);
+			MailSender sendMailPatient = new MailSender(patientEmail, MailSender.emailSubject, note.makePatientEmailBody());
+			MailSender sendMailDoctor = new MailSender(doctorEmail, "An appointment has been booked", note.makeDoctorEmailBody());
 			return "redirect:/";
 		}
 		

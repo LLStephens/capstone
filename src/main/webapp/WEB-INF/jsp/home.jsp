@@ -28,7 +28,8 @@
 					<a href="${detail}"><c:out value="${office.name}" /> </a>
 				</h4>
 				<p>
-					<c:out value="${office.address}" />
+					<c:out value="${office.address}" /><br>
+					<c:out value="${office.phoneNumber}" />
 				</p>
 			</div>
 			</div>

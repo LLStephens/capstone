@@ -59,8 +59,8 @@ public class JDBCDoctorDAO implements DoctorDAO {
 	public Doctor addDoctor(Doctor doctor) {
 		Long id = getNextId();
 		
-		String sqlInsertDoctor = "INSERT INTO doctor(id, name, office_id, fee, start_time, end_time, admin, user_name, password) VALUES (?,?,?,?,?,?,?,?,?)";
-		int rowsAffected = jdbcTemplate.update(sqlInsertDoctor, id, doctor.getName(), doctor.getOfficeId(), doctor.getFee(), doctor.getStartTime(), doctor.getEndTime(), doctor.isAdmin(), doctor.getUser_name(), doctor.getPassword());
+		String sqlInsertDoctor = "INSERT INTO doctor(id, name, office_id, fee, start_time, end_time, admin, user_name, password, email) VALUES (?,?,?,?,?,?,?,?,?,?)";
+		int rowsAffected = jdbcTemplate.update(sqlInsertDoctor, id, doctor.getName(), doctor.getOfficeId(), doctor.getFee(), doctor.getStartTime(), doctor.getEndTime(), doctor.isAdmin(), doctor.getUser_name(), doctor.getPassword(), doctor.getEmail());
 		
 		if(rowsAffected == 1) {
 			doctor.setId(id.intValue());
@@ -71,8 +71,8 @@ public class JDBCDoctorDAO implements DoctorDAO {
 	}
 	
 	@Override
-	public void updateDoctor(String name, int officeId, String fee, String hours, boolean admin) {
-		jdbcTemplate.update("UPDATE doctor SET name = '"+name+"' office_id = '"+officeId+"' fee = '"+fee+"' hours = '"+hours+"' admin = '"+admin+"'");
+	public void updateDoctor(String name, int officeId, String fee, String hours, boolean admin, String email) {
+		jdbcTemplate.update("UPDATE doctor SET name = '"+name+"' office_id = '"+officeId+"' fee = '"+fee+"' hours = '"+hours+"' admin = '"+admin+"'email = '"+email+"'");
 	}
 
 	@Override
@@ -106,6 +106,9 @@ public class JDBCDoctorDAO implements DoctorDAO {
 		doctor.setEndTime(row.getTime("end_time").toLocalTime());
 		doctor.setName(row.getString("name"));
 		doctor.setOfficeId(row.getInt("office_id"));
+		doctor.setEmail(row.getString("email"));
+		doctor.setUser_name(row.getString("user_name"));
+		doctor.setPassword(row.getString("password"));
 		return doctor;
 	}
 	
@@ -143,6 +146,7 @@ public class JDBCDoctorDAO implements DoctorDAO {
 
 		return jdbcTemplate.queryForRowSet(sqlSearchForDoctor).next();
 	}
+
 
 
 	

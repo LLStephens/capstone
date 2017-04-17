@@ -10,5 +10,7 @@ public interface ReviewDAO {
 	public void deleteReview(int reviewId);
 	public Review addReview(Review review);
 	public Review getReviewById(int id);
+	public List<Review> getReviewsByPatientId(int patientId);
 	public List<Review> getAllReviews();
+	public Review addReviewResponse(int reviewId, String response);
 }

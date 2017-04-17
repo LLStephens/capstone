@@ -1,7 +1,5 @@
 package com.techelevator.capstone.controller;
 
-
-
 import java.time.LocalTime;
 import java.util.List;
 
@@ -14,6 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.gargoylesoftware.htmlunit.javascript.host.fetch.Request;
 import com.techelevator.capstone.dao.AppointmentDAO;
@@ -23,11 +22,13 @@ import com.techelevator.capstone.dao.ReviewDAO;
 import com.techelevator.capstone.model.Appointment;
 import com.techelevator.capstone.model.Doctor;
 import com.techelevator.capstone.model.Office;
+import com.techelevator.capstone.model.Patient;
 import com.techelevator.capstone.model.Review;
 
 
 @Controller
 @Scope("session")
+@SessionAttributes({"currentPatientId","currentPatientId2","currentDoctorId","currentDoctorId2"})
 public class HomeController { 
 	@Autowired
 	private OfficeDAO officeDAO;
@@ -64,7 +65,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping(path="/writeReview", method=RequestMethod.GET)
-	public String inputReview(@RequestParam int doctorId, HttpServletRequest request) {
+	public String inputReview(@RequestParam int doctorId, ModelMap model, HttpServletRequest request) {
+
+		if(model.get("currentPatientId") == null ){
+			request.setAttribute("patientId",-1);
+		}else{
+			Patient tempPatient = (Patient) model.get("currentPatientId");
+			request.setAttribute("patientId", tempPatient.getId());
+		}
 		return "writeReview";
 	}
 
@@ -74,6 +82,20 @@ public class HomeController {
 		reviewDAO.addReview(review);
 		return "redirect:/";
 	}
+
+	@RequestMapping(path="/updateReview", method=RequestMethod.GET)
+	public String respondToReview(@RequestParam int doctorId, @RequestParam int reviewId, HttpServletRequest request) {
+		return "updateReview";
+	}
+
+	
+	@RequestMapping(path="/updateReview", method=RequestMethod.POST)
+	public String updatedReview(@RequestParam String response, @RequestParam int reviewId, HttpServletRequest request) {
+		reviewDAO.addReviewResponse(reviewId, response);
+		return "redirect:/";
+	}
+	
+	
 
 	@RequestMapping(path="/changePassword", method=RequestMethod.GET)
 	public String changePassword(@RequestParam int doctorId, HttpServletRequest request) {

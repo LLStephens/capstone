@@ -11,7 +11,8 @@
 
 <script>
   $( function() {
-    $( "#datepicker" ).datepicker();
+    /* $( "#datepicker" ).datepicker(); */
+    $("#datepicker").datepicker({minDate: 0, maxDate: "+6m", beforeShowDay: $.datepicker.noWeekends});
   } );
 
   function getDate() {
@@ -19,7 +20,7 @@
   }
 </script>
 
-<!-- calandar picker -->
+<!-- calendar picker -->
 <c:url var="patientView" value="/patientView"/>
 <form method="GET" action="${patientView}">
 <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
@@ -45,6 +46,7 @@
 		<c:set var="counter" value="0" />
 		
 		<c:forEach var="index" begin="0" end="${fn:length(agenda)-1}">
+			
 			<c:choose>
 			
 				<c:when test="${(!empty apptTimes[counter]) && agenda[index].equals(apptTimes[counter])}">

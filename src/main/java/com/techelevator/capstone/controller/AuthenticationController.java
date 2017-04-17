@@ -36,9 +36,9 @@ import com.techelevator.capstone.dao.PatientDAO;
 
 @Controller
 @Scope("session")
-@SessionAttributes({"currentPatientId","currentPatientId2","currentDoctorId","currentDoctorId2"})
+@SessionAttributes({ "currentPatientId", "currentPatientId2", "currentDoctorId", "currentDoctorId2" })
 public class AuthenticationController {
-	
+
 	private static final LocalTime eight = LocalTime.of(8, 00);
 	private static final LocalTime eightThirty = LocalTime.of(8, 30);
 	private static final LocalTime nine = LocalTime.of(9, 00);
@@ -57,119 +57,119 @@ public class AuthenticationController {
 	private static final LocalTime threeThirty = LocalTime.of(15, 30);
 	private static final LocalTime four = LocalTime.of(16, 00);
 	private static final LocalTime fourThirty = LocalTime.of(16, 30);
-	private LocalTime[] agenda = {eight, eightThirty, nine, nineThirty, ten, tenThirty, eleven, elevenThirty, noon, noonThirty, one, oneThirty, two, twoThirty, three, threeThirty, four, fourThirty};
-
+	private LocalTime[] agenda = { eight, eightThirty, nine, nineThirty, ten, tenThirty, eleven, elevenThirty, noon,
+			noonThirty, one, oneThirty, two, twoThirty, three, threeThirty, four, fourThirty };
 
 	@Autowired
 	private PatientDAO patientDao;
 	@Autowired
-	private	DoctorDAO doctorDao;
+	private DoctorDAO doctorDao;
 	@Autowired
-	private	ReviewDAO reviewDao;
+	private ReviewDAO reviewDao;
 	@Autowired
-	private	AppointmentDAO appointmentDao;
+	private AppointmentDAO appointmentDao;
 
-	
-	
-	@RequestMapping(path="/login", method=RequestMethod.GET)
+	@RequestMapping(path = "/login", method = RequestMethod.GET)
 	public String displayLogin() {
 		return "login";
 	}
-	
-	@RequestMapping(path="/login", method=RequestMethod.POST)
-	public String login(@RequestParam String user_name, 
-						@RequestParam String password,
-						@RequestParam(required=false) String destination,
-						ModelMap model) {
-		if(patientDao.searchForUsernameAndPassword(user_name, password)) {
-			model.put("currentPatientId", patientDao.getPatientById(patientDao.getIdByUsernameAndPassword(user_name, password)));
-			model.put("currentPatientId2",(patientDao.getIdByUsernameAndPassword(user_name, password)));
-			//			if(destination != null && destination != "login") {
-//				return "redirect:/" + destination;
-//			} else {
+
+	@RequestMapping(path = "/login", method = RequestMethod.POST)
+	public String login(@RequestParam String user_name, @RequestParam String password,
+			@RequestParam(required = false) String destination, ModelMap model) {
+		if (patientDao.searchForUsernameAndPassword(user_name, password)) {
+			model.put("currentPatientId",
+					patientDao.getPatientById(patientDao.getIdByUsernameAndPassword(user_name, password)));
+			model.put("currentPatientId2", (patientDao.getIdByUsernameAndPassword(user_name, password)));
+
 			return "redirect:/";
-//			}
+
 		} else {
 			return "redirect:/login";
 		}
 	}
-	
-	@RequestMapping(path="/register", method=RequestMethod.GET)
+
+	@RequestMapping(path = "/register", method = RequestMethod.GET)
 	public String displayRegister() {
 		return "register";
 	}
-	
-	@RequestMapping(path="/register", method=RequestMethod.POST)
-	public String createUser(@RequestParam String name, @RequestParam String date_of_birth,@RequestParam String address,@RequestParam String phone_number,@RequestParam String email,@RequestParam String user_name,@RequestParam String password) {
+
+	@RequestMapping(path = "/register", method = RequestMethod.POST)
+	public String createUser(@RequestParam String name, @RequestParam String date_of_birth,
+			@RequestParam String address, @RequestParam String phone_number, @RequestParam String email,
+			@RequestParam String user_name, @RequestParam String password) {
 		patientDao.savePatient(name, date_of_birth, address, phone_number, email, user_name, password);
 		return "redirect:/login";
 	}
-	
-	@RequestMapping(path="/logout", method=RequestMethod.POST)
+
+	@RequestMapping(path = "/logout", method = RequestMethod.POST)
 	public String logout(ModelMap model, HttpSession session) {
 		session.invalidate();
 		model.remove("currentPatientId");
+		model.remove("currentPatientId2");
 		model.remove("currentDoctorId");
 		model.remove("currentDoctorId2");
 		return "redirect:/";
 	}
-	
-	@RequestMapping(path="/providerLogin", method=RequestMethod.GET)
+
+	@RequestMapping(path = "/providerLogin", method = RequestMethod.GET)
 	public String displyProviderLogin() {
 		return "providerLogin";
 	}
-	
-	@RequestMapping(path="/providerLogin", method=RequestMethod.POST)
-	public String ProviderLogin(@RequestParam String user_name, 
-			@RequestParam String password,
-			@RequestParam(required=false) String destination,
-			ModelMap model) {
-			if(doctorDao.searchDoctorForUsernameAndPassword(user_name, password)) {
-			model.put("currentDoctorId", doctorDao.getDoctorById(doctorDao.getDoctorIdByUsernameAndPassword(user_name, password)));
-			model.put("currentDoctorId2",(doctorDao.getDoctorIdByUsernameAndPassword(user_name, password)));
-			//if(destination != null && destination != "login") {
-			//	return "redirect:/" + destination;
-			//} else {
+
+	@RequestMapping(path = "/providerLogin", method = RequestMethod.POST)
+	public String ProviderLogin(@RequestParam String user_name, @RequestParam String password,
+			@RequestParam(required = false) String destination, ModelMap model) {
+		if (doctorDao.searchDoctorForUsernameAndPassword(user_name, password)) {
+			model.put("currentDoctorId",
+					doctorDao.getDoctorById(doctorDao.getDoctorIdByUsernameAndPassword(user_name, password)));
+			model.put("currentDoctorId2", (doctorDao.getDoctorIdByUsernameAndPassword(user_name, password)));
+			// if(destination != null && destination != "login") {
+			// return "redirect:/" + destination;
+			// } else {
 			return "redirect:/providerView";
-			//}s
-			} else {
+			// }s
+		} else {
 			return "redirect:/providerLogin";
-			}
+		}
 	}
-	@RequestMapping(path="/providerView", method=RequestMethod.GET)
-	public String displayProviderView(@DateTimeFormat(pattern="MM/dd/yyyy") @RequestParam(required=false) LocalDate date, ModelMap model, HttpServletRequest request) {
+
+	@RequestMapping(path = "/providerView", method = RequestMethod.GET)
+	public String displayProviderView(
+			@DateTimeFormat(pattern = "MM/dd/yyyy") @RequestParam(required = false) LocalDate date, ModelMap model,
+			HttpServletRequest request) {
 		Doctor doc = (Doctor) model.get("currentDoctorId");
-		List<Review> drReviewList  = reviewDao.getAllReviewsByDoctorId(doc.getId());
+		List<Review> drReviewList = reviewDao.getAllReviewsByDoctorId(doc.getId());
 		List<Appointment> allApptList = appointmentDao.getAllAppointmentsByDoctorId(doc.getId());
 		List<LocalTime> apptTimes = new ArrayList<>();
-		Map<LocalTime,Appointment> appointmentMap = new HashMap<LocalTime,Appointment>();
-		
+		Map<LocalTime, Appointment> appointmentMap = new HashMap<LocalTime, Appointment>();
+
 		List<Appointment> apptList = new ArrayList<>();
-		
-		if(date!=null){
-			for(Appointment appt:allApptList){
-				if(date.equals(appt.getStartDate().toLocalDate())){
+
+		if (date != null) {
+			for (Appointment appt : allApptList) {
+				if (date.equals(appt.getStartDate().toLocalDate())) {
 					apptList.add(appt);
-					
+
 				}
 			}
-		} else{
+		} else {
 			date = LocalDate.now();
-			for(Appointment appt:allApptList){
-				if(date.equals(appt.getStartDate().toLocalDate())){
+			for (Appointment appt : allApptList) {
+				if (date.equals(appt.getStartDate().toLocalDate())) {
 					apptList.add(appt);
-					
+
 				}
 			}
 		}
-		
-		for(Appointment appt:apptList){
+
+		for (Appointment appt : apptList) {
 			LocalTime start = appt.getStartDate().toLocalTime();
 			apptTimes.add(start);
 			appointmentMap.put(start, appt);
 		}
-		
-		Collections.sort(apptTimes);	
+
+		Collections.sort(apptTimes);
 		request.setAttribute("date", date);
 		request.setAttribute("map", appointmentMap);
 		request.setAttribute("agenda", agenda);
@@ -178,41 +178,43 @@ public class AuthenticationController {
 		request.setAttribute("review", drReviewList);
 		return "providerView";
 	}
-	
-	@RequestMapping(path="/patientView", method=RequestMethod.GET)
-	public String displayPatientView(@DateTimeFormat(pattern="MM/dd/yyyy") @RequestParam(required=false) LocalDate date,@RequestParam int doctorId, ModelMap model, HttpServletRequest request) {
-		Doctor doc = doctorDao.getDoctorById(doctorId);	
-		List<Review> drReviewList  = reviewDao.getAllReviewsByDoctorId(doctorId);
+
+	@RequestMapping(path = "/patientView", method = RequestMethod.GET)
+	public String displayPatientView(
+			@DateTimeFormat(pattern = "MM/dd/yyyy") @RequestParam(required = false) LocalDate date,
+			@RequestParam int doctorId, ModelMap model, HttpServletRequest request) {
+		Doctor doc = doctorDao.getDoctorById(doctorId);
+		List<Review> drReviewList = reviewDao.getAllReviewsByDoctorId(doctorId);
 		List<Appointment> allApptList = appointmentDao.getAllAppointmentsByDoctorId(doctorId);
 		List<LocalTime> apptTimes = new ArrayList<>();
-		Map<LocalTime,Appointment> appointmentMap = new HashMap<LocalTime,Appointment>();
-		
+		Map<LocalTime, Appointment> appointmentMap = new HashMap<LocalTime, Appointment>();
+
 		List<Appointment> apptList = new ArrayList<>();
-		
-		if(date!=null){
-			for(Appointment appt:allApptList){
-				if(date.equals(appt.getStartDate().toLocalDate())){
+
+		if (date != null) {
+			for (Appointment appt : allApptList) {
+				if (date.equals(appt.getStartDate().toLocalDate())) {
 					apptList.add(appt);
-					
+
 				}
 			}
-		} else{
+		} else {
 			date = LocalDate.now();
-			for(Appointment appt:allApptList){
-				if(date.equals(appt.getStartDate().toLocalDate())){
+			for (Appointment appt : allApptList) {
+				if (date.equals(appt.getStartDate().toLocalDate())) {
 					apptList.add(appt);
-					
+
 				}
 			}
 		}
-		
-		for(Appointment appt:apptList){
+
+		for (Appointment appt : apptList) {
 			LocalTime start = appt.getStartDate().toLocalTime();
 			apptTimes.add(start);
 			appointmentMap.put(start, appt);
 		}
-		
-		Collections.sort(apptTimes);	
+
+		Collections.sort(apptTimes);
 		request.setAttribute("date", date);
 		request.setAttribute("map", appointmentMap);
 		request.setAttribute("agenda", agenda);
@@ -221,18 +223,15 @@ public class AuthenticationController {
 		request.setAttribute("review", drReviewList);
 		return "patientView";
 	}
-	
-	
-		
-	@RequestMapping(path="/providerView", method=RequestMethod.POST)
-	public String updateFee(@RequestParam(required=false) String fee, @RequestParam int doctorId, HttpServletRequest request) {
+
+	@RequestMapping(path = "/providerView", method = RequestMethod.POST)
+	public String updateFee(@RequestParam(required = false) String fee, @RequestParam int doctorId,
+			HttpServletRequest request) {
 		LocalDate newDate = null;
-		if(fee!=null){
+		if (fee != null) {
 			doctorDao.updateDoctorFee(fee, doctorId);
 		}
 		return "redirect:/providerView";
 	}
-	
-	
-	
+
 }

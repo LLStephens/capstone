@@ -66,6 +66,12 @@
 							
 								</div>
 						<c:out value="${review.message}" /><br>
+						<c:if test="${not empty review.response}">
+							Reply from the doctor: <c:out value="${review.response}" /><br>
+						</c:if>
+						<c:if test="${review.patientId > 0}">
+							 <c:out value="This is a verified review" /><br>
+						</c:if>
 							</div>
 							</div>
 							</c:forEach>
