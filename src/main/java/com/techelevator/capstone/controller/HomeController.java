@@ -22,6 +22,7 @@ import com.techelevator.capstone.dao.ReviewDAO;
 import com.techelevator.capstone.model.Appointment;
 import com.techelevator.capstone.model.Doctor;
 import com.techelevator.capstone.model.Office;
+import com.techelevator.capstone.model.Patient;
 import com.techelevator.capstone.model.Review;
 
 
@@ -64,8 +65,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping(path="/writeReview", method=RequestMethod.GET)
-	public String inputReview(@RequestParam int doctorId, @RequestParam ModelMap model, HttpServletRequest request) {
-		request.setAttribute("patientId", model.get("currentPatientId2"));
+	public String inputReview(@RequestParam int doctorId, ModelMap model, HttpServletRequest request) {
+
+		if(model.get("currentPatientId") == null ){
+			request.setAttribute("patientId",-1);
+		}else{
+			Patient tempPatient = (Patient) model.get("currentPatientId");
+			request.setAttribute("patientId", tempPatient.getId());
+		}
 		return "writeReview";
 	}
 

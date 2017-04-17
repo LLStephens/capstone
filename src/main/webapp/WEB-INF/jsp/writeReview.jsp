@@ -5,10 +5,18 @@
 <div class="loginBox">
 	<div class="innerBox">
 		<div class="row">
-			<div class="col-sm-2"></div>
+			<div class="col-sm-2">
+			<c:url var="login" value="/login" />
+			<c:if test="${patientId <1}">
+			<a href = "${login}">Please login or register to leave a verified review</a>
+			</c:if>
+			<c:if test="${patientId >0}">
+			<p>This is a verifed review</p>
+			</c:if>
+			</div>
 			<div class="col-sm-8">
 				<div class="reviewBox">
-					<legend id="legend">Review</legend>
+					<legend id="legend">Leave a Review</legend>
 					
 					<form class="forms" method="POST" action="${writeReview}">
 						Comment:<br>
@@ -25,8 +33,10 @@
 						<input type="radio" id="starRating" name="rating" value="1" />  Poor <br><br>	
 						<input id = "submit" type="submit">  
  						<input type="hidden" name="doctorId" value="${doctorId}">
-  						<input type="hidden" name="patientId" value="${patientId}">
- 					</form>
+ 						<c:if test="${patientId > 0}">
+   						<input type="hidden" name="patientId" value="${patientId}">
+   						</c:if>
+  					</form>
 				</div>
 			</div>
 		</div>
