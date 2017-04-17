@@ -14,6 +14,7 @@ $(document).ready(function () {
 				date_of_birth : {
 					required: true,
 					minlength:1,
+					birthday:true,
 				},
 				address : {
 					required: true,
@@ -22,10 +23,13 @@ $(document).ready(function () {
 				phone_number : {
 					required: true,
 					minlength:1,
+					phone:true,
 				},
 				email : {
 					required: true,
 					minlength:1,
+					email:true,
+					
 				},
 				user_name : {
 					required: true,
@@ -77,8 +81,17 @@ $(document).ready(function () {
 	    return value.match(/\d/);  
 	}, "Please ensure your password contains one number");
 	
+	$.validator.addMethod("birthday", function (value, index) {
+	    return value.match(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/);  
+	}, "Please enter a proper birthday");
 	
+	$.validator.addMethod("email", function (value, index) {
+	    return value.match(/^[a-z][a-zA-Z0-9_.]*(\.[a-zA-Z][a-zA-Z0-9_.]*)?@[a-z][a-zA-Z-0-9]*\.[a-z]+(\.[a-z]+)?$/);  
+	}, "Please enter a valid email address");
 	
+	$.validator.addMethod("phone", function (value, index) {
+	    return value.match(/^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/);  
+	}, "Please enter a valid phone number");
 	 
 </script>
 
@@ -92,45 +105,51 @@ $(document).ready(function () {
 		<div class="row">
 				<div class="col-sm-2"></div>
 				<div class="col-sm-12">
-					<div class="form-group white col-md-4 col-sm-12">
-						<label for="name">Name: </label> <input type="text"
-							id="name" name="name" placeHolder="Name"
-							class="form-control" />
+					<div class = "container-fluid">
+						<div class="form-group white col-md-4 col-sm-12 ">
+							<label for="name">Name: </label> <input type="text"
+								id="name" name="name" placeHolder="Name"
+								class="form-control" />
+						</div>
+						<div class="form-group white col-md-4 col-sm-12">
+							<label for="date_of_birth">Date of Birth: (DD/MM/YYYY) </label> <input type="text"
+								id="date_of_birth" name="date_of_birth" placeHolder="Date of Birth"
+								class="form-control" />
+						</div>
+						<div class="form-group white col-md-4 col-sm-12">
+							<label for="address">Address: </label> <input
+								type="address" id="address" name="address"
+								placeHolder="address" class="form-control" />
+						</div>
 					</div>
-					<div class="form-group white col-md-4 col-sm-12">
-						<label for="date_of_birth">Date of Birth: </label> <input type="text"
-							id="date_of_birth" name="date_of_birth" placeHolder="Date of Birth"
-							class="form-control" />
+					<div class = "container-fluid">
+						<div class="form-group white col-md-4 col-sm-12">
+							<label for="phone_number">Phone Number: </label> <input type="text"
+								id="phone_number" name="phone_number" placeHolder="Phone Number"
+								class="form-control" />
+						</div>
+						<div class="form-group white col-md-4 col-sm-12">
+							<label for="email">Email: </label> <input type="text"
+								id="email" name="email" placeHolder="Email"
+								class="form-control" />
+						</div>
+						<div class="form-group white col-md-4 col-sm-12">
+							<label for="user_name">User Name: </label> <input type="text"
+								id="user_name" name="user_name" placeHolder="User Name"
+								class="form-control" />
+						</div>
 					</div>
-					<div class="form-group white col-md-4 col-sm-12">
-						<label for="address">Address: </label> <input
-							type="address" id="address" name="address"
-							placeHolder="address" class="form-control" />
-					</div>
-					<div class="form-group white col-md-4 col-sm-12">
-						<label for="phone_number">Phone Number: </label> <input type="text"
-							id="phone_number" name="phone_number" placeHolder="Phone Number"
-							class="form-control" />
-					</div>
-					<div class="form-group white col-md-4 col-sm-12">
-						<label for="email">Email: </label> <input type="text"
-							id="email" name="email" placeHolder="Email"
-							class="form-control" />
-					</div>
-					<div class="form-group white col-md-4 col-sm-12">
-						<label for="user_name">User Name: </label> <input type="text"
-							id="user_name" name="user_name" placeHolder="User Name"
-							class="form-control" />
-					</div>
-					<div class="form-group white col-md-6 col-sm-12">
-						<label for="password">Password: </label> <input type="password"
-							id="password" name="password" placeHolder="Password"
-							class="form-control" />
-					</div>
-					<div class="form-group white col-md-6 col-sm-12">
-						<label for="corfirm_password">Confirm Password: </label> <input type="password"
-							id="confirm_password" name="confirm_password" placeHolder="Please retype your password"
-							class="form-control" />
+					<div class = "container-fluid">
+						<div class="form-group white col-md-6 col-sm-12">
+							<label for="password">Password: </label> <input type="password"
+								id="password" name="password" placeHolder="Password"
+								class="form-control" />
+						</div>
+						<div class="form-group white col-md-6 col-sm-12">
+							<label for="corfirm_password">Confirm Password: </label> <input type="password"
+								id="confirm_password" name="confirm_password" placeHolder="Please retype your password"
+								class="form-control" />
+						</div>
 					</div>
 					<div class = "alignmid">
 						<button id="patientRegisterButton" type="submit" class="btn btn-default">Create User</button>

@@ -293,6 +293,7 @@ body {
 	color: black;
 }
 
+
 .btn {
     border: none;
     font-family: inherit;
@@ -336,5 +337,10 @@ body {
 .blue{
 	background-color: #c7f0f1;
 } */
+
+
+.inputFieldTopBotMargins{
+	margin:15px 0px 15px 0px;
+}
 
 }

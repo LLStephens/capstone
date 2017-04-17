@@ -4,6 +4,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -40,9 +41,15 @@ public class HomeController {
 	private AppointmentDAO appointmentDAO;
 
 	@RequestMapping("/")
-	public String showHome(HttpServletRequest request) {
+	public String showHome(HttpServletRequest request, ModelMap model,  HttpSession session) {
 		List<Office> officeList =officeDAO.getAllOffices();
 		request.setAttribute("officeList", officeList);
+		
+		if(model.get("currentDoctorId") != null ){
+			model.remove("currentDoctorId");
+			model.remove("currentDoctorId2");	
+			session.invalidate();
+		}
 		return "home";
 	}
 	
@@ -90,9 +97,18 @@ public class HomeController {
 
 	
 	@RequestMapping(path="/updateReview", method=RequestMethod.POST)
-	public String updatedReview(@RequestParam String response, @RequestParam int reviewId, HttpServletRequest request) {
+	public String updatedReview(@RequestParam String response, @RequestParam int reviewId, HttpServletRequest request, ModelMap model, HttpSession session) {
 		reviewDAO.addReviewResponse(reviewId, response);
-		return "redirect:/";
+		
+		if(model.get("currentDoctorId") != null ){
+//			model.remove("currentDoctorId");
+//			model.remove("currentDoctorId2");	
+//			session.invalidate();
+			return "redirect:/providerView";
+			
+		}
+		return "home";
+		
 	}
 	
 	
