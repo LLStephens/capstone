@@ -1,7 +1,5 @@
 package com.techelevator.capstone.controller;
 
-
-
 import java.time.LocalTime;
 import java.util.List;
 
@@ -14,6 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.gargoylesoftware.htmlunit.javascript.host.fetch.Request;
 import com.techelevator.capstone.dao.AppointmentDAO;
@@ -28,6 +27,7 @@ import com.techelevator.capstone.model.Review;
 
 @Controller
 @Scope("session")
+@SessionAttributes({"currentPatientId","currentPatientId2","currentDoctorId","currentDoctorId2"})
 public class HomeController { 
 	@Autowired
 	private OfficeDAO officeDAO;
@@ -64,7 +64,8 @@ public class HomeController {
 	}
 	
 	@RequestMapping(path="/writeReview", method=RequestMethod.GET)
-	public String inputReview(@RequestParam int doctorId, HttpServletRequest request) {
+	public String inputReview(@RequestParam int doctorId, @RequestParam ModelMap model, HttpServletRequest request) {
+		request.setAttribute("patientId", model.get("currentPatientId2"));
 		return "writeReview";
 	}
 

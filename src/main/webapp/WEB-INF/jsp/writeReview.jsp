@@ -25,6 +25,7 @@
 						<input type="radio" id="starRating" name="rating" value="1" />  Poor <br><br>	
 						<input id = "submit" type="submit">  
  						<input type="hidden" name="doctorId" value="${doctorId}">
+  						<input type="hidden" name="patientId" value="${patientId}">
  					</form>
 				</div>
 			</div>

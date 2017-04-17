@@ -69,6 +69,9 @@
 						<c:if test="${not empty review.response}">
 							Reply from the doctor: <c:out value="${review.response}" /><br>
 						</c:if>
+						<c:if test="${not empty review.patientId}">
+							Verified reviewer: <c:out value="${review.patientId}" /><br>
+						</c:if>
 							</div>
 							</div>
 							</c:forEach>
