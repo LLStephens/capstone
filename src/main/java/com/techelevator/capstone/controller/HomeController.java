@@ -75,6 +75,20 @@ public class HomeController {
 		return "redirect:/";
 	}
 
+	@RequestMapping(path="/updateReview", method=RequestMethod.GET)
+	public String respondToReview(@RequestParam int doctorId, @RequestParam int reviewId, HttpServletRequest request) {
+		return "updateReview";
+	}
+
+	
+	@RequestMapping(path="/updateReview", method=RequestMethod.POST)
+	public String updatedReview(@RequestParam String response, @RequestParam int reviewId, HttpServletRequest request) {
+		reviewDAO.addReviewResponse(reviewId, response);
+		return "redirect:/";
+	}
+	
+	
+
 	@RequestMapping(path="/changePassword", method=RequestMethod.GET)
 	public String changePassword(@RequestParam int doctorId, HttpServletRequest request) {
 		return "changePassword";

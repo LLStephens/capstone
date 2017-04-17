@@ -80,12 +80,30 @@ public class JDBCReviewDAO implements ReviewDAO {
 		String sqlDeleteReview = "DELETE * FROM review WHERE id = ?";
 		jdbcTemplate.update(sqlDeleteReview, id);
 	}
+	
+	@Override
+	public Review addReviewResponse(int reviewId, String response) {
+
+		String sqlAddReviewResponse = "UPDATE review " +
+				"SET response = ? " +
+				"WHERE id = ?";
+		int rowsAffected = jdbcTemplate.update(sqlAddReviewResponse, response, reviewId);
+		
+		if(rowsAffected == 1) {
+			Review review = getReviewById(reviewId);
+			return review;
+		} else {
+			return null;
+		}
+	}
+	
 	private Review mapToRowToReview (SqlRowSet row) {
 		Review review = new Review();
 		review.setId(row.getInt("id"));
 		review.setRating(row.getInt("rating"));
 		review.setDoctorId(row.getInt("doctor_id"));
 		review.setMessage(row.getString("message"));
+		review.setResponse(row.getString("response"));
 		return review;
 	}
 	private Long getNextId() {
@@ -97,5 +115,7 @@ public class JDBCReviewDAO implements ReviewDAO {
 			throw new RuntimeException("Something went wrong while getting the next order id");
 		}
 	}
+
+	
 	
 }

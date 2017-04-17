@@ -20,20 +20,20 @@
   </script>
 <c:url var="providerView" value="/providerView" />
 <form method="GET" action="${providerView}">
-<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
-	Select Date: <input name="date" id="datepicker" /> 
-	<input type="hidden" name="doctorId" value="${doctor.id}"> 
-	<input type="submit" value="Submit">
+	<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> Select
+	Date: <input name="date" id="datepicker" /> <input type="hidden"
+		name="doctorId" value="${doctor.id}"> <input type="submit"
+		value="Submit">
 </form>
 
 <form id="feeForm" class="forms" method="POST" action="${providerView}">
-<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
-	Hourly Rate: <input id="feeLabel" type="text" name="fee"> <input
+	<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> Hourly
+	Rate: <input id="feeLabel" type="text" name="fee"> <input
 		type="hidden" name="doctorId" value="${doctor.id}"> <input
 		type="submit" value="Submit">
 </form>
 <br>
-<div class="container col-xs-12 col-sm-3 zeros alignmid">
+<div class="container col-xs-12 col-sm-3 zeros ">
 	<div class="col-xs-12 " id="doctorSideBar">
 		<img style="width: 150px" class="doctorImg"
 			src="img/doctors/${doctor.id}.jpg" /><br>
@@ -43,6 +43,19 @@
 			<c:param name="doctorId" value="${doctor.id}"></c:param>
 		</c:url>
 		<a id="changePassword" href="${changePasswordUrl}">Change Password</a>
+	</div>
+	<div align="left">
+		<h4>Reviews</h4>
+		<c:forEach var="review" items="${review}">
+			<c:out value="${review.rating}" /> - <c:out
+				value="${review.message}" />
+			<c:url var="updateReviewUrl" value="updateReview">
+				<c:param name="doctorId" value="${doctor.id}"></c:param>
+				<c:param name="reviewId" value="${review.id}"></c:param>
+			</c:url> - 
+			<a href="${updateReviewUrl}">Respond</a>
+			<br>
+		</c:forEach>
 	</div>
 </div>
 
@@ -55,46 +68,48 @@
 
 		<c:forEach var="index" begin="0" end="${fn:length(agenda)-1}">
 			<c:choose>
-			
-				<c:when test="${(!empty apptTimes[counter]) && agenda[index].equals(apptTimes[counter])}">
+
+				<c:when
+					test="${(!empty apptTimes[counter]) && agenda[index].equals(apptTimes[counter])}">
 					<c:url var="formAction" value="/doctorsAppointment">
 						<c:param name="id" value="${map.get(apptTimes[counter]).id}"></c:param>
 					</c:url>
-					
+
 					<div class="col-xs-12 unavailable">
 						<form method="GET" action="${formAction}">
-						
-						<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
+
+							<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 							<button type="submit" class="btn btn-default">
 								<c:out value="${apptTimes[counter]} - Scheduled"></c:out>
 							</button>
-							<input type="hidden" name="id" value="${map.get(apptTimes[counter]).id}" />
+							<input type="hidden" name="id"
+								value="${map.get(apptTimes[counter]).id}" />
 						</form>
 
 					</div>
 					<c:set var="counter" value="${counter + 1}" />
 				</c:when>
-				
+
 				<c:otherwise>
-				
+
 					<c:url var="formAction2" value="/doctorScheduling">
 						<c:param name="id" value="${map.get(apptTimes[counter]).id}"></c:param>
 					</c:url>
-					
-					<div class="col-xs-12 " >
-					<form method="GET" action="${formAction2}">
-						<button class="open" style="width: 100%; height: 100%">
-							<c:out value="${agenda[index]} - open" />
-						</button>
-						<input type="hidden" name="time" value = "${agenda[index]}"/>
-						<input type="hidden" name="id" value="${index}" />
-						<input type="hidden" name="date" value="${date}" />
-					</form>
-						
+
+					<div class="col-xs-12 ">
+						<form method="GET" action="${formAction2}">
+							<button class="open" style="width: 100%; height: 100%">
+								<c:out value="${agenda[index]} - open" />
+							</button>
+							<input type="hidden" name="time" value="${agenda[index]}" /> <input
+								type="hidden" name="id" value="${index}" /> <input
+								type="hidden" name="date" value="${date}" />
+						</form>
+
 					</div>
-		
+
 				</c:otherwise>
-				
+
 			</c:choose>
 		</c:forEach>
 
@@ -106,17 +121,7 @@
 		<c:out value="Your reviews:" />
 	</div>
 
-	<div>
-		<c:forEach var="review" items="${review}">
-			<!-- 		 		<div class = "col-xs-12 col-sm-4 reviewColor" id = "doctorViewReview"> -->
-			<c:out value="${review.message}" />
-			<br>
-			<c:out value="${review.rating}" />
-			<br>
-			<!-- 				</div>			
- -->
-		</c:forEach>
-	</div>
+
 
 </div>
 

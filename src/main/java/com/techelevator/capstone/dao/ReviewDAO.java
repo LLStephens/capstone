@@ -11,4 +11,5 @@ public interface ReviewDAO {
 	public Review addReview(Review review);
 	public Review getReviewById(int id);
 	public List<Review> getAllReviews();
+	public Review addReviewResponse(int reviewId, String response);
 }

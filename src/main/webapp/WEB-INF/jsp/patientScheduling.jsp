@@ -23,7 +23,7 @@
 				</div>
 				<button class="open" style="width: 20%; height: 100%">
 					<c:out value="Book this appointment" />
-				</button>
+				</button>				
 				<input type = "hidden" name = "doctorId" value = "${doctorId}"/>
 				<input type="hidden" name="date" value="${date}" />
 				<input type ="hidden" name = "time" value = "${time}"/>
