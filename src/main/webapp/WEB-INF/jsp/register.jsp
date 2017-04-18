@@ -157,7 +157,7 @@ $(document).ready(function () {
 						
 					</div>
 					<br><div class = "alignmid">
-						<button id="login_button" type="submit" class="btn btn-default">Create User</button>
+						<button style = "mirgin-right: 10px; border-radius:10px" id="login_button" type="submit" class="btn btn-default">Create User</button>
 					</div>
 				</div>
 				<div class="col-sm-4"></div>
