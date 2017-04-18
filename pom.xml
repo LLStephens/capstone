@@ -116,6 +116,12 @@
 			<artifactId>simple-java-mail</artifactId>
 			<version>4.2.1-java6-release</version>
 		</dependency>
+		<dependency>
+        <groupId>javax.servlet.jsp</groupId>
+        <artifactId>javax.servlet.jsp-api</artifactId>
+        <version>2.3.1</version>
+        <scope>provided</scope>
+    </dependency>
 	</dependencies>
 	<build>
 		<plugins>

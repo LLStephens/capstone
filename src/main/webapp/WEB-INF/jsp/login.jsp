@@ -46,8 +46,12 @@ $(document).ready(function () {
 					</div>
 					<input type="hidden" value="${param.destination}"
 						name="destination" />
-					<button id="patient_login_button" type="submit" class="btn btn-default">Login</button>
+					<button id="login_button" type="submit" class="btn btn-default">Login</button>
 				</form>
+				<div class = "alignmid">
+				<c:url var="register" value="/register" /><br>
+				<a href = "${register}">Click here for new patient registration</a>
+				</div>
 			</div>
 			<div class="col-sm-4"></div>
 		</div>

@@ -111,7 +111,7 @@ public class AppointmentController {
 				
 			}else{
 				
-				return"register";
+				return"login";
 			}
 			
 		
@@ -162,8 +162,11 @@ public class AppointmentController {
 			String doctorEmail = doctor.getEmail();
 			
 			Notification note = new Notification(newAppt);
-			MailSender sendMailPatient = new MailSender(patientEmail, MailSender.emailSubject, note.makePatientEmailBody());
+			MailSender sendMailPatient = new MailSender(patientEmail, "Appointment confirmation from Neutralspace Personal Healthcare", note.makePatientEmailBody());
 			MailSender sendMailDoctor = new MailSender(doctorEmail, "An appointment has been booked", note.makeDoctorEmailBody());
+			
+			sendMailPatient.start();
+			sendMailDoctor.start();
 			return "redirect:/";
 		}
 		

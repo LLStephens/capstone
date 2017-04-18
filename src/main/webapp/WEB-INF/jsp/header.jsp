@@ -29,7 +29,8 @@
 	<nav class="navbar container-fluid ">
 		<div class="container col-sm-3 zeros">	
 			<div class="navbar-header">		
-				<img id="logo" style = "height:40px; width:150px" src="img/ns3.png">		
+				<c:url var="home" value="/"/>
+				<a href = "${home}"><img id="logo" style = "height:40px; width:150px" src="img/ns3.png"></a>	
 				<button type="button" class="navbar navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" >
 		      	<span class="sr-only">Toggle navigation</span>
 		        <span class="icon-bar bars"></span>
@@ -50,8 +51,10 @@
 							
 					<c:choose>
 						<c:when test="${not empty currentPatientId}">
-							<li><form action="${logoutUrl}" method="POST"><input id ="logoutButton" type="submit" value="Log Out">
+							<li><form action="${logoutUrl}" method="POST">
+							<input id ="logoutButton" type="submit" value="Log Out">
 							<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
+							
 							</form></li>
 							
 							<li><a id="zeros" class = "blackText" href="${home}">Home</a></li>
