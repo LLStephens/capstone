@@ -21,7 +21,7 @@
     <url-pattern>*.gif</url-pattern>
   </servlet-mapping>
   
-<!--   <filter>
+<!-- <filter>
   	<filter-name>authorizationFilter</filter-name>
   	<filter-class>com.techelevator.capstone.security.AuthorizationFilter</filter-class>
   </filter>
@@ -29,8 +29,8 @@
   <filter-mapping>
   	<filter-name>authorizationFilter</filter-name>
   	<servlet-name>springmvc</servlet-name>
-  </filter-mapping>
-   -->
+  </filter-mapping> -->
+
     <filter>
   	<filter-name>csrfFilter</filter-name>
   	<filter-class>com.techelevator.capstone.security.CSRFFilter</filter-class>
