@@ -18,12 +18,9 @@
 		/*  $("#datepicker").datepicker({minDate: 0, maxDate: "+6m", beforeShowDay: $.datepicker.noWeekends}); */
 	});
 
-	function getDate() {
-		document.getElementById("datepicker").val();
-	}
 </script>
 
-<div class="container col-xs-12 col-sm-3 zeros ">
+<div class="container col-xs-12 col-sm-3 zeros sidebar ">
 	<div class="col-xs-12 " id="doctorSideBar">
 		<img style="width: 150px" class="doctorImg"
 			src="img/doctors/${doctor.id}.jpg" />
@@ -58,7 +55,7 @@
 
 	</div>
 </div>
-<div class="ol-xs-12 col-sm-9 alignmid ">
+<div class="col-xs-12 col-sm-9 alignmid ">
 	<div class="col-xs-12 ">
 		<c:url var="providerView" value="/providerView" />
 		<form method="GET" action="${providerView}">
@@ -67,7 +64,6 @@
 				type="hidden" name="doctorId" value="${doctor.id}"> <input
 				type="submit" value="Submit">
 		</form>
-		<br>
 		<h4>
 			Your agenda for:
 			<tags:localDate date="${date}" pattern="MM/dd/yyyy" />
@@ -84,9 +80,8 @@
 					<!-- class unavailable is here -->
 					<form method="GET" action="${formAction}">
 						<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
-						<button class="scheduled" style="width: 100%; height: 100%">
-							<c:out value="${apptTimes[counter]} - Scheduled"></c:out>
-						</button>
+						<tags:localTime time="${apptTimes[counter]}" pattern="hh:mm a" />
+						<button class="btn btn-3 btn-3e scheduled" >scheduled</button>
 						<input type="hidden" name="id"
 							value="${map.get(apptTimes[counter]).id}" />
 					</form>
@@ -97,20 +92,11 @@
 						<c:param name="id" value="${map.get(apptTimes[counter]).id}"></c:param>
 					</c:url>
 					<form method="GET" action="${formAction2}">
-						<!-- class open is here -->
-						<!-- <table class="table">
-							<tbody>
-								<tr> -->
-								<!-- 	<td> -->
-									<tags:localTime time="${agenda[index]}" pattern="hh:mm a" />
-										<button class="btn btn-3 btn-3e icon-arrow-right">open</button>
-										<!-- </td> -->
-							<!-- 	</tr>
-							</tbody>
-						</table> -->
-						<input type="hidden" name="time" value="${agenda[index]}" /> <input
-							type="hidden" name="id" value="${index}" /> <input type="hidden"
-							name="date" value="${date}" />
+						<tags:localTime time="${agenda[index]}" pattern="hh:mm a" />
+						<button class="btn btn-3 btn-3e open">open</button>
+						<input type="hidden" name="time" value="${agenda[index]}" /> 
+						<input type="hidden" name="id" value="${index}" /> 
+						<input type="hidden" name="date" value="${date}" />
 					</form>
 				</c:otherwise>
 			</c:choose>

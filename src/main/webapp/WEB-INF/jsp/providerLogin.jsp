@@ -48,7 +48,7 @@ $(document).ready(function () {
 					</div>
 					<input type="hidden" value="${param.destination}"
 						name="destination" />
-					<button id="doctorLoginButton" type="submit" class="btn btn-default">Login</button>
+					<button id="login_button" type="submit" class="btn btn-default">Login</button>
 				</form>
 			</div>
 			<div class="col-sm-4"></div>

@@ -112,13 +112,13 @@ $(document).ready(function () {
 								class="form-control" />
 						</div>
 						<div class="form-group white col-md-4 col-sm-12">
-							<label for="date_of_birth">Date of Birth: (DD/MM/YYYY) </label> <input type="text"
-								id="date_of_birth" name="date_of_birth" placeHolder="Date of Birth"
+							<label for="date_of_birth">Date of Birth:</label> <input type="text"
+								id="date_of_birth" name="date_of_birth" placeHolder="dd/mm/yyyy"
 								class="form-control" />
 						</div>
 						<div class="form-group white col-md-4 col-sm-12">
 							<label for="address">Address: </label> <input
-								type="address" id="address" name="address"
+								type="address" id="address" name="Address"
 								placeHolder="address" class="form-control" />
 						</div>
 					</div>
@@ -150,9 +150,14 @@ $(document).ready(function () {
 								id="confirm_password" name="confirm_password" placeHolder="Please retype your password"
 								class="form-control" />
 						</div>
+						<div class="white col-md-12 col-sm-12">
+							<c:out value="Passwords need a minimum of 10 characters including at least one of each of the following: uppercase letter, lowercase letter, number"/>
+						
+						</div>
+						
 					</div>
-					<div class = "alignmid">
-						<button id="patientRegisterButton" type="submit" class="btn btn-default">Create User</button>
+					<br><div class = "alignmid">
+						<button id="login_button" type="submit" class="btn btn-default">Create User</button>
 					</div>
 				</div>
 				<div class="col-sm-4"></div>
