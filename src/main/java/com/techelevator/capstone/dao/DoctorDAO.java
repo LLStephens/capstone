@@ -8,7 +8,7 @@ public interface DoctorDAO {
 	public List<Doctor> getAllDoctorsByOfficeId(int officeId);
 	public List<Doctor> getAllDoctors();
 	public Doctor getDoctorById(int doctorId);
-	public Doctor addDoctor(Doctor doctor);
+	public Doctor addDoctor(Doctor doctor, String password);
 	public void deleteDoctor(int doctorId);
 	public void updateDoctor(String name, int officeId, String fee, String hours, boolean admin, String email);
 	public int getDoctorIdByUsernameAndPassword(String user_name, String password);

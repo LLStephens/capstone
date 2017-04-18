@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import org.apache.xerces.impl.dv.util.Base64;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -15,31 +16,33 @@ import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import com.techelevator.capstone.dao.JDBCPatientDAO;
 import com.techelevator.capstone.dao.PatientDAO;
 import com.techelevator.capstone.model.Patient;
-
-
-
-
+import com.techelevator.capstone.security.PasswordHasher;
 
 public class JDBCPatientIntegrationTest extends DAOIntegrationTest {
 	
 	private PatientDAO patientDAO;
+	private PasswordHasher passwordHasher;
 	
 	@Before
 	public void setup(){
-		patientDAO = new JDBCPatientDAO(getDataSource());
+		patientDAO = new JDBCPatientDAO(getDataSource(), passwordHasher);
 	}
 	
 	@Test
 	public void patient_can_be_found_by_id_after_being_created(){
 		Patient patient = new Patient();
+		PasswordHasher password = new PasswordHasher();
+		byte[] salt = password.generateRandomSalt();
+		String saltString = new String(Base64.encode(salt));
 		patient.setName("patient");
 		patient.setDateOfBirth("04/04/1994");
 		patient.setAddress("1234 Address");
 		patient.setPhoneNumber("555-555-5555");
 		patient.setEmail("email@email.com");
 		patient.setUser_name("UserName");
-		patient.setPassword("12345ABCDe");
-		Patient newPatient = patientDAO.addPatient(patient);
+		patient.setSalt(saltString);
+		patient.setPassword(password.computeHash("12345ABCDe", salt));
+		Patient newPatient = patientDAO.addPatient(patient, patient.getPassword());
 		assert_patients_are_equal(newPatient, patientDAO.getPatientById(newPatient.getId()));
 	}
 	
@@ -52,6 +55,7 @@ public class JDBCPatientIntegrationTest extends DAOIntegrationTest {
 		Assert.assertEquals(expectedPatient.getEmail(), actualPatient.getEmail());
 		Assert.assertEquals(expectedPatient.getUser_name(), actualPatient.getUser_name());
 		Assert.assertEquals(expectedPatient.getPassword(), actualPatient.getPassword());
+		Assert.assertEquals(expectedPatient.getSalt(), actualPatient.getSalt());
 	}
 	
 }
