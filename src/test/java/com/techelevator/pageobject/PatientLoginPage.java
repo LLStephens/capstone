@@ -25,8 +25,8 @@ private WebDriver webDriver;
 	}
 	
 	public HomePage patientLogin() {
-		WebElement loginButton = webDriver.findElement(By.id("patient_login_button"));
-		loginButton.click();
+		WebElement loginButton = webDriver.findElement(By.id("login_button"));
+		loginButton.submit();
 		return new HomePage(webDriver);
 	}
 	
