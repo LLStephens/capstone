@@ -12,8 +12,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.gargoylesoftware.htmlunit.javascript.host.Console;
-
 public class AuthorizationFilter implements Filter {
 
 	@Override
@@ -28,16 +26,16 @@ public class AuthorizationFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest)request;
 		HttpServletResponse httpResponse = (HttpServletResponse)response;
 		
-		String sessionUser = getUserFromSession(httpRequest);
+		int sessionUser = getUserFromSession(httpRequest);
 		String requestUser = getUserFromRequest(httpRequest);
 		
-//		if(requestUser != null && requestUser.equals(sessionUser) == false) {
-//			if(sessionUser == null) {
-//				redirectToLoginPage(httpRequest, httpResponse);
-//			} else {
-//				httpResponse.sendError(400);
-//			}
-//		}
+		if(requestUser != null && requestUser.equals(sessionUser) == false) {
+			if(sessionUser == 0) {
+				redirectToLoginPage(httpRequest, httpResponse);
+			} else {
+				httpResponse.sendError(403);
+			}
+		}
 		chain.doFilter(request, response);
 	}
 
@@ -51,27 +49,25 @@ public class AuthorizationFilter implements Filter {
 		}
 		
 		String context = httpRequest.getServletContext().getContextPath();
-//		httpResponse.sendRedirect(context+"/login?destination="+URLEncoder.encode(originalRequest, "UTF-8"));
+		httpResponse.sendRedirect(context+"/providerLogin?destination="+URLEncoder.encode(originalRequest, "UTF-8"));
 		httpResponse.sendRedirect(context+"/");
 
 	
 	}
 
-	private String getUserFromSession(HttpServletRequest httpRequest) {
-//		return (String)httpRequest.getSession().getAttribute("currentDoctorId");
-		return null;
+	private int getUserFromSession(HttpServletRequest httpRequest) {
+		return (int)httpRequest.getSession().getAttribute("currentDoctorId2");
 	}
 
 	private String getUserFromRequest(HttpServletRequest httpRequest) {
 		String requestUser = null;
 		String[] path = httpRequest.getServletPath().split("/");
-		if(path.length >= 2) {
-//			if(path[2].equals("new") == false) {
-				requestUser = path[0];
-//			}
+		if(path.length >= 3) {
+			if(path[2].equals("new") == false) {
+				requestUser = path[2];
+			}
 		}
-
-		return null;
+		return requestUser;
 	}
 
 	@Override

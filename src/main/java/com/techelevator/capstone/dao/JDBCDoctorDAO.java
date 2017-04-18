@@ -5,22 +5,26 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.bouncycastle.util.encoders.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import com.techelevator.capstone.model.Doctor;
+import com.techelevator.capstone.security.PasswordHasher;
 
 
 @Component
 public class JDBCDoctorDAO implements DoctorDAO {
 
 	private JdbcTemplate jdbcTemplate;
+	private PasswordHasher passwordHasher;
 	
 	@Autowired
-	public JDBCDoctorDAO (DataSource datasource) {
+	public JDBCDoctorDAO (DataSource datasource, PasswordHasher passwordHasher) {
 		this.jdbcTemplate = new JdbcTemplate(datasource);
+		this.passwordHasher = passwordHasher;
 	}
 	
 	@Override
@@ -56,11 +60,14 @@ public class JDBCDoctorDAO implements DoctorDAO {
 	}
 
 	@Override
-	public Doctor addDoctor(Doctor doctor) {
+	public Doctor addDoctor(Doctor doctor, String password) {
 		Long id = getNextId();
-		
-		String sqlInsertDoctor = "INSERT INTO doctor(id, name, office_id, fee, start_time, end_time, admin, user_name, password, email) VALUES (?,?,?,?,?,?,?,?,?,?)";
-		int rowsAffected = jdbcTemplate.update(sqlInsertDoctor, id, doctor.getName(), doctor.getOfficeId(), doctor.getFee(), doctor.getStartTime(), doctor.getEndTime(), doctor.isAdmin(), doctor.getUser_name(), doctor.getPassword(), doctor.getEmail());
+		byte[] salt = passwordHasher.generateRandomSalt();
+		String hashedPassword = passwordHasher.computeHash(password, salt);
+		String saltString = new String(Base64.encode(salt));
+	
+		String sqlInsertDoctor = "INSERT INTO doctor(id, name, office_id, fee, start_time, end_time, admin, user_name, password, email, salt) VALUES (?,?,?,?,?,?,?,?,?,?)";
+		int rowsAffected = jdbcTemplate.update(sqlInsertDoctor, id, doctor.getName(), doctor.getOfficeId(), doctor.getFee(), doctor.getStartTime(), doctor.getEndTime(), doctor.isAdmin(), doctor.getUser_name(), hashedPassword, doctor.getEmail(), saltString);
 		
 		if(rowsAffected == 1) {
 			doctor.setId(id.intValue());
@@ -109,6 +116,7 @@ public class JDBCDoctorDAO implements DoctorDAO {
 		doctor.setEmail(row.getString("email"));
 		doctor.setUser_name(row.getString("user_name"));
 		doctor.setPassword(row.getString("password"));
+		doctor.setSalt(row.getString("salt"));
 		return doctor;
 	}
 	
@@ -124,30 +132,57 @@ public class JDBCDoctorDAO implements DoctorDAO {
 
 	@Override
 	public int getDoctorIdByUsernameAndPassword(String userName, String password) {
-		int none = -1;
-		String sqlSearchForDoctor = "SELECT * "+
-								  "FROM doctor "+
-								  "WHERE UPPER(user_name) = '"+userName.toUpperCase()+"' "+
-								  "AND password = '"+password+"'";
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchForDoctor);
+		int docId = -1;
+		String sqlSearchForDoctor = "SELECT * " +
+									"FROM doctor "+
+									"WHERE UPPER(user_name) = ?";
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchForDoctor, userName.toUpperCase());
 		if(results.next()) {
-			return mapToRowToDoctor(results).getId();
-		}else{
-		return none;
+			String storedSalt = results.getString("salt");
+			String storedPassword = results.getString("password");
+			String hashedPassword = passwordHasher.computeHash(password, Base64.decode(storedSalt));
+			if(storedPassword.equals(hashedPassword)) {
+				docId = mapToRowToDoctor(results).getId();
+			}else{
+				docId = -1;
+			}
 		}
+		return docId;
+		
+//		String sqlSearchForDoctor = "SELECT * "+
+//								  "FROM doctor "+
+//								  "WHERE UPPER(user_name) = '"+userName.toUpperCase()+"' "+
+//								  "AND password = '"+password+"'";
+//		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchForDoctor);
+//		if(results.next()) {
+//			return mapToRowToDoctor(results).getId();
+//		}else{
+//			return -1;
+//		}
 	}
 
 	@Override
 	public boolean searchDoctorForUsernameAndPassword(String userName, String password) {
 		String sqlSearchForDoctor = "SELECT * "+
-			      					"FROM doctor "+
-			      					"WHERE UPPER(user_name) = '"+userName.toUpperCase()+"' "+
-			      					"AND password = '"+password+"'";
-
-		return jdbcTemplate.queryForRowSet(sqlSearchForDoctor).next();
+									"FROM doctor "+			
+									"WHERE UPPER(user_name) = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchForDoctor, userName.toUpperCase());
+		if(results.next()) {
+			String storedSalt = results.getString("salt");
+			String storedPassword = results.getString("password");
+			String hashedPassword = passwordHasher.computeHash(password, Base64.decode(storedSalt));
+			return storedPassword.equals(hashedPassword);
+		} else {
+			return false;
+		}
+								
 	}
-
-
-
-	
+//		String sqlSearchForDoctor = "SELECT * "+
+//			      					"FROM doctor "+
+//			      					"WHERE UPPER(user_name) = '"+userName.toUpperCase()+"' "+
+//			      					"AND password = '"+password+"'";
+//
+//		return jdbcTemplate.queryForRowSet(sqlSearchForDoctor).next();
+//	}
 }
