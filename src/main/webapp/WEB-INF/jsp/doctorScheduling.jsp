@@ -21,12 +21,10 @@
 			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 				<div class="container-fluid stars">
  				<textarea class="textBox" rows="4" cols="50" name="message" id= "message" ></textarea>
- 				<!-- 	<input type="text" id="message" name="message" placeHolder="Reason:" class="form-control" /> -->
 				</div>
 				<button class="open" style="width: 20%; height: 100%">
 					<c:out value="Book this appointment" />
 				</button>
-				
 				<input type="hidden" name="date" value="${date}" />
 				<input type ="hidden" name = "time" value = "${time}"/>
 			</form>
