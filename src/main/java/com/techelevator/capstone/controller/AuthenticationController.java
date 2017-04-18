@@ -125,11 +125,8 @@ public class AuthenticationController {
 		if (doctorDao.searchDoctorForUsernameAndPassword(user_name, password)) {
 			model.put("currentDoctorId", doctorDao.getDoctorById(doctorDao.getDoctorIdByUsernameAndPassword(user_name, password)));
 			model.put("currentDoctorId2", (doctorDao.getDoctorIdByUsernameAndPassword(user_name, password)));
-			// if(destination != null && destination != "login") {
-			// return "redirect:/" + destination;
-			// } else {
+
 			return "redirect:/providerView";
-			// }s
 		} else {
 			return "redirect:/providerLogin";
 		}
