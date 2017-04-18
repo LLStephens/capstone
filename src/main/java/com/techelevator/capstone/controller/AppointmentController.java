@@ -139,7 +139,7 @@ public class AppointmentController {
 		}
 		
 		@RequestMapping(path="/submitPatientAppointment", method=RequestMethod.POST)
-		public String patientSubmitAnAppointment(@RequestParam int doctorId, @RequestParam String time, @RequestParam String date, @RequestParam String message, HttpServletRequest request, ModelMap model) {
+		public String patientSubmitAnAppointment(@RequestParam int doctorId, @RequestParam String time, @RequestParam String reason, @RequestParam String date, @RequestParam String message, HttpServletRequest request, ModelMap model) {
 			
 			Appointment appt = new Appointment();
 			int patientId = (int) model.get("currentPatientId2");
@@ -162,7 +162,7 @@ public class AppointmentController {
 			String doctorEmail = doctor.getEmail();
 			
 			Notification note = new Notification(newAppt);
-			MailSender sendMailPatient = new MailSender(patientEmail, "Appointment confirmation from Neutralspace Personal Healthcare", note.makePatientEmailBody());
+			MailSender sendMailPatient = new MailSender(patientEmail, "Appointment confirmation from Neutralspace Personal Healthcare", note.makePatientEmailBody(reason));
 			MailSender sendMailDoctor = new MailSender(doctorEmail, "An appointment has been booked", note.makeDoctorEmailBody());
 			
 			sendMailPatient.start();

@@ -113,12 +113,12 @@ $(document).ready(function () {
 						</div>
 						<div class="form-group white col-md-4 col-sm-12">
 							<label for="date_of_birth">Date of Birth:</label> <input type="text"
-								id="date_of_birth" name="date_of_birth" placeHolder="dd/mm/yyyy"
+								id="date_of_birth" name="date_of_birth" placeHolder="mm/dd/yyyy"
 								class="form-control" />
 						</div>
 						<div class="form-group white col-md-4 col-sm-12">
 							<label for="address">Address: </label> <input
-								type="address" id="address" name="Address"
+								type="address" id="address" name="address"
 								placeHolder="address" class="form-control" />
 						</div>
 					</div>
