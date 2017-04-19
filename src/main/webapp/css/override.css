@@ -344,6 +344,7 @@ body {
 	position: absolute;
 	left: 0;
 	top: -50px;
+	
 }
 
 .rating-star {
@@ -362,4 +363,15 @@ body {
 .star {
 	padding: 5% 0% 5% 0%;
 }
+
+#logoutButton{
+	width: 100px; 
+	border-radius:25px; 
+	border:none;
+	background: gray;
+	margin:0px 15px 0px 0px;
+	
+}
+
+
 }

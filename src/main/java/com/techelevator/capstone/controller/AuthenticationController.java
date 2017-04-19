@@ -134,8 +134,7 @@ public class AuthenticationController {
 	}
 
 	@RequestMapping(path = "/providerView", method = RequestMethod.GET)
-	public String displayProviderView(
-			@DateTimeFormat(pattern = "MM/dd/yyyy") @RequestParam(required = false) LocalDate date, ModelMap model,
+	public String displayProviderView(@DateTimeFormat(pattern = "MM/dd/yyyy") @RequestParam(required = false) LocalDate date, ModelMap model,
 			HttpServletRequest request) {
 		Doctor doc = (Doctor) model.get("currentDoctorId");
 		List<Review> drReviewList = reviewDao.getAllReviewsByDoctorId(doc.getId());

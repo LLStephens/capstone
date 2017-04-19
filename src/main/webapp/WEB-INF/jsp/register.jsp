@@ -82,7 +82,7 @@ $(document).ready(function () {
 	}, "Please ensure your password contains one number");
 	
 	$.validator.addMethod("birthday", function (value, index) {
-	    return value.match(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/);  
+	    return value.match(/(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d/);  
 	}, "Please enter a proper birthday");
 	
 	$.validator.addMethod("email", function (value, index) {
@@ -113,12 +113,12 @@ $(document).ready(function () {
 						</div>
 						<div class="form-group white col-md-4 col-sm-12">
 							<label for="date_of_birth">Date of Birth:</label> <input type="text"
-								id="date_of_birth" name="date_of_birth" placeHolder="dd/mm/yyyy"
+								id="date_of_birth" name="date_of_birth" placeHolder="mm/dd/yyyy"
 								class="form-control" />
 						</div>
 						<div class="form-group white col-md-4 col-sm-12">
 							<label for="address">Address: </label> <input
-								type="address" id="address" name="Address"
+								type="address" id="address" name="address"
 								placeHolder="address" class="form-control" />
 						</div>
 					</div>

@@ -22,8 +22,7 @@
 							verified review</a><br><br>
 					</c:if>
 					<form class="forms" method="POST" action="${writeReview}">
-						<input type="hidden" name="CSRF_TOKEN"
-							value="${CSRF_TOKEN}" />
+						<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 						
 					<span class="rating"> 
 						<input type="radio" class="rating-input" id="star" value="5" name="rating">
@@ -37,7 +36,8 @@
 						<input type="radio" class="rating-input" id="star" value="1" name="rating">
 						<label for="rating-input-1-1" class="rating-star"></label>
 					</span>
-					<div class="container-fluid stars">
+					
+						<div class="container-fluid stars">
 							<br>Comment:<br> <textarea class="textBox" rows="4" cols="50" name="message"></textarea>
 						</div>	
 					<button id="login_button" type="submit" class="btn btn-default">Submit</button>
