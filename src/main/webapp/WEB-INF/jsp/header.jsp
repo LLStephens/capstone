@@ -53,7 +53,7 @@
 						<c:when test="${not empty currentPatientId}">
 							<li>
 							<form action="${logoutUrl}" method="POST">
-							<input id ="btnTop"  type="submit" value="Log Out">
+							<input class="logoutButton" id ="btnTop"  type="submit" value="Log Out">
 							<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 							</form>
 							</li>
@@ -63,7 +63,7 @@
 						<c:when test="${not empty currentDoctorId}">
 							<li>
 							<form  action="${logoutUrl}" method="POST">
-							<input id="btnTop"type="submit" value="Log Out">
+							<input class="logoutButton" id="btnTop"type="submit" value="Log Out">
 							<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 							</form>
 							</li>
