@@ -12,6 +12,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import com.techelevator.capstone.model.Doctor;
+import com.techelevator.capstone.model.Office;
 import com.techelevator.capstone.security.PasswordHasher;
 
 
@@ -75,6 +76,30 @@ public class JDBCDoctorDAO implements DoctorDAO {
 		} else {
 			return null;
 		}
+	}
+	
+	@Override
+	public List<Integer> getTopDoctorsByAverageRatingLimit5(){
+		List<Integer> topDoctorIds = new ArrayList<>();
+		String sqlGetTopDoctorIds = "select doctor_id from review group by doctor_id order by AVG(rating) desc limit 5";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetTopDoctorIds);
+	
+		while(results.next()) {
+			topDoctorIds.add(results.getInt("doctor_id"));
+		}
+		return topDoctorIds;
+	}
+	
+	@Override
+	public List<Integer> getTopDoctorRatingsByAverageRatingLimit5(){
+		List<Integer> topDoctorRatings = new ArrayList<>();
+		String sqlGetTopDoctorRatings = "select AVG(rating) from review group by doctor_id order by AVG(rating) desc limit 5";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetTopDoctorRatings);
+	
+		while(results.next()) {
+			topDoctorRatings.add(results.getInt("rating"));
+		}
+		return topDoctorRatings;
 	}
 	
 	@Override

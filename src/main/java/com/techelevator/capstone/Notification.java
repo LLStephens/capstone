@@ -8,32 +8,52 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
 import com.techelevator.capstone.dao.DoctorDAO;
+import com.techelevator.capstone.dao.OfficeDAO;
 import com.techelevator.capstone.model.Appointment;
 import com.techelevator.capstone.model.Doctor;
+import com.techelevator.capstone.model.Office;
 
 public class Notification {
 	private DateTimeFormatter fmt = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
 	private Appointment newAppt; 	
-	private DoctorDAO doctorDAO;
 	
 	public Notification (Appointment newAppt){
 		this.newAppt = newAppt;
 	}
 	
-	public String makePatientEmailBody(String reason){
+	public String makePatientEmailBody(String reason, Office office){
 		LocalDate apptDate = newAppt.getStartDate().toLocalDate();
 		LocalTime apptTime = newAppt.getStartDate().toLocalTime();
 		DayOfWeek apptWordDay = apptDate.getDayOfWeek();
 		Month apptMonth = apptDate.getMonth();
 		int apptNumDay = apptDate.getDayOfMonth();
 		
+		
 		String emailBody = 
 				"Your appointment for " + apptWordDay + " " + apptMonth + 
-				" " + apptNumDay + " at " + fmt.format(apptTime) + " has been booked.  "
-				+ "You selected a reason of " + reason + 
-				" . Please complete the following instructions to prepare of this type of appointment: " + instructions(reason);
+				" " + apptNumDay + " at " + fmt.format(apptTime) + " has been booked.  ";
+		
+		if(reason!=null){
+			emailBody = emailBody + 
+
+		"You selected a reason of " + reason + 
+		" . Please complete the following instructions to prepare of this type of appointment: " + instructions(reason);
+		}
+		
+		String officeDetails = this.appendOfficeDetails(office);
+		
+		emailBody = emailBody + officeDetails;
+		
 		
 		return emailBody;
+	}
+	
+	public String appendOfficeDetails(Office office){
+		String officeName = office.getName();
+		String officeAddress = office.getAddress();
+		
+		String officeDetails = "Your appointment will be at our " + officeName + " location. The address is: "+officeAddress + ".";
+		return officeDetails;
 	}
 	
 	public String makeDoctorEmailBody(){
