@@ -9,6 +9,7 @@ import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.swing.JOptionPane;
@@ -31,6 +32,7 @@ import com.techelevator.capstone.dao.PatientDAO;
 import com.techelevator.capstone.dao.ReviewDAO;
 import com.techelevator.capstone.model.Appointment;
 import com.techelevator.capstone.model.Doctor;
+import com.techelevator.capstone.model.Office;
 import com.techelevator.capstone.model.Patient;
 
 
@@ -184,9 +186,11 @@ public class AppointmentController {
 			Doctor doctor = doctorDAO.getDoctorById(doctorId);
 			String patientEmail = patient.getEmail();
 			String doctorEmail = doctor.getEmail();
-			
+			int officeId = doctor.getOfficeId();
+			Office office = officeDAO.getOfficeById(officeId);
+			List<Integer> doctorList = doctorDAO.getTopDoctorsByAverageRatingLimit5();
 			Notification note = new Notification(newAppt);
-			MailSender sendMailPatient = new MailSender(patientEmail, "Appointment confirmation from Neutralspace Personal Healthcare", note.makePatientEmailBody(reason));
+			MailSender sendMailPatient = new MailSender(patientEmail, "Appointment confirmation from Neutralspace Personal Healthcare" + doctorList, note.makePatientEmailBody(reason, office));
 			MailSender sendMailDoctor = new MailSender(doctorEmail, "An appointment has been booked", note.makeDoctorEmailBody());
 			
 			sendMailPatient.start();
