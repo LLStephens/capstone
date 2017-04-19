@@ -22,6 +22,7 @@
 							verified review</a><br><br>
 					</c:if>
 					<form class="forms" method="POST" action="${writeReview}">
+
 						<input type="hidden" name="CSRF_TOKEN"
 							value="${CSRF_TOKEN}" />
 					<div class="rating">
@@ -38,6 +39,7 @@
 					</div>
 					
 					<div class="container-fluid stars">
+
 							<br>Comment:<br> <textarea class="textBox" rows="4" cols="50" name="message"></textarea>
 						</div>	
 					<button id="login_button" type="submit" class="btn btn-default">Submit</button>

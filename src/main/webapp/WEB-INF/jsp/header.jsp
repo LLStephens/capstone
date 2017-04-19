@@ -51,24 +51,28 @@
 							
 					<c:choose>
 						<c:when test="${not empty currentPatientId}">
-							<li><form action="${logoutUrl}" method="POST">
-							<input id ="logoutButton" type="submit" value="Log Out">
+							<li>
+							<form action="${logoutUrl}" method="POST">
+							<input id ="btnTop"  type="submit" value="Log Out">
 							<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
+							</form>
+							</li>
 							
-							</form></li>
-							
-							<li><a id="zeros" class = "blackText" href="${home}">Home</a></li>
+							<li><a id = "btnTop" href="${home}">Home</a></li>
 						</c:when>
 						<c:when test="${not empty currentDoctorId}">
-							<li><form action="${logoutUrl}" method="POST"><input id ="logoutButton" type="submit" value="Log Out">
+							<li>
+							<form  action="${logoutUrl}" method="POST">
+							<input id="btnTop"type="submit" value="Log Out">
 							<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
-							</form></li>
+							</form>
+							</li>
 						</c:when>
 						<c:otherwise>
-							<li><a id="zeros" class = "blackText" href="${home}">Home</a></li>
-							<li><a id="zeros" class = "blackText" href="${register}">Register</a></li>
-							<li><a id="zeros" class = "blackText" href="${login}">Patient Login</a></li>
-							<li><a id="zeros" class = "blackText" href="${provider}">Provider Portal</a></li>
+							<li><a  id = "btnTop" href="${home}">Home</a></li>
+							<li><a  id = "btnTop" href="${register}">Register</a></li>
+							<li><a  id = "btnTop" href="${login}">Patient Login</a></li>
+							<li><a  id = "btnTop" href="${provider}">Provider Portal</a></li>
 						</c:otherwise>
 					</c:choose>
 				</ul>

@@ -5,7 +5,7 @@ import java.util.List;
 import com.techelevator.capstone.model.Review;
 
 public interface ReviewDAO {
-	public List<Review> getAllReviewsByDoctorId(int doctorId);
+	public List<Review> getAllReviewsByDoctorId(long id);
 	public void updateReview(int rating, int doctorId, String message);
 	public void deleteReview(int reviewId);
 	public Review addReview(Review review);

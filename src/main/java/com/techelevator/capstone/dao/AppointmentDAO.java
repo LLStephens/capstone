@@ -7,7 +7,7 @@ import java.util.List;
 import com.techelevator.capstone.model.Appointment;
 
 public interface AppointmentDAO {
-	public List<Appointment> getAllAppointmentsByDoctorId(int doctorId);
+	public List<Appointment> getAllAppointmentsByDoctorId(long id);
 	public List<Appointment> getAllAppointmentsByPatientId(int patientId);
 	public Appointment getAppointmentById(int appointmentId);
 	public Appointment createAppointment(Appointment appointment);

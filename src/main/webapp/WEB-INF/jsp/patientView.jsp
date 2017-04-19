@@ -21,9 +21,9 @@
 	});
 </script>
 
-<div class="container col-xs-12 col-sm-3 zeros sidebar">
-	<div class="col-xs-12 " id="doctorSideBar">
-		<img style="width: 150px" class="doctorImg"
+<div class="container col-xs-12 col-sm-4 zeros sidebar">
+	<div class="col-xs-12 alignmid viewDivs" id="doctorSideBar">
+		<img style="width: 150px; margin: 25px 0px 25px 0px" class="doctorImg"
 			src="img/doctors/${doctor.id}.jpg" /><br>
 		<h4>
 			<c:out value="Hello, I'm ${doctor.name}." />
@@ -32,12 +32,12 @@
 		</h4>
 	</div>
 </div>
-<div class="col-xs-12 col-sm-9 alignmid ">
+<div class="col-xs-12 col-sm-8 alignmid ">
 	<c:url var="patientView" value="/patientView" />
 	<form method="GET" action="${patientView}">
 		<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 		Select Date: <input name="date" id="datepicker" /> <input
-			type="hidden" name="doctorId" value="${doctor.id}"> <input
+			type="hidden" name="doctorId" value="${doctor.id}"> <input id="btnTop2"
 			type="submit" value="Submit">
 	</form>
 	<h4>
