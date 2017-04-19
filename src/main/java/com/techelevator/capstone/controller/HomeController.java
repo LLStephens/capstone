@@ -130,18 +130,21 @@ public class HomeController {
 	
 	@RequestMapping(path="/topDoctors", method=RequestMethod.GET)
 	public String displayTopDoctors(HttpServletRequest request){
-//		List<Doctor> doctorsList = new ArrayList<>();
-//		doctorsList = doctorDAO.getAllDoctors();
-//		
-//		
-//		List<Review> reviewsList = new ArrayList<>();
-//		for(Doctor doc:doctorsList){
-//			reviewsList = reviewDAO.getAllReviewsByDoctorId(doc.getId());
-//			
-//		}
-//	
-//		
+		List<Doctor> doctorsList = new ArrayList<>();
+		List<Integer> doctorsIds = new ArrayList<>();
+		List<Integer> ratingsList = new ArrayList<>();
+		List<Office> officeList	= new ArrayList<>();
 		
+		doctorsList = doctorDAO.getAllDoctors();
+		doctorsIds = doctorDAO.getTopDoctorsByAverageRatingLimit5();
+		ratingsList = doctorDAO.getTopDoctorRatingsByAverageRatingLimit5();
+		officeList = officeDAO.getAllOffices();
+	
+		request.setAttribute("officeList", officeList);
+		request.setAttribute("doctorsList", doctorsList);
+		request.setAttribute("doctorIds", doctorsIds);
+		request.setAttribute("ratingsList", ratingsList);
+
 		return "topDoctors";
 	}
 
