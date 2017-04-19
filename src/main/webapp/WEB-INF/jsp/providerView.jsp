@@ -20,9 +20,9 @@
 
 </script>
 
-<div class="container col-xs-12 col-sm-3 zeros sidebar ">
-	<div class="col-xs-12 " id="doctorSideBar">
-		<img style="width: 150px" class="doctorImg"
+<div class="container col-xs-12 col-sm-4 zeros sidebar ">
+	<div class="col-xs-12 alignmid viewDivs" id="doctorSideBar">
+		<img style="width: 150px; margin: 25px 0px 0px 0px" class="doctorImg"
 			src="img/doctors/${doctor.id}.jpg" />
 		<h4>
 			<c:out value="Hello ${doctor.name}" />
@@ -37,31 +37,33 @@
 			<br> <input type="hidden" name="CSRF_TOKEN"
 				value="${CSRF_TOKEN}" /> Set hourly rate: <input id="feeLabel"
 				type="text" name="fee"> <input type="hidden" name="doctorId"
-				value="${doctor.id}"> <input type="submit" value="Submit">
+				value="${doctor.id}"> <input id = "btnTop" type="submit" value="Submit" style = "margin: 10px 0px 0px 0px">
 		</form>
 		<br>
-		<h4>Reviews</h4>
-		<c:forEach var="review" items="${review}">
-			<c:out value="${review.rating}" /> - <c:out
-				value="${review.message}" />
-			<c:url var="updateReviewUrl" value="updateReview">
-				<c:param name="doctorId" value="${doctor.id}"></c:param>
-				<c:param name="reviewId" value="${review.id}"></c:param>
-			</c:url> - 
-			<a href="${updateReviewUrl}">Respond</a>
-			<br>
-		</c:forEach>
+		<div class = "container-fluid viewReviewDivs ">
+			<h4>Reviews</h4>
+			<c:forEach var="review" items="${review}">
+				<c:out value="${review.rating}" /> - <c:out
+					value="${review.message}" />
+				<c:url var="updateReviewUrl" value="updateReview">
+					<c:param name="doctorId" value="${doctor.id}"></c:param>
+					<c:param name="reviewId" value="${review.id}"></c:param>
+				</c:url> <br/>
+				<a  class  = "topbotmargins" href="${updateReviewUrl}">Respond</a>
+				<br>
+			</c:forEach>
+		</div>
 		<br>
 
 	</div>
 </div>
-<div class="col-xs-12 col-sm-9 alignmid ">
+<div class="col-xs-12 col-sm-8 alignmid ">
 	<div class="col-xs-12 ">
 		<c:url var="providerView" value="/providerView" />
 		<form method="GET" action="${providerView}">
 			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 			Select Date: <input name="date" id="datepicker" /> <input
-				type="hidden" name="doctorId" value="${doctor.id}"> <input
+				type="hidden" name="doctorId" value="${doctor.id}"> <input id="btnTop2"
 				type="submit" value="Submit">
 		</form>
 		<h4>

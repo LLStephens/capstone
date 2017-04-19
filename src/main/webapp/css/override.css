@@ -285,9 +285,6 @@ body{
 	background:#e0ebeb;
 }
 
-body {
-  
-}
 #feeForm {
 	color: black;
 }
@@ -369,6 +366,7 @@ body {
     position: relative;
 }
 .rating-input {
+
     float: right;
     width: 8px;
     height: 8px;
@@ -376,11 +374,13 @@ body {
     margin: 0 0 0 -16px;
     opacity: 0;
 }
+
 .rating:hover .rating-star:hover,
 .rating:hover .rating-star:hover ~ .rating-star,
 .rating-input:checked ~ .rating-star {
     background-position: 0 0;
 }
+
 .rating-star,
 .rating:hover .rating-star {
     position: relative;
@@ -390,3 +390,77 @@ body {
     height: 16px;
     background: url('http://kubyshkin.ru/samples/star-rating/star.png') 0 -16px;
 }
+
+#btnTop{
+	background: #F0F8FF;
+    color: black;
+    font-family: Sans-serif;
+    font-size: 20px;
+    height: 30px;
+    width: 100%;
+    line-height: 20px;
+    text-align: center;
+    border: 0;
+    transition: all 0.2s ease .0s;
+    border-radius:20px;
+    padding:5px 5px 5px 5px;
+    margin: 5px 0px 0px 10px;
+  
+}
+#btnTop:hover{
+	background: #e0ebeb;
+	opacity: .5;
+	color: #337ab7;
+	border: 2px solid #337ab7;
+	
+}
+
+.centerText{
+	text-align:center;
+}
+
+.welcomeText{
+	font-size:30px;
+	color: #337ab7;
+	position: relative;
+}
+
+.viewDivs{
+	background:#e0ebeb;
+	border-radius:15px;
+}
+
+.viewReviewDivs{
+	background:#F0F8FF;
+	border-radius:15px;
+}
+
+.topbotmargins{
+	margin: 5px 0px 5px 0px;
+}
+
+#btnTop2{
+	background: #F0F8FF;
+    color: black;
+    font-family: Sans-serif;
+    font-size: 20px;
+    height: 30px;
+    width: 30%;
+    line-height: 20px;
+    text-align: center;
+    border: 0;
+    transition: all 0.2s ease .0s;
+    border-radius:20px;
+    padding:5px 5px 5px 5px;
+    margin: 5px 0px 0px 10px;
+  
+}
+
+#btnTop2:hover{
+	background: #e0ebeb;
+	opacity: .5;
+	color: #337ab7;
+	border: 2px solid #337ab7;
+	
+}
+
