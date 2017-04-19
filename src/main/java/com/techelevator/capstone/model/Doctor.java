@@ -3,7 +3,7 @@ package com.techelevator.capstone.model;
 import java.time.LocalTime;
 
 public class Doctor {
-	private int id;
+	private long id;
 	private String name;
 	private int officeId;
 	private String fee;
@@ -28,10 +28,10 @@ public class Doctor {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getName() {

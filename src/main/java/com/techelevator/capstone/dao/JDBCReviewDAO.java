@@ -35,7 +35,7 @@ public class JDBCReviewDAO implements ReviewDAO {
 	}
 	
 	@Override
-	public List<Review> getAllReviewsByDoctorId(int doctorId) {
+	public List<Review> getAllReviewsByDoctorId(long doctorId) {
 		List<Review> allReviewsForDoctor = new ArrayList<>();
 		String sqlSelectAllReviewsForDoctor = "SELECT * FROM review WHERE doctor_id = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAllReviewsForDoctor, doctorId);

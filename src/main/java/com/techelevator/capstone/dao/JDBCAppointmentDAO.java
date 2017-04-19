@@ -25,7 +25,7 @@ public class JDBCAppointmentDAO implements AppointmentDAO {
 	}
 
 	@Override
-	public List<Appointment> getAllAppointmentsByDoctorId(int doctorId) {
+	public List<Appointment> getAllAppointmentsByDoctorId(long doctorId) {
 		List<Appointment> allAppointmentsByDoctorId = new ArrayList<>();
 		String sqlSelectAllAppointmentsByDoctorId = "SELECT * FROM appointment WHERE doctor_id = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAllAppointmentsByDoctorId, doctorId);

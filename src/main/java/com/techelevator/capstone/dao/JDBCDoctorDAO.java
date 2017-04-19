@@ -66,7 +66,7 @@ public class JDBCDoctorDAO implements DoctorDAO {
 		String hashedPassword = passwordHasher.computeHash(password, salt);
 		String saltString = new String(Base64.encode(salt));
 	
-		String sqlInsertDoctor = "INSERT INTO doctor(id, name, office_id, fee, start_time, end_time, admin, user_name, password, email, salt) VALUES (?,?,?,?,?,?,?,?,?,?)";
+		String sqlInsertDoctor = "INSERT INTO doctor(id, name, office_id, fee, start_time, end_time, admin, user_name, password, email, salt) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 		int rowsAffected = jdbcTemplate.update(sqlInsertDoctor, id, doctor.getName(), doctor.getOfficeId(), doctor.getFee(), doctor.getStartTime(), doctor.getEndTime(), doctor.isAdmin(), doctor.getUser_name(), hashedPassword, doctor.getEmail(), saltString);
 		
 		if(rowsAffected == 1) {
@@ -106,7 +106,7 @@ public class JDBCDoctorDAO implements DoctorDAO {
 	
 	private Doctor mapToRowToDoctor (SqlRowSet row) {
 		Doctor doctor = new Doctor();
-		doctor.setId(row.getInt("id"));
+		doctor.setId(row.getLong("id"));
 		doctor.setAdmin(row.getBoolean("admin"));
 		doctor.setFee(row.getString("fee"));
 		doctor.setStartTime(row.getTime("start_time").toLocalTime());
@@ -143,7 +143,7 @@ public class JDBCDoctorDAO implements DoctorDAO {
 			String storedPassword = results.getString("password");
 			String hashedPassword = passwordHasher.computeHash(password, Base64.decode(storedSalt));
 			if(storedPassword.equals(hashedPassword)) {
-				docId = mapToRowToDoctor(results).getId();
+				docId = (int) mapToRowToDoctor(results).getId();
 			}else{
 				docId = -1;
 			}
