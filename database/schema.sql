@@ -26,6 +26,7 @@ CREATE TABLE doctor (
 	user_name varchar(30) NOT NULL,
 	password varchar (30) NOT NULL,
 	email varchar(30) NOT NULL,
+	salt varchar(256) NOT NULL,
 	CONSTRAINT pk_doctor_id PRIMARY KEY (id),
 	CONSTRAINT fk_office_id FOREIGN KEY (office_id) REFERENCES office(id)
 );
@@ -50,6 +51,7 @@ CREATE TABLE patient(
 	email varchar(50) NOT NULL,
 	user_name varchar(30) NOT NULL,
 	password varchar(30) NOT NULL,
+	salt varchar(256) NOT NULL,
 	CONSTRAINT pk_patient_id PRIMARY KEY (id)
 );
 

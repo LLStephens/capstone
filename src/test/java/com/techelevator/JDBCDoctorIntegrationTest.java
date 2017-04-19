@@ -5,6 +5,7 @@ import java.time.LocalTime;
 
 import javax.sql.DataSource;
 
+import org.apache.xerces.impl.dv.util.Base64;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -16,6 +17,7 @@ import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import com.techelevator.capstone.dao.DoctorDAO;
 import com.techelevator.capstone.dao.JDBCDoctorDAO;
 import com.techelevator.capstone.model.Doctor;
+import com.techelevator.capstone.security.PasswordHasher;
 
 public class JDBCDoctorIntegrationTest extends DAOIntegrationTest {
 	/* Using this particular implementation of DataSource so that
@@ -23,17 +25,21 @@ public class JDBCDoctorIntegrationTest extends DAOIntegrationTest {
 	 * session and hence the same database transaction */
 	
 	private DoctorDAO doctorDAO;
+	private PasswordHasher passwordHasher;
 
 	@Before
 	public void setup(){
-		doctorDAO = new JDBCDoctorDAO(getDataSource());
+		doctorDAO = new JDBCDoctorDAO(getDataSource(), passwordHasher);
 	}
 	
 	@Test
 	public void doctor_can_be_found_by_id_after_being_created(){
 		Doctor doctor = new Doctor();
+		PasswordHasher password = new PasswordHasher();
 		LocalTime startTime = LocalTime.of(7, 00);
 		LocalTime endTime = LocalTime.of(15, 00);
+		byte[] salt = password.generateRandomSalt();
+		String saltString = new String(Base64.encode(salt));
 		doctor.setName("name");
 		doctor.setOfficeId(1);
 		doctor.setFee("$50");
@@ -41,9 +47,10 @@ public class JDBCDoctorIntegrationTest extends DAOIntegrationTest {
 		doctor.setStartTime(startTime);
 		doctor.setEndTime(endTime);
 		doctor.setUser_name("drdoctor");
-		doctor.setPassword("12345ABCDe");
+		doctor.setSalt(saltString);
+		doctor.setPassword(password.computeHash("12345ABCDe", salt));
 		doctor.setEmail("doctor@doctor.com");
-		Doctor newDoctor = doctorDAO.addDoctor(doctor);
+		Doctor newDoctor = doctorDAO.addDoctor(doctor, doctor.getPassword());
 		assert_doctors_are_equal(newDoctor, doctorDAO.getDoctorById(newDoctor.getId()));
 	}
 	

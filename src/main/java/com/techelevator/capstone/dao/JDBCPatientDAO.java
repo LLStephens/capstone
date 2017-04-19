@@ -5,21 +5,25 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.bouncycastle.util.encoders.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import com.techelevator.capstone.model.Patient;
+import com.techelevator.capstone.security.PasswordHasher;
 
 @Component
 public class JDBCPatientDAO implements PatientDAO {
 	
 	private JdbcTemplate jdbcTemplate;
+	private PasswordHasher passwordHasher;
 	
 	@Autowired
-	public JDBCPatientDAO (DataSource datasource) {
+	public JDBCPatientDAO (DataSource datasource, PasswordHasher passwordHasher) {
 		this.jdbcTemplate = new JdbcTemplate(datasource);
+		this.passwordHasher = passwordHasher;
 	}
 	
 	@Override
@@ -44,11 +48,14 @@ public class JDBCPatientDAO implements PatientDAO {
 	}
 
 	@Override
-	public Patient addPatient(Patient patient) {
+	public Patient addPatient(Patient patient, String password) {
 		Long id = getNextId();
+		byte[] salt = passwordHasher.generateRandomSalt();
+		String hashedPassword = passwordHasher.computeHash(password, salt);
+		String saltString = new String(Base64.encode(salt));
 		
-		String sqlAddPatient = "INSERT INTO patient(id, name, date_of_birth, address, phone_number, email, user_name, password) VALUES (?,?,?,?,?,?,?,?)";
-		int rowsAffected = jdbcTemplate.update(sqlAddPatient, id, patient.getName(), patient.getDateOfBirth(), patient.getAddress(), patient.getPhoneNumber(), patient.getEmail(), patient.getUser_name(), patient.getPassword());
+		String sqlAddPatient = "INSERT INTO patient(id, name, date_of_birth, address, phone_number, email, user_name, password, salt) VALUES (?,?,?,?,?,?,?,?,?)";
+		int rowsAffected = jdbcTemplate.update(sqlAddPatient, id, patient.getName(), patient.getDateOfBirth(), patient.getAddress(), patient.getPhoneNumber(), patient.getEmail(), patient.getUser_name(), hashedPassword, saltString);
 		
 		if(rowsAffected == 1) {
 			patient.setId(id.intValue());
@@ -96,16 +103,46 @@ public class JDBCPatientDAO implements PatientDAO {
 	@Override
 	public boolean searchForUsernameAndPassword(String userName, String password) {
 		String sqlSearchForUser = "SELECT * "+
-							      "FROM patient "+
-							      "WHERE UPPER(user_name) = '"+userName.toUpperCase()+"' "+
-							      "AND password = '"+password+"'";
+								"FROM patient "+
+								"WHERE UPPER(user_name) = ?";
 		
-		return jdbcTemplate.queryForRowSet(sqlSearchForUser).next();
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchForUser, userName.toUpperCase());
+		if(results.next()) {
+			String storedSalt = results.getString("salt");
+			String storedPassword = results.getString("password");
+			String hashedPassword = passwordHasher.computeHash(password, Base64.decode(storedSalt));
+			return storedPassword.equals(hashedPassword);
+		} else {
+			return false;
+		}
+	
+		
+//		String sqlSearchForUser = "SELECT * "+
+//							      "FROM patient "+
+//							      "WHERE UPPER(user_name) = '"+userName.toUpperCase()+"' "+
+//							      "AND password = '"+password+"'";
+//		
+//		return jdbcTemplate.queryForRowSet(sqlSearchForUser).next();
 	}
 
 	@Override
-	public void savePatient(String name, String date_of_birth, String address, String phone_number, String email, String user_name, String password) {
-		jdbcTemplate.update("INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password) VALUES ('"+name+"', '"+date_of_birth+"', '"+address+"', '"+phone_number+"', '"+email+"', '"+user_name+"', '"+password+"')");
+	public Patient savePatient(String name, String date_of_birth, String address, String phone_number, String email, String user_name, String password) {
+		Long id = getNextId();
+		Patient patient = new Patient();
+		
+		byte[] salt = passwordHasher.generateRandomSalt();
+		String hashedPassword = passwordHasher.computeHash(password, salt);
+		String saltString = new String(Base64.encode(salt));
+		
+		String sqlSavePatient = "INSERT INTO patient(id, name, date_of_birth, address, phone_number, email, user_name, password, salt) VALUES (?,?,?,?,?,?,?,?,?)";
+		int rowsAffected = jdbcTemplate.update(sqlSavePatient, id, name, date_of_birth, address, phone_number, email, user_name, hashedPassword, saltString);
+		
+		if(rowsAffected == 1) {
+			patient.setId(id.intValue());
+			return patient;
+		} else {
+			return null;
+		}
 	}
 
 	@Override

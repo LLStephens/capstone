@@ -13,8 +13,15 @@ public class Doctor {
 	private String user_name;
 	private String password;
 	private String email;
+	private String salt;
 	
 	
+	public String getSalt() {
+		return salt;
+	}
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
 	public String getEmail() {
 		return email;
 	}

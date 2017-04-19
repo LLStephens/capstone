@@ -60,8 +60,8 @@ private WebDriver webDriver;
 	}
 	
 	public PatientLoginPage submitForm() {
-		WebElement submitButton = webDriver.findElement(By.id("patientRegisterButton"));
-		submitButton.click();
+		WebElement submitButton = webDriver.findElement(By.id("login_button"));
+		submitButton.submit();
 		return new PatientLoginPage(webDriver);
 	}
 }

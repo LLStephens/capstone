@@ -79,7 +79,7 @@ public class JDBCAppointmentDAO implements AppointmentDAO {
 
 	@Override
 	public void deleteAppointment(int appointmentId) {
-		String sqlDeleteAppointment = "DELETE * FROM appointment WHERE id = ?";
+		String sqlDeleteAppointment = "DELETE FROM appointment WHERE id = ?";
 		jdbcTemplate.update(sqlDeleteAppointment, appointmentId);
 	}
 	

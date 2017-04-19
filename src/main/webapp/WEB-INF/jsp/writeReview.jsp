@@ -22,22 +22,24 @@
 							verified review</a><br><br>
 					</c:if>
 					<form class="forms" method="POST" action="${writeReview}">
-						<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
-						
-					<span class="rating"> 
-						<input type="radio" class="rating-input" id="star" value="5" name="rating">
-						<label for="rating-input-1-5" class="rating-star"></label> 
-						<input type="radio" class="rating-input" id="star" value="4" name="rating"> 
-						<label for="rating-input-1-4" class="rating-star"></label> 
-						<input type="radio" class="rating-input" id="star" value="3" name="rating">
-						<label for="rating-input-1-3" class="rating-star"></label> 
-						<input type="radio" class="rating-input" id="star" value="2" name="rating"> 
-						<label for="rating-input-1-2" class="rating-star"></label> 
-						<input type="radio" class="rating-input" id="star" value="1" name="rating">
-						<label for="rating-input-1-1" class="rating-star"></label>
-					</span>
+
+						<input type="hidden" name="CSRF_TOKEN"
+							value="${CSRF_TOKEN}" />
+					<div class="rating">
+				        <input type="radio" class="rating-input" id="rating-input-1-5" value="5" name="rating"/>
+				        <label for="rating-input-1-5" class="rating-star"></label>
+				        <input type="radio" class="rating-input" id="rating-input-1-4" value="4" name="rating"/>
+				        <label for="rating-input-1-4" class="rating-star"></label>
+				        <input type="radio" class="rating-input" id="rating-input-1-3" value="3" name="rating"/>
+				        <label for="rating-input-1-3" class="rating-star"></label>
+				        <input type="radio" class="rating-input" id="rating-input-1-2" value="2" name="rating"/>
+				        <label for="rating-input-1-2" class="rating-star"></label>
+				        <input type="radio" class="rating-input" id="rating-input-1-1" value ="1" name="rating" checked="checked"/>
+				        <label for="rating-input-1-1" class="rating-star"></label>
+					</div>
 					
-						<div class="container-fluid stars">
+					<div class="container-fluid stars">
+
 							<br>Comment:<br> <textarea class="textBox" rows="4" cols="50" name="message"></textarea>
 						</div>	
 					<button id="login_button" type="submit" class="btn btn-default">Submit</button>
@@ -46,19 +48,12 @@
 							<input type="hidden" name="patientId" value="${patientId}">
 						</c:if>
 					</form>
-						<!-- 
-						<input type="radio" id="starRating" name="rating" value="5" />
-						Excellent <input type="radio" id="starRating" name="rating"
-							value="4" /> Great <input type="radio" id="starRating"
-							name="rating" value="3" /> Good <input type="radio"
-							id="starRating" name="rating" value="2" /> Fair <input
-							type="radio" id="starRating" name="rating" value="1" /> Poor <br>
-						<br> -->
 				</div>
 			</div>
 		</div>
 		<div class="col-sm-4"></div>
 	</div>
 </div>
-</div>
+</div> 
+
 <c:import url="/WEB-INF/jsp/footer.jsp" />

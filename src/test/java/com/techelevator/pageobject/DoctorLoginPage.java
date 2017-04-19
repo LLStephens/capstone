@@ -24,8 +24,8 @@ private WebDriver webDriver;
 	}
 	
 	public DoctorPortalPage doctorLogin() {
-		WebElement loginButton = webDriver.findElement(By.id("doctorLoginButton"));
-		loginButton.click();
+		WebElement loginButton = webDriver.findElement(By.id("login_button"));
+		loginButton.submit();
 		return new DoctorPortalPage(webDriver);
 	}
 }

@@ -32,13 +32,15 @@ import com.techelevator.capstone.dao.ReviewDAO;
 import com.techelevator.capstone.model.Appointment;
 import com.techelevator.capstone.model.Doctor;
 import com.techelevator.capstone.model.Review;
+import com.techelevator.capstone.security.PasswordHasher;
 import com.techelevator.capstone.dao.PatientDAO;
 
 @Controller
 @Scope("session")
 @SessionAttributes({ "currentPatientId", "currentPatientId2", "currentDoctorId", "currentDoctorId2" })
 public class AuthenticationController {
-
+	
+	
 	private static final LocalTime eight = LocalTime.of(8, 00);
 	private static final LocalTime eightThirty = LocalTime.of(8, 30);
 	private static final LocalTime nine = LocalTime.of(9, 00);
@@ -123,11 +125,8 @@ public class AuthenticationController {
 		if (doctorDao.searchDoctorForUsernameAndPassword(user_name, password)) {
 			model.put("currentDoctorId", doctorDao.getDoctorById(doctorDao.getDoctorIdByUsernameAndPassword(user_name, password)));
 			model.put("currentDoctorId2", (doctorDao.getDoctorIdByUsernameAndPassword(user_name, password)));
-			// if(destination != null && destination != "login") {
-			// return "redirect:/" + destination;
-			// } else {
+
 			return "redirect:/providerView";
-			// }s
 		} else {
 			return "redirect:/providerLogin";
 		}

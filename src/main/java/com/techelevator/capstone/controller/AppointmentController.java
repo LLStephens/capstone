@@ -86,6 +86,22 @@ public class AppointmentController {
 			return "/doctorsAppointment";
 		}
 		
+		@RequestMapping(path="/doctorsAppointment", method=RequestMethod.POST)
+		public String deleteAppointment(@RequestParam int appointmentId, HttpServletRequest request, ModelMap model){
+			Appointment appt = appointmentDAO.getAppointmentById(appointmentId);
+			int patientId = appt.getPatientId();
+			LocalDate date = appt.getStartDate().toLocalDate();
+			appointmentDAO.deleteAppointment(appointmentId);
+			
+			Patient patient = patientDAO.getPatientById(patientId);
+			String patientEmail = patient.getEmail();
+			
+			MailSender sendMailPatient = new MailSender(patientEmail, "Appointment Cancelletion from  Neutralspace Personal Healthcare", 
+					"Your upcoming appointment on " + date + " has been cancelled by your doctor. We apologize for the inconvenience. Please call our office for more details." );
+			sendMailPatient.start();
+			return "redirect:/providerView";
+		}
+		
 		@RequestMapping(path="/doctorScheduling", method=RequestMethod.GET)
 		public String goToDoctorsSchedulingPage(@RequestParam String time, @RequestParam String date, @RequestParam int id, HttpServletRequest request) {
 			
@@ -99,8 +115,15 @@ public class AppointmentController {
 		
 		@RequestMapping(path="/patientScheduling", method=RequestMethod.GET)
 		public String goToPatientSchedulingPage(@RequestParam String time, @RequestParam String date,@RequestParam int doctorId, @RequestParam int id, HttpServletRequest request, ModelMap model) {
+			String str = date + " " + time;
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+			LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
+			Month month = dateTime.getMonth();
+			int day = dateTime.getDayOfMonth();
+			
 			
 			if (model.get("currentPatientId") != null){
+			
 				request.setAttribute("time", time);
 				request.setAttribute("date", date);
 				request.setAttribute("id", id);
@@ -136,10 +159,11 @@ public class AppointmentController {
 				appointmentDAO.createAppointment(appt);
 			
 			return "redirect:/providerView";
+			
 		}
 		
 		@RequestMapping(path="/submitPatientAppointment", method=RequestMethod.POST)
-		public String patientSubmitAnAppointment(@RequestParam int doctorId, @RequestParam String time, @RequestParam String date, @RequestParam String message, HttpServletRequest request, ModelMap model) {
+		public String patientSubmitAnAppointment(@RequestParam int doctorId, @RequestParam String time, @RequestParam String reason, @RequestParam String date, @RequestParam String message, HttpServletRequest request, ModelMap model) {
 			
 			Appointment appt = new Appointment();
 			int patientId = (int) model.get("currentPatientId2");
@@ -162,7 +186,7 @@ public class AppointmentController {
 			String doctorEmail = doctor.getEmail();
 			
 			Notification note = new Notification(newAppt);
-			MailSender sendMailPatient = new MailSender(patientEmail, "Appointment confirmation from Neutralspace Personal Healthcare", note.makePatientEmailBody());
+			MailSender sendMailPatient = new MailSender(patientEmail, "Appointment confirmation from Neutralspace Personal Healthcare", note.makePatientEmailBody(reason));
 			MailSender sendMailDoctor = new MailSender(doctorEmail, "An appointment has been booked", note.makeDoctorEmailBody());
 			
 			sendMailPatient.start();
