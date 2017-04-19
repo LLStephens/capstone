@@ -1,7 +1,11 @@
 package com.techelevator.capstone.controller;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -122,6 +126,23 @@ public class HomeController {
 	public String changePassword(@RequestParam String password, @RequestParam int doctorId) {
 		doctorDAO.updateDoctorPassword(password, doctorId);
 		return "redirect:/";
+	}
+	
+	@RequestMapping(path="/topDoctors", method=RequestMethod.GET)
+	public String displayTopDoctors(HttpServletRequest request){
+//		List<Doctor> doctorsList = new ArrayList<>();
+//		doctorsList = doctorDAO.getAllDoctors();
+//		
+//		
+//		List<Review> reviewsList = new ArrayList<>();
+//		for(Doctor doc:doctorsList){
+//			reviewsList = reviewDAO.getAllReviewsByDoctorId(doc.getId());
+//			
+//		}
+//	
+//		
+		
+		return "topDoctors";
 	}
 
 }
