@@ -1,26 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-<link rel="stylesheet" href="fontawesome-stars.css">
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="jquery.barrating.min.js"></script>
-<script type="text/javascript">
-   $(function() {
-      $('#example').barrating({
-        theme: 'fontawesome-stars'
-      });
-   });
-</script>
-
-
-
-<select id="example">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-</select>
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
 <title>Reviews</title>
