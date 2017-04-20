@@ -489,7 +489,7 @@ body {
   opacity         : 0;
   transition      : opacity 0.2s linear;
 }
-	
+
 .starRating:not(old) > label:hover:before,
 .starRating:not(old) > label:hover ~ label:before,
 .starRating:not(:hover) > :checked ~ label:before{

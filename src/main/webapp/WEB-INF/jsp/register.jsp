@@ -90,7 +90,7 @@ $(document).ready(function () {
 	}, "Please enter a valid email address");
 	
 	$.validator.addMethod("phone", function (value, index) {
-	    return value.match(/^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/);  
+	    return value.match(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/);  
 	}, "Please enter a valid phone number");
 	 
 </script>
@@ -124,7 +124,7 @@ $(document).ready(function () {
 					</div>
 					<div class = "container-fluid">
 						<div class="form-group white col-md-4 col-sm-12">
-							<label for="phone_number">Phone Number: </label> <input type="text"
+							<label for="phone_number">Phone Number: (xxx-xxx-xxxx) </label> <input type="text"
 								id="phone_number" name="phone_number" placeHolder="Phone Number"
 								class="form-control" />
 						</div>
@@ -151,10 +151,8 @@ $(document).ready(function () {
 								class="form-control" />
 						</div>
 						<div class="white col-md-12 col-sm-12">
-							<c:out value="Passwords need a minimum of 10 characters including at least one of each of the following: uppercase letter, lowercase letter, number"/>
-						
-						</div>
-						
+							<c:out value="Passwords need a minimum of 10 characters including at least one of each of the following: uppercase letter, lowercase letter, number"/>						
+						</div>				
 					</div>
 					<br><div class = "alignmid">
 						<button style = "mirgin-right: 10px; border-radius:10px" id="login_button" type="submit" class="btn btn-default">Create User</button>

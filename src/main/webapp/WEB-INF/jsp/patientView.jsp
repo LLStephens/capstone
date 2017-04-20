@@ -50,13 +50,13 @@
 		<c:choose>
 			<c:when
 				test="${(!empty apptTimes[counter]) && agenda[index].equals(apptTimes[counter])}">
-				<form method="GET" action="${formAction}">
+				
 					<tags:localTime time="${agenda[index]}" pattern="hh:mm a" />
 					<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 					<button class="btn btn-3 btn-3e scheduled">
 						<c:out value="Booked"></c:out>
 					</button>
-				</form>
+				
 				<c:set var="counter" value="${counter + 1}" />
 			</c:when>
 			<c:otherwise>
