@@ -81,7 +81,7 @@ public class JDBCDoctorDAO implements DoctorDAO {
 	@Override
 	public List<Integer> getTopDoctorsByAverageRatingLimit5(){
 		List<Integer> topDoctorIds = new ArrayList<>();
-		String sqlGetTopDoctorIds = "select doctor_id from review group by doctor_id order by AVG(rating) desc limit 5";
+		String sqlGetTopDoctorIds = "select doctor_id from review group by doctor_id order by AVG(rating) desc";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetTopDoctorIds);
 	
 		while(results.next()) {
@@ -93,11 +93,11 @@ public class JDBCDoctorDAO implements DoctorDAO {
 	@Override
 	public List<Integer> getTopDoctorRatingsByAverageRatingLimit5(){
 		List<Integer> topDoctorRatings = new ArrayList<>();
-		String sqlGetTopDoctorRatings = "select AVG(rating) from review group by doctor_id order by AVG(rating) desc limit 5";
+		String sqlGetTopDoctorRatings = "select round(AVG(rating)) from review group by doctor_id order by AVG(rating) desc";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetTopDoctorRatings);
 	
 		while(results.next()) {
-			topDoctorRatings.add(results.getInt("rating"));
+			topDoctorRatings.add(results.getInt("round"));
 		}
 		return topDoctorRatings;
 	}
