@@ -42,7 +42,7 @@ public class HomePage {
 	
 	private void logOut() {
 		try {
-			WebElement logoutLink = webDriver.findElement(By.id("logoutButton"));
+			WebElement logoutLink = webDriver.findElement(By.className("logoutButton"));
 			logoutLink.submit();
 		} catch (NoSuchElementException e) {
 	    }
