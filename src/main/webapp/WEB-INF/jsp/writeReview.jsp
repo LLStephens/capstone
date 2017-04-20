@@ -1,16 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
-<script>
 
-</script>
 <title>Reviews</title>
 <div class="loginBox">
 	<div class="innerBox">
 		<div class="row">
 			<div class="col-sm-2">
 				<c:if test="${patientId >0}">
-					<p>This is a verifed review</p>
+					<p>This is a verified review</p>
 				</c:if>
 			</div>
 			<div class="col-sm-8">
@@ -25,7 +23,19 @@
 
 						<input type="hidden" name="CSRF_TOKEN"
 							value="${CSRF_TOKEN}" />
-					<div class="rating">
+							<span class="starRating">
+							  <input id="rating5" type="radio" name="rating" value="5">
+							  <label class="ratingClass" for="rating5"></label>							  
+							  <input id="rating4" type="radio" name="rating" value="4">
+							  <label for="rating4"></label>
+							  <input id="rating3" type="radio" name="rating" value="3">
+							  <label for="rating3"></label>
+							  <input id="rating2" type="radio" name="rating" value="2">
+							  <label for="rating2"></label>
+							  <input id="rating1" type="radio" name="rating" value="1">
+							  <label for="rating1"></label>
+							</span>
+					<!-- <div class="rating">
 				        <input type="radio" class="rating-input" id="rating-input-1-5" value="5" name="rating"/>
 				        <label for="rating-input-1-5" class="rating-star"></label>
 				        <input type="radio" class="rating-input" id="rating-input-1-4" value="4" name="rating"/>
@@ -36,7 +46,7 @@
 				        <label for="rating-input-1-2" class="rating-star"></label>
 				        <input type="radio" class="rating-input" id="rating-input-1-1" value ="1" name="rating" checked="checked"/>
 				        <label for="rating-input-1-1" class="rating-star"></label>
-					</div>
+					</div> -->
 					
 					<div class="container-fluid stars">
 

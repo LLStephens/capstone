@@ -1,6 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
+
+
+
 <title>Reviews</title>
 <div class="container">
 <div class="loginBox">
@@ -8,6 +11,7 @@
 	<div class="row">
 		<div class="reviewBox">
 		<legend id="legends">Reviews</legend> 
+		
 			<table class="table table-responsive">
 				<tbody>
 					<c:url var="readReview" value="/readReviews" />
