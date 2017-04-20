@@ -78,8 +78,9 @@ public class AuthenticationController {
 
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
 	public String login(@RequestParam String user_name, @RequestParam String password,
-			@RequestParam(required = false) String destination, ModelMap model) {
+			@RequestParam(required = false) String destination, ModelMap model, HttpSession session) {
 		if (patientDao.searchForUsernameAndPassword(user_name, password)) {
+			clearSession(model, session);
 			model.put("currentPatientId",
 					patientDao.getPatientById(patientDao.getIdByUsernameAndPassword(user_name, password)));
 			model.put("currentPatientId2", (patientDao.getIdByUsernameAndPassword(user_name, password)));
@@ -106,12 +107,16 @@ public class AuthenticationController {
 
 	@RequestMapping(path = "/logout", method = RequestMethod.POST)
 	public String logout(ModelMap model, HttpSession session) {
+		clearSession(model, session);
+		return "redirect:/";
+	}
+	
+	private void clearSession(ModelMap model, HttpSession session) {
 		session.invalidate();
 		model.remove("currentPatientId");
 		model.remove("currentPatientId2");
 		model.remove("currentDoctorId");
 		model.remove("currentDoctorId2");
-		return "redirect:/";
 	}
 
 	@RequestMapping(path = "/providerLogin", method = RequestMethod.GET)
@@ -121,8 +126,9 @@ public class AuthenticationController {
 
 	@RequestMapping(path = "/providerLogin", method = RequestMethod.POST)
 	public String ProviderLogin(@RequestParam String user_name, @RequestParam String password,
-			@RequestParam(required = false) String destination, ModelMap model) {
+			@RequestParam(required = false) String destination, ModelMap model, HttpSession session) {
 		if (doctorDao.searchDoctorForUsernameAndPassword(user_name, password)) {
+			clearSession(model, session);
 			model.put("currentDoctorId", doctorDao.getDoctorById(doctorDao.getDoctorIdByUsernameAndPassword(user_name, password)));
 			model.put("currentDoctorId2", (doctorDao.getDoctorIdByUsernameAndPassword(user_name, password)));
 
