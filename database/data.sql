@@ -16,7 +16,7 @@ INSERT INTO doctor (name, office_id, fee, start_time, end_time, admin, user_name
 INSERT INTO doctor (name, office_id, fee, start_time, end_time, admin, user_name, password, email, salt) VALUES ('Dr. Cool', 1, '$65', '9:00',  '16:00', false, 'Drcool','0JwD+VqgnwD+B/wCf7koZA==', 'laura@neutralspace.org', 'So+RfSkiyzjrqsB7WyMVxx2M5AA66SPvp0HXvV3yzdbdOBCsNYVN7OSrJ7KbV3KMMwlLx73S/lXdNlyh3oK98JjqfTWBK0EOj5lB2mIVBYQFCNJqxj0ob/PpJTHA7H6wTxM0w/TIGgv+Pi2V0bBtGU7ydYlMkqg7A5vdqUSaGGc=');
 INSERT INTO doctor (name, office_id, fee, start_time, end_time, admin, user_name, password, email, salt) VALUES ('Dr. Smith', 2, '$50', '9:00', '17:00', true, 'Drsmith','SIAQyPW4AaPFtBZUXhuoXA==', 'laura@neutralspace.org', '6blU6XFjVYcVpfzBecmnZ6iVogA5c2ijTyz2t4Iy/UGXKqRme76Jb2uTJazLYD4TPBjJ+DmiWhG7RVKnj98fxKONHCFUcow7A80P2C7jv7PsbceZxbRdtbdiiv9lveVt2hnp9jimIM5u4NqTr5k6Yz/lA3xjT/MiS6owFthFZnI=');
 INSERT INTO doctor (name, office_id, fee, start_time, end_time, admin, user_name, password, email, salt) VALUES ('Dr. Low', 2, '$50', '7:00', '15:00', false, 'Drlow','EBuM/qidQtfaiMX/LC3dZg==', 'laura@neutralspace.org', 'IsRJ6sbEPwpD1fpCXyZQH7mpCmq9BkNcitpTt9jNcKZXQfesPZQIZi6k0Yu/2orizuBTObbZoGv0CYe4pGmV//V/RzAyz3adxwulIRbLKfQjPeWG4UGIQKG9tx+7fGBC0dMLGW70pPjNsBKuWuXYSmX9ORgyEH0I3hoBaxuVp2U=');
-INSERT INTO doctor (name, office_id, fee, start_time, end_time, admin, user_name, password, email, salt) VALUES ('Dr. High', 2, '$60', '9:00', '17:00', false, 'Drhigh','mLz9dAXsDpFyImkLys0xgQ==', 'laura@neutralspace.org','xoXx8THHFeGCrmQWfwbFSr8PgmqQjAdQS9jAFz3RJneQhrT+9Vmr2EjNQIp1H4iKsCUPdzCnzQuvNl+jLf3RdA/K35oav91Yncly5dikPGRlvUQK8T9fYgcf3t0lMkqxboeJuh4cDkFHue8C5iIJ6lJ1HmD5lm8SaBU6BRD+vGM=');
+INSERT INTO doctor (name, office_id, fee, start_time, end_time, admin, user_name, password, email, salt) VALUES ('Dr. Neil', 2, '$60', '9:00', '17:00', false, 'Drhigh','mLz9dAXsDpFyImkLys0xgQ==', 'laura@neutralspace.org','xoXx8THHFeGCrmQWfwbFSr8PgmqQjAdQS9jAFz3RJneQhrT+9Vmr2EjNQIp1H4iKsCUPdzCnzQuvNl+jLf3RdA/K35oav91Yncly5dikPGRlvUQK8T9fYgcf3t0lMkqxboeJuh4cDkFHue8C5iIJ6lJ1HmD5lm8SaBU6BRD+vGM=');
 INSERT INTO doctor (name, office_id, fee, start_time, end_time, admin, user_name, password, email, salt) VALUES ('Dr. Joe', 3, '$40', '11:00', '21:00', false, 'Drjoe','KSqcJyO00k3mKrltRHifdw==', 'laura@neutralspace.org','EmswGadBnEXKCrisGMadpP7kwJI1KSUdGmRSEFtth6o8t/csGNL0lJK4na13eJRKGA8h9jWXRI6km+zORG9DkQ7PJRbzEjQGgsKKN9U/tgIaLAXyoGV+iY/Vuq2GvvkWMdVH/xpFjKl6aEiyqvJ1n4sIAYo+vivItBIsqpqkIso=');
 INSERT INTO doctor (name, office_id, fee, start_time, end_time, admin, user_name, password, email, salt) VALUES ('Dr. Ben', 3, '$50', '9:00', '17:00', true, 'Drben','bjpcT6RBbPSssfnRNGe8iQ==', 'laura@neutralspace.org', 'Rc8kBEZ8iWX4KQC2UhFaZC6Bjyzscf6BDDIl+9bvNKLhyINvpMf/SEzteILNz6gMla5U7LMHoj0TUFXlOy/Vvb11udy5UJ/HnwHdk8x4q3blAHPuZpTMRd0UMT/AwUx7b2pI+j6cwskRsXFRRIc76JAxuKIyNByxwkwIrObd8GA=');
 INSERT INTO doctor (name, office_id, fee, start_time, end_time, admin, user_name, password, email, salt) VALUES ('Dr. Yu', 3, '$60', '8:00', '16:00', false, 'Dryu','bqAyAxOjSIuWKNxVY0k93g==', 'laura@neutralspace.org', 'DwLAhWQ+7a7Nzw7zuXLdAsYkZIa/02yWk+IYVD+y68AW1ZVkLeor/y17d1O3m0/n59s+CPYUWhQSLVrAW4eekFOJ3jCpJDmG0OPqJri0DbzfXpVwTtQH9aFNyk5F0ZPjeR5WHZUAJx+H119zYTb5v5x24GDjbTJVur+VeyFgUpU=');
@@ -36,7 +36,6 @@ INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_nam
 INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password, salt) VALUES ('Sue Moose', '05/04/1990', '600 Foreign Drive', '614-555-5533', 'lauracomstockstephens@gmail.com', 'Smoose','M7CD4i17yiQZrSBN6+5cNQ==', 'K0Ks3lwVHPZlyOhL6tCGftXckFgi15bkP7MB9Q0dhaJRBrNxdGKRHNwMu/H1h6Z6c9vDH+WnbydL4yQsX+DBadleQ8FqPIdBGqEKaMGlsjaKS9i0rzIZ+7NFkDu79zcztxMXaMrHmfjAE0eCCaaefcTvdLumKfNO8xISCf+yofg=');
 INSERT INTO patient (name, date_of_birth, address, phone_number, email, user_name, password, salt) VALUES ('Martha Stewart', '03/02/1970', '520 Prison Road', '614-555-6765', 'lauracomstockstephens@gmail.com', 'Mstewart','I/nnOi89T9fM4WPAGu37zQ==', '7VYNJvvkmancai8wDUxMX5i2lWNLFyRuonO5zUaFEe+CH5u2IidtAU0enx5fQ5FvKmo/LoArC8u/XN2v73ReXTcfwDvV+VRwXMUrlpdqW/9V63wU4ZEZem9qkGbWKFysjiy/o3S/ouEhexACMCI6QjJre8lW04sOrAQxh9j85cI=');
 INSERT INTO patient (id, name, date_of_birth, address, phone_number, email, user_name, password, salt) VALUES ('-1','Doctor Note', '04/04/1994', 'test', '614-555-4567', 'lauracomstockstephens@gmail.com', 'tes','Z8qC2rpT7uo5tCovYZfoag==', 'UttbP35D94ayvJa7+OLa+Sh+9wk2w6JDoky6hQ0tuJ/ku/DulEBl6QTR1NQv0YFK+XaPVIeZkKFjIMs7reOVA05ul4RZFrCm93hb+Oqsb9WEZTpWY72WWE484kkvrwmbxn9Otl8IwGuq4N8ATT3wTknsDU+syRTt/UCxdng6QWQ=');
-
 
 INSERT INTO review (rating, doctor_id, message) VALUES (5, 1, 'Outstanding bed-side presence. Could not recommend enough');
 INSERT INTO review (rating, doctor_id, message) VALUES (4, 1, 'Very busy, but worth the wait');
@@ -65,16 +64,45 @@ INSERT INTO review (rating, doctor_id, message) VALUES (2, 10, 'Very poor bedsid
 INSERT INTO review (rating, doctor_id, message) VALUES (5, 11, 'Does not get any better than this!');
 INSERT INTO review (rating, doctor_id, message) VALUES (1, 12, 'After being late for the 3rd time, I think I will just go elsewhere');
 
-INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 1, '2017-04-13T8:00', '2017-04-13T8:30', 'My finger hurts');
-INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 2, '2017-04-13T8:30', '2017-04-13T9:00', 'My finger hurts2');
-INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 3, '2017-04-13T9:00', '2017-04-13T9:30', 'My finger hurts3');
-INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 4, '2017-04-13T9:30', '2017-04-13T10:00', 'My finger hurts4');
+INSERT INTO review (rating, doctor_id, message) VALUES (4, 1, 'Always good to see this doctor');
+INSERT INTO review (rating, doctor_id, message) VALUES (3, 1, 'Made me wait too long again');
+INSERT INTO review (rating, doctor_id, message) VALUES (3, 2, 'Got the job done.');
+INSERT INTO review (rating, doctor_id, message) VALUES (5, 3, 'Oustanding, always.');
+INSERT INTO review (rating, doctor_id, message) VALUES (4, 4, 'Consistently good');
+INSERT INTO review (rating, doctor_id, message) VALUES (4, 5, 'Good job');
+INSERT INTO review (rating, doctor_id, message) VALUES (4, 6, 'I like the way the appointment went');
+INSERT INTO review (rating, doctor_id, message) VALUES (3, 7, 'Good, not great');
+INSERT INTO review (rating, doctor_id, message) VALUES (2, 8, 'Kind of a jerk');
+INSERT INTO review (rating, doctor_id, message) VALUES (4, 9, 'Is usually able to meet all my needs');
+INSERT INTO review (rating, doctor_id, message) VALUES (1, 10, 'Utter disappointment');
+INSERT INTO review (rating, doctor_id, message) VALUES (5, 11, 'Truly the best');
+INSERT INTO review (rating, doctor_id, message) VALUES (2, 12, 'I am frutstrated by the lack of attention');
+INSERT INTO review (rating, doctor_id, message) VALUES (4, 1, 'Pleasant and helpful');
+INSERT INTO review (rating, doctor_id, message) VALUES (5, 1, 'The very best!!!');
+INSERT INTO review (rating, doctor_id, message) VALUES (3, 2, 'Solved my problem, but the wait was horrendous');
+INSERT INTO review (rating, doctor_id, message) VALUES (5, 3, 'Quality work all the time');
+INSERT INTO review (rating, doctor_id, message) VALUES (2, 4, 'Just consistently disappointing');
+INSERT INTO review (rating, doctor_id, message) VALUES (5, 5, 'My favorite doctor ever');
+INSERT INTO review (rating, doctor_id, message) VALUES (5, 6, 'Great personality and professionalism');
+INSERT INTO review (rating, doctor_id, message) VALUES (1, 7, 'Terrible');
+INSERT INTO review (rating, doctor_id, message) VALUES (5, 8, 'Terrific');
+INSERT INTO review (rating, doctor_id, message) VALUES (4, 9, 'Great');
+INSERT INTO review (rating, doctor_id, message) VALUES (3, 10, 'Not very good');
+INSERT INTO review (rating, doctor_id, message) VALUES (4, 11, 'I am very pleased');
+INSERT INTO review (rating, doctor_id, message) VALUES (2, 12, 'Keep your expectations low');
+
+
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 1, '2017-04-23T8:00', '2017-04-23T8:30', 'My finger hurts');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 2, '2017-04-23T8:30', '2017-04-23T9:00', 'My thumb hurts');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 3, '2017-04-21T9:00', '2017-04-21T9:30', 'My toe hurts');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 4, '2017-04-22T9:30', '2017-04-22T10:00', 'My head hurts');
 INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 1, '2017-04-20T8:00', '2017-04-20T8:30', 'HAPPY BIRTHDAY LAURA!!');
-INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 5, '2017-04-13T10:00', '2017-04-13T10:30', 'My finger hurts5');
-INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 6, '2017-04-13T10:30', '2017-04-13T11:00', 'My finger hurts6');
-INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 7, '2017-04-13T14:30', '2017-04-13T15:00', 'My finger hurts6');
-INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 7, '2017-04-13T15:30', '2017-04-13T16:00', 'My finger hurts6');
-INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 7, '2017-04-13T11:30', '2017-04-13T12:00', 'My finger hurts6');
-INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (2, 1, '2017-04-13T8:00', '2017-04-13T8:30', 'My finger hurts');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 5, '2017-04-13T10:00', '2017-04-13T10:30', 'My knee hurts');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 6, '2017-04-13T10:30', '2017-04-13T11:00', 'My foot hurts');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 7, '2017-04-13T14:30', '2017-04-13T15:00', 'My elbow hurts');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 7, '2017-04-13T15:30', '2017-04-13T16:00', 'My face hurts');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (1, 7, '2017-04-13T11:30', '2017-04-13T12:00', 'My tongue hurts');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (2, 1, '2017-04-13T8:00', '2017-04-13T8:30', 'My nose hurts');
+INSERT INTO appointment (doctor_id, patient_id, start_date, end_date, message) VALUES (2, 1, '2017-04-13T8:00', '2017-04-13T8:30', 'My chin hurts');
 
 COMMIT;
