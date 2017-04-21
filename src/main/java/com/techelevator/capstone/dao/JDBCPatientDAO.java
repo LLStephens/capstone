@@ -147,17 +147,24 @@ public class JDBCPatientDAO implements PatientDAO {
 
 	@Override
 	public int getIdByUsernameAndPassword(String userName, String password) {
-		int none = -1;
-		String sqlSearchForUser = "SELECT * "+
-								  "FROM patient "+
-								  "WHERE UPPER(user_name) = '"+userName.toUpperCase()+"' "+
-								  "AND password = '"+password+"'";
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchForUser);
+		
+		int ptId = -1;
+		String sqlSearchForPatient = "SELECT * " +
+									"FROM patient "+
+									"WHERE UPPER(user_name) = ?";
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchForPatient, userName.toUpperCase());
 		if(results.next()) {
-			return mapToRowToPatient(results).getId();
-		}else{
-		return none;
+			String storedSalt = results.getString("salt");
+			String storedPassword = results.getString("password");
+			String hashedPassword = passwordHasher.computeHash(password, Base64.decode(storedSalt));
+			if(storedPassword.equals(hashedPassword)) {
+				ptId = (int) mapToRowToPatient(results).getId();
+			}else{
+				ptId = -1;
+			}
 		}
+		return ptId;
 	}
 
 }

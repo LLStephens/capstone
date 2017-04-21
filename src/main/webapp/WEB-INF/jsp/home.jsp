@@ -5,9 +5,9 @@
 		<img  id = "jumbo" src="img/abstract.jpg">	
 </div>
 <div class = "container-fluid centerText">
-<p class = "welcomeText" >Welcome to Neutralspace Healthcare </p>
+<p class = "welcomeText" >Welcome to Neutralspace Personal Healthcare </p>
 <c:url var="topDocs" value = "/topDoctors"/>
-<a href="${topDocs}">(Visit one of out top rated doctors)</a>
+<a href="${topDocs}">(Visit one of our top rated doctors)</a>
 </div>
 <div class = "lrPadding" >
  

@@ -78,11 +78,11 @@ public class HomeController {
 	@RequestMapping(path="/writeReview", method=RequestMethod.GET)
 	public String inputReview(@RequestParam int doctorId, ModelMap model, HttpServletRequest request) {
 
-		if(model.get("currentPatientId") == null ){
-			request.setAttribute("patientId",-1);
-		}else{
+		if((Patient)model.get("currentPatientId") != null){
 			Patient tempPatient = (Patient) model.get("currentPatientId");
 			request.setAttribute("patientId", tempPatient.getId());
+		}else{
+			request.setAttribute("patientId",-1);
 		}
 		return "writeReview";
 	}

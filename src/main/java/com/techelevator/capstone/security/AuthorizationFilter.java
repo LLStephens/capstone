@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public class AuthorizationFilter implements Filter {
 	
-	private static final List<String> PROVIDER_URLS = Arrays.asList( "providerView" );
-	private static final List<String> PATIENT_URLS = Arrays.asList( "patientView" );
+	private static final List<String> PROVIDER_URLS = Arrays.asList(  );
+	private static final List<String> PATIENT_URLS = Arrays.asList();
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
@@ -30,7 +30,7 @@ public class AuthorizationFilter implements Filter {
 		
 		HttpServletRequest httpRequest = (HttpServletRequest)request;
 		HttpServletResponse httpResponse = (HttpServletResponse)response;
-		
+
 		Integer providerId = getProviderIdFromSession(httpRequest);
 		Integer patientId = getPatientIdFromSession(httpRequest);
 		String pageName = getPageName(httpRequest);
@@ -62,9 +62,11 @@ public class AuthorizationFilter implements Filter {
 		}
 		
 		String context = httpRequest.getServletContext().getContextPath();
-		httpResponse.sendRedirect(context+"/providerLogin?destination="+URLEncoder.encode(originalRequest, "UTF-8"));
-		httpResponse.sendRedirect(context+"/");
+//		httpResponse.sendRedirect(context+"/providerLogin?destination="+URLEncoder.encode(originalRequest, "UTF-8"));
+		httpResponse.sendRedirect("/");
 	}
+	
+	
 
 	private Integer getProviderIdFromSession(HttpServletRequest httpRequest) {
 		return (Integer)httpRequest.getSession().getAttribute("currentDoctorId2");

@@ -7,7 +7,7 @@
 	<div class="innerBox">
 		<div class="row">
 			<div class="col-sm-2">
-				<c:if test="${patientId >0}">
+				<c:if test="${patientId > -1}">
 					<p>This is a verified review</p>
 				</c:if>
 			</div>
@@ -15,9 +15,8 @@
 				<div class="reviewBox">
 					<legend id="legend">Leave a Review</legend>
 					<c:url var="login" value="/login" />
-					<c:if test="${patientId <1}">
-						<a href="${login}">Please login or register to leave a
-							verified review</a><br><br>
+					<c:if test="${ patientId == -1}">
+						<a href="${login}">Please login or register to leave a verified review</a><br><br>
 					</c:if>
 					<form class="forms" method="POST" action="${writeReview}">
 

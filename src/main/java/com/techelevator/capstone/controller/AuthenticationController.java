@@ -81,8 +81,7 @@ public class AuthenticationController {
 			@RequestParam(required = false) String destination, ModelMap model, HttpSession session) {
 		if (patientDao.searchForUsernameAndPassword(user_name, password)) {
 			clearSession(model, session);
-			model.put("currentPatientId",
-					patientDao.getPatientById(patientDao.getIdByUsernameAndPassword(user_name, password)));
+			model.put("currentPatientId", patientDao.getPatientById(patientDao.getIdByUsernameAndPassword(user_name, password)));
 			model.put("currentPatientId2", (patientDao.getIdByUsernameAndPassword(user_name, password)));
 
 			return "redirect:/";
